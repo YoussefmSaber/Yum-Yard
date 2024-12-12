@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Surface(modifier = Modifier.padding(innerPadding))
                     {
-                        Text(if (meal.value.isNotEmpty()) meal.value.get(0).category else "No Item found")
+                        Text(if (meal.value.isNotEmpty()) meal.value[0].category else "No Item found")
                     }
                 }
             }

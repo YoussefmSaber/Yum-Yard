@@ -14,23 +14,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.produceState
 import androidx.compose.ui.Modifier
 import com.example.foodrecipe.domain.model.Meal
+import com.example.foodrecipe.domain.usecase.GetMealByIdUseCase
 import com.example.foodrecipe.domain.usecase.GetMealsUseCase
 import com.example.foodrecipe.ui.theme.FoodRecipeTheme
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
 
-    private val getMealsUseCase: GetMealsUseCase by inject()
+    private val getMealsUseCase: GetMealByIdUseCase by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val meals = produceState(
-                initialValue = emptyList(),
+            val meal = produceState(
+                initialValue = emptyList<Meal>(),
                 producer = {
-                    getMealsUseCase().collect {
-                        value = it.data ?: emptyList<Meal>()
+                    getMealsUseCase("52772").collect {
+                        value = it.data ?: emptyList()
                     }
                 }
             )
@@ -38,11 +39,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Surface(modifier = Modifier.padding(innerPadding))
                     {
-                        LazyColumn {
-                            items(meals.value) {
-                                Text(it.mealIngredients.size.toString())
-                            }
-                        }
+                        Text(if (meal.value.isNotEmpty()) meal.value[0].mealName else "No Item found")
                     }
                 }
             }

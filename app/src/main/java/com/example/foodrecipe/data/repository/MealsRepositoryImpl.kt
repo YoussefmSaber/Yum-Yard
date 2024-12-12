@@ -19,10 +19,10 @@ class MealsRepositoryImpl(
     override suspend fun getMeals(): MealsDto =
         client.get(HttpRoutes.MEALS)
 
-    override suspend fun getMealById(id: String): MealDto? =
+    override suspend fun getMealById(id: String): MealsDto =
         client.get(HttpRoutes.MEAL_BY_ID.plus(id))
 
-    override suspend fun getMealByName(name: String): MealDto? =
+    override suspend fun getMealByName(name: String): MealsDto =
         client.get(HttpRoutes.MEAL_BY_NAME.plus(name))
 
     override suspend fun getRandomMeal(): MealsDto =

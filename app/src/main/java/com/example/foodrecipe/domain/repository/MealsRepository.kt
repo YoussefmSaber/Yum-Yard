@@ -12,9 +12,9 @@ interface MealsRepository {
 
     suspend fun getMeals(): MealsDto
 
-    suspend fun getMealById(id: String): MealDto?
+    suspend fun getMealById(id: String): MealsDto
 
-    suspend fun getMealByName(name: String): MealDto?
+    suspend fun getMealByName(name: String): MealsDto
 
     suspend fun getRandomMeal(): MealsDto
 

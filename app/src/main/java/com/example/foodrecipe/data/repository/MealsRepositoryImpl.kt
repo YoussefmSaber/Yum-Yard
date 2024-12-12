@@ -6,7 +6,6 @@ import com.example.foodrecipe.data.data_source.api.dto.category.CategoriesDto
 import com.example.foodrecipe.data.data_source.api.dto.meal_category.CategoryListDto
 import com.example.foodrecipe.data.data_source.api.dto.filtered_meals.FilteredMealsDto
 import com.example.foodrecipe.data.data_source.api.dto.ingredient.IngredientsDto
-import com.example.foodrecipe.data.data_source.api.dto.meal.MealDto
 import com.example.foodrecipe.data.data_source.api.dto.meal.MealsDto
 import com.example.foodrecipe.domain.repository.MealsRepository
 import io.ktor.client.*

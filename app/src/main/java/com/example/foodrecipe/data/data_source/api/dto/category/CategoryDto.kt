@@ -1,7 +1,9 @@
 package com.example.foodrecipe.data.data_source.api.dto.category
 
 import com.example.foodrecipe.domain.model.Category
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class CategoryDto(
     val idCategory: String,
     val strCategory: String,

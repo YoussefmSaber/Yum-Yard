@@ -1,20 +1,15 @@
 package com.example.foodrecipe.data.repository
 
-import android.util.Log
 import com.example.foodrecipe.common.HttpRoutes
-import com.example.foodrecipe.data.data_source.api.dto.AreasDto
-import com.example.foodrecipe.data.data_source.api.dto.CategoriesDto
-import com.example.foodrecipe.data.data_source.api.dto.CategoryListDto
-import com.example.foodrecipe.data.data_source.api.dto.FilteredMealsDto
-import com.example.foodrecipe.data.data_source.api.dto.IngredientsDto
-import com.example.foodrecipe.data.data_source.api.dto.MealDto
-import com.example.foodrecipe.data.data_source.api.dto.MealsDto
+import com.example.foodrecipe.data.data_source.api.dto.area.AreasDto
+import com.example.foodrecipe.data.data_source.api.dto.category.CategoriesDto
+import com.example.foodrecipe.data.data_source.api.dto.meal_category.CategoryListDto
+import com.example.foodrecipe.data.data_source.api.dto.filtered_meals.FilteredMealsDto
+import com.example.foodrecipe.data.data_source.api.dto.ingredient.IngredientsDto
+import com.example.foodrecipe.data.data_source.api.dto.meal.MealDto
+import com.example.foodrecipe.data.data_source.api.dto.meal.MealsDto
 import com.example.foodrecipe.domain.repository.MealsRepository
 import io.ktor.client.*
-import io.ktor.client.features.ClientRequestException
-import io.ktor.client.features.RedirectResponseException
-import io.ktor.client.features.ServerResponseException
-import io.ktor.client.features.get
 import io.ktor.client.request.*
 
 class MealsRepositoryImpl(

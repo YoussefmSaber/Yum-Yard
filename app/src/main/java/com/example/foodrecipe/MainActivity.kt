@@ -13,14 +13,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.produceState
 import androidx.compose.ui.Modifier
-import com.example.foodrecipe.domain.repository.MealsRepository
-import com.example.foodrecipe.data.data_source.api.dto.toMeals
-import com.example.foodrecipe.di.appModule
-import com.example.foodrecipe.domain.model.Meals
+import com.example.foodrecipe.domain.model.Meal
 import com.example.foodrecipe.domain.usecase.GetMealsUseCase
 import com.example.foodrecipe.ui.theme.FoodRecipeTheme
 import org.koin.android.ext.android.inject
-import org.koin.core.context.startKoin
 
 class MainActivity : ComponentActivity() {
 
@@ -31,10 +27,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val meals = produceState(
-                initialValue = Meals(emptyList()),
+                initialValue = emptyList(),
                 producer = {
                     getMealsUseCase().collect {
-                        value = it.data ?: Meals(emptyList())
+                        value = it.data ?: emptyList<Meal>()
                     }
                 }
             )
@@ -43,7 +39,7 @@ class MainActivity : ComponentActivity() {
                     Surface(modifier = Modifier.padding(innerPadding))
                     {
                         LazyColumn {
-                            items(meals.value.meals) {
+                            items(meals.value) {
                                 Text(it.mealIngredients.size.toString())
                             }
                         }

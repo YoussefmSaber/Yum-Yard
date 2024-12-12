@@ -2,8 +2,8 @@ package com.example.foodrecipe.domain.usecase
 
 import com.bumptech.glide.load.HttpException
 import com.example.foodrecipe.common.Resource
-import com.example.foodrecipe.data.data_source.api.dto.toMeals
-import com.example.foodrecipe.domain.model.Meals
+import com.example.foodrecipe.data.data_source.api.dto.meal.toMeals
+import com.example.foodrecipe.domain.model.Meal
 import com.example.foodrecipe.domain.repository.MealsRepository
 import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.flow.Flow
@@ -13,7 +13,7 @@ class GetMealsUseCase(
     private val repository: MealsRepository
 ) {
 
-    operator fun invoke(): Flow<Resource<Meals>> = flow {
+    operator fun invoke(): Flow<Resource<List<Meal>>> = flow {
         try {
             emit(Resource.Loading())
             val meals = repository.getMeals().toMeals()

@@ -15,13 +15,14 @@ import androidx.compose.runtime.produceState
 import androidx.compose.ui.Modifier
 import com.example.foodrecipe.domain.model.Meal
 import com.example.foodrecipe.domain.usecase.GetMealByIdUseCase
+import com.example.foodrecipe.domain.usecase.GetMealByNameUseCase
 import com.example.foodrecipe.domain.usecase.GetMealsUseCase
 import com.example.foodrecipe.ui.theme.FoodRecipeTheme
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
 
-    private val getMealsUseCase: GetMealByIdUseCase by inject()
+    private val getMealsUseCase: GetMealByNameUseCase by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
             val meal = produceState(
                 initialValue = emptyList<Meal>(),
                 producer = {
-                    getMealsUseCase("52772").collect {
+                    getMealsUseCase("Teriyaki Chicken Casserole").collect {
                         value = it.data ?: emptyList()
                     }
                 }

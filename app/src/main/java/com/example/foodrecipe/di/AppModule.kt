@@ -4,6 +4,7 @@ import com.example.foodrecipe.common.HttpRoutes
 import com.example.foodrecipe.data.repository.MealsRepositoryImpl
 import com.example.foodrecipe.domain.repository.MealsRepository
 import com.example.foodrecipe.domain.usecase.GetMealByIdUseCase
+import com.example.foodrecipe.domain.usecase.GetMealByNameUseCase
 import com.example.foodrecipe.domain.usecase.GetMealsUseCase
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
@@ -38,8 +39,13 @@ val appModule = module {
     single {
         GetMealsUseCase(get())
     }
-    // getMeal useCase
+
+    // getMeal by id useCase
     single {
         GetMealByIdUseCase(get())
+    }
+    // getMeal by name useCase
+    single {
+        GetMealByNameUseCase(get())
     }
 }

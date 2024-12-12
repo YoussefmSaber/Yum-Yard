@@ -9,13 +9,13 @@ import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class GetMealByIdUseCase(
+class GetMealByNameUseCase(
     private val repository: MealsRepository
 ) {
-    operator fun invoke(id: String): Flow<Resource<List<Meal>>> = flow {
+    operator fun invoke(name: String): Flow<Resource<List<Meal>>> = flow {
         try {
             emit(Resource.Loading())
-            val meal = repository.getMealById(id).toMeals()
+            val meal = repository.getMealByName(name).toMeals()
             emit(Resource.Success(meal))
         } catch (e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred"))

@@ -37,4 +37,5 @@ val appModule = module {
     single {
         GetMealsUseCase(get())
     }
+
 }

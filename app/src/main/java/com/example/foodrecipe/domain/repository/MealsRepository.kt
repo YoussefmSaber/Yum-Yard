@@ -1,17 +1,13 @@
 package com.example.foodrecipe.domain.repository
 
-import com.example.foodrecipe.common.HttpRoutes
+import com.example.foodrecipe.data.data_source.api.dto.AreasDto
+import com.example.foodrecipe.data.data_source.api.dto.CategoriesDto
+import com.example.foodrecipe.data.data_source.api.dto.CategoryListDto
+import com.example.foodrecipe.data.data_source.api.dto.FilteredMealsDto
+import com.example.foodrecipe.data.data_source.api.dto.IngredientsDto
 import com.example.foodrecipe.data.data_source.api.dto.MealDto
 import com.example.foodrecipe.data.data_source.api.dto.MealsDto
-import com.example.foodrecipe.data.repository.MealsRepositoryImpl
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.android.Android
-import io.ktor.client.features.defaultRequest
-import io.ktor.client.features.json.JsonFeature
-import io.ktor.client.features.json.serializer.KotlinxSerializer
-import io.ktor.client.features.logging.LogLevel
-import io.ktor.client.features.logging.Logging
-import io.ktor.client.request.url
+import com.example.foodrecipe.domain.model.Meals
 
 interface MealsRepository {
 
@@ -21,4 +17,19 @@ interface MealsRepository {
 
     suspend fun getMealByName(name: String): MealDto?
 
+    suspend fun getRandomMeal(): MealsDto
+
+    suspend fun getAllCategorize(): CategoriesDto
+
+    suspend fun listAllCategories(): CategoryListDto
+
+    suspend fun listAllIngredients(): IngredientsDto
+
+    suspend fun listAllAreas(): AreasDto
+
+    suspend fun filterByIngredient(ingredient: String): FilteredMealsDto
+
+    suspend fun filterByArea(area: String): FilteredMealsDto
+
+    suspend fun filterByCategory(category: String): FilteredMealsDto
 }

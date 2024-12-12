@@ -13,23 +13,29 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.produceState
 import androidx.compose.ui.Modifier
-import com.example.foodrecipe.data.data_source.api.MealsService
-import com.example.foodrecipe.data.data_source.api.dto.toMeal
+import com.example.foodrecipe.domain.repository.MealsRepository
 import com.example.foodrecipe.data.data_source.api.dto.toMeals
-import com.example.foodrecipe.domain.model.Meal
+import com.example.foodrecipe.di.appModule
 import com.example.foodrecipe.domain.model.Meals
+import com.example.foodrecipe.domain.usecase.GetMealsUseCase
 import com.example.foodrecipe.ui.theme.FoodRecipeTheme
+import org.koin.android.ext.android.inject
+import org.koin.core.context.startKoin
 
 class MainActivity : ComponentActivity() {
-    private val service = MealsService.create()
+
+    private val getMealsUseCase: GetMealsUseCase by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val meals = produceState<Meals>(
+            val meals = produceState(
                 initialValue = Meals(emptyList()),
                 producer = {
-                    value = service.getMeals().toMeals()
+                    getMealsUseCase().collect {
+                        value = it.data ?: Meals(emptyList())
+                    }
                 }
             )
             FoodRecipeTheme {

@@ -63,28 +63,32 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // koin
+    // Koin
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.android)
     implementation(libs.koin.test)
     implementation(libs.koin.annotations)
     ksp(libs.koin.ksp)
 
-    // glide
+    // Glide
     implementation(libs.glide)
     ksp(libs.ksp)
 
-    // room
+    // Room
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
 
-    // ktor
+    // Ktor
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.android)
     implementation(libs.ktor.client.serialization)
     implementation(libs.ktor.client.logging)
     implementation(libs.logback.classic)
 
+    // Kotlin serialization
     implementation(libs.kotlinx.serialization.json)
+
+    // Google fonts
+    implementation(libs.androidx.ui.text.google.fonts)
 }

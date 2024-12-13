@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -20,6 +22,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    val properties = Properties()
+    properties.load(rootProject.file("secret.properties").inputStream())
+    properties.getProperty("API_URL")
+    properties.getProperty("API_KEY")
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -27,6 +34,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        debug {
+            buildConfigField("String", "API_URL", properties.getProperty("API_URL"))
+            buildConfigField("String", "API_KEY", properties.getProperty("API_KEY"))
         }
     }
     compileOptions {
@@ -38,12 +49,13 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
 // Compile time check
 ksp {
-    arg("KOIN_CONFIG_CHECK","true")
+    arg("KOIN_CONFIG_CHECK", "true")
 }
 
 dependencies {
@@ -91,7 +103,6 @@ dependencies {
     // Google fonts
     implementation(libs.androidx.ui.text.google.fonts)
 
-    // Supabase
     implementation(platform("io.github.jan-tennert.supabase:bom:3.0.3"))
     implementation(libs.auth.kt)
     implementation(libs.realtime.kt)

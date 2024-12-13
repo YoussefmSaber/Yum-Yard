@@ -1,5 +1,6 @@
 package com.example.foodrecipe.di
 
+import com.example.foodrecipe.BuildConfig
 import com.example.foodrecipe.data.repository.MealsRepositoryImpl
 import com.example.foodrecipe.domain.repository.MealsRepository
 import com.example.foodrecipe.domain.usecase.get.filter.FilterByAreaUseCase
@@ -23,14 +24,11 @@ val appModule = module {
     // Provides a single instance of HttpClient
     single {
         createSupabaseClient(
-            supabaseUrl = "https://xrivqhouodrvmepgdkyi.supabase.co",
-            supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhyaXZxaG91b2Rydm1lcGdka3lpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQwODI1NjEsImV4cCI6MjA0OTY1ODU2MX0.Be8NIWQS1E2KY-WWYj3S85hNn6AfmubivX11CYG1EdA"
+            supabaseUrl = BuildConfig.API_URL,
+            supabaseKey = BuildConfig.API_KEY
         ) {
             install(Auth)
             install(Postgrest)
-            install(Realtime) {
-                reconnectDelay = 5.seconds // Default: 7 seconds
-            }
         }
     }
 

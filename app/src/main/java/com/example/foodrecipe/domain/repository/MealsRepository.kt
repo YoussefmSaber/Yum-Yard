@@ -1,34 +1,29 @@
 package com.example.foodrecipe.domain.repository
 
-import com.example.foodrecipe.data.data_source.api.dto.area.AreasDto
-import com.example.foodrecipe.data.data_source.api.dto.category.CategoriesDto
-import com.example.foodrecipe.data.data_source.api.dto.meal_category.CategoryListDto
-import com.example.foodrecipe.data.data_source.api.dto.filtered_meals.FilteredMealsDto
-import com.example.foodrecipe.data.data_source.api.dto.ingredient.IngredientsDto
+import com.example.foodrecipe.data.data_source.api.dto.area.AreaDto
+import com.example.foodrecipe.data.data_source.api.dto.category.CategoryDto
+import com.example.foodrecipe.data.data_source.api.dto.filtered_meals.FilteredMealDto
 import com.example.foodrecipe.data.data_source.api.dto.meal.MealDto
-import com.example.foodrecipe.data.data_source.api.dto.meal.MealsDto
+import com.example.foodrecipe.data.data_source.api.dto.meal_category.MealCategoryDto
 
 interface MealsRepository {
 
-    suspend fun getMeals(): MealsDto
+    suspend fun getMeals(): List<MealDto>
 
-    suspend fun getMealById(id: String): MealsDto
+    suspend fun getMealById(id: String): MealDto
 
-    suspend fun getMealByName(name: String): MealsDto
+    suspend fun getMealByName(name: String): MealDto
 
-    suspend fun getRandomMeal(): MealsDto
+    suspend fun getRandomMeal(): List<MealDto>
 
-    suspend fun getAllCategorize(): CategoriesDto
+    suspend fun getAllCategorize(): List<CategoryDto>
 
-    suspend fun listAllCategories(): CategoryListDto
+    suspend fun listAllCategories(): List<MealCategoryDto>
 
-    suspend fun listAllIngredients(): IngredientsDto
+    suspend fun listAllAreas(): List<AreaDto>
 
-    suspend fun listAllAreas(): AreasDto
 
-    suspend fun filterByIngredient(ingredient: String): FilteredMealsDto
+    suspend fun filterByArea(area: String): List<FilteredMealDto>
 
-    suspend fun filterByArea(area: String): FilteredMealsDto
-
-    suspend fun filterByCategory(category: String): FilteredMealsDto
+    suspend fun filterByCategory(category: String): List<FilteredMealDto>
 }

@@ -2,12 +2,11 @@ package com.example.foodrecipe.domain.usecase.get
 
 import com.bumptech.glide.load.HttpException
 import com.example.foodrecipe.common.Resource
-import com.example.foodrecipe.domain.repository.MealsRepository
-import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.io.IOException
 
-abstract class BaseUseCase<in P, out R>(private val repository: MealsRepository) {
+abstract class BaseUseCase<in P, out R> {
 
     operator fun invoke(params: P): Flow<Resource<@UnsafeVariance R>> = flow {
         try {

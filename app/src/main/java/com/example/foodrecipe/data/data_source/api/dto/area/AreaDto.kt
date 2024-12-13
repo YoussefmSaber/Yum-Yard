@@ -5,7 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class AreaDto(
+    val id: String,
     val strArea: String
 )
 
-fun AreaDto.toArea(): Area = Area(area = strArea)
+fun AreaDto.toArea(): Area = Area(area = strArea, id = id)

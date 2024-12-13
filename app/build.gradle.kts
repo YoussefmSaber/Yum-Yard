@@ -84,11 +84,16 @@ dependencies {
     implementation(libs.ktor.client.android)
     implementation(libs.ktor.client.serialization)
     implementation(libs.ktor.client.logging)
-    implementation(libs.logback.classic)
 
     // Kotlin serialization
     implementation(libs.kotlinx.serialization.json)
 
     // Google fonts
     implementation(libs.androidx.ui.text.google.fonts)
+
+    // Supabase
+    implementation(platform("io.github.jan-tennert.supabase:bom:3.0.3"))
+    implementation(libs.auth.kt)
+    implementation(libs.realtime.kt)
+    implementation(libs.postgrest.kt)
 }

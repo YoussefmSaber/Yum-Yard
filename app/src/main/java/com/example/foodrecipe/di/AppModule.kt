@@ -15,9 +15,7 @@ import com.example.foodrecipe.domain.usecase.get.using_value.GetMealByNameUseCas
 import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
-import io.github.jan.supabase.realtime.Realtime
 import org.koin.dsl.module
-import kotlin.time.Duration.Companion.seconds
 
 // Koin module for dependency injection
 val appModule = module {

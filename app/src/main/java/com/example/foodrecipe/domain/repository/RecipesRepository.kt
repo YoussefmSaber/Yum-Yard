@@ -6,7 +6,7 @@ import com.example.foodrecipe.data.data_source.api.dto.filtered_meals.FilteredMe
 import com.example.foodrecipe.data.data_source.api.dto.meal.MealDto
 import com.example.foodrecipe.data.data_source.api.dto.meal_category.MealCategoryDto
 
-interface MealsRepository {
+interface RecipesRepository {
 
     suspend fun getMeals(): List<MealDto>
 

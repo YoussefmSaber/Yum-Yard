@@ -1,4 +1,4 @@
-package com.example.foodrecipe.domain.usecase.get
+package com.example.foodrecipe.domain.usecase.recipe
 
 import com.bumptech.glide.load.HttpException
 import com.example.foodrecipe.common.Resource

@@ -1,17 +1,17 @@
 package com.example.foodrecipe.di
 
 import com.example.foodrecipe.BuildConfig
-import com.example.foodrecipe.data.repository.MealsRepositoryImpl
-import com.example.foodrecipe.domain.repository.MealsRepository
-import com.example.foodrecipe.domain.usecase.get.filter.FilterByAreaUseCase
-import com.example.foodrecipe.domain.usecase.get.filter.FilterByCategoryUseCase
-import com.example.foodrecipe.domain.usecase.get.general.GetAllCategorizeUseCase
-import com.example.foodrecipe.domain.usecase.get.general.GetMealsUseCase
-import com.example.foodrecipe.domain.usecase.get.general.GetRandomMealsUseCase
-import com.example.foodrecipe.domain.usecase.get.listing.ListAllAreasUseCase
-import com.example.foodrecipe.domain.usecase.get.listing.ListAllCategoriesUseCase
-import com.example.foodrecipe.domain.usecase.get.using_value.GetMealByIdUseCase
-import com.example.foodrecipe.domain.usecase.get.using_value.GetMealByNameUseCase
+import com.example.foodrecipe.data.repository.RecipesRepositoryImpl
+import com.example.foodrecipe.domain.repository.RecipesRepository
+import com.example.foodrecipe.domain.usecase.recipe.filter.FilterByAreaUseCase
+import com.example.foodrecipe.domain.usecase.recipe.filter.FilterByCategoryUseCase
+import com.example.foodrecipe.domain.usecase.recipe.general.GetAllCategorizeUseCase
+import com.example.foodrecipe.domain.usecase.recipe.general.GetMealsUseCase
+import com.example.foodrecipe.domain.usecase.recipe.general.GetRandomMealsUseCase
+import com.example.foodrecipe.domain.usecase.recipe.listing.ListAllAreasUseCase
+import com.example.foodrecipe.domain.usecase.recipe.listing.ListAllCategoriesUseCase
+import com.example.foodrecipe.domain.usecase.recipe.using_value.GetMealByIdUseCase
+import com.example.foodrecipe.domain.usecase.recipe.using_value.GetMealByNameUseCase
 import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
@@ -31,7 +31,7 @@ val appModule = module {
     }
 
     // Provides a single instance of MealsRepository
-    single<MealsRepository> { MealsRepositoryImpl(get()) }
+    single<RecipesRepository> { RecipesRepositoryImpl(get()) }
 
     // Provides use cases - Grouped by functionality for better organization
 

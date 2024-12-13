@@ -13,7 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.produceState
 import androidx.compose.ui.Modifier
 import com.example.foodrecipe.domain.model.Meal
-import com.example.foodrecipe.domain.usecase.get.general.GetRandomMealsUseCase
+import com.example.foodrecipe.domain.usecase.recipe.general.GetRandomMealsUseCase
 import com.example.foodrecipe.ui.theme.FoodRecipeTheme
 import org.koin.android.ext.android.inject
 

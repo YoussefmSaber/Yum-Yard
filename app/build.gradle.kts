@@ -83,7 +83,8 @@ dependencies {
     ksp(libs.koin.ksp)
 
     // Glide
-    implementation(libs.glide)
+    implementation("com.github.bumptech.glide:glide:4.16.0") // Replace with the latest version
+    implementation("com.github.bumptech.glide:compose:1.0.0-alpha.1") // Replace with the latest version
     ksp(libs.ksp)
 
     // Room
@@ -103,8 +104,18 @@ dependencies {
     // Google fonts
     implementation(libs.androidx.ui.text.google.fonts)
 
+    // Supabase
     implementation(platform("io.github.jan-tennert.supabase:bom:3.0.3"))
     implementation(libs.auth.kt)
     implementation(libs.realtime.kt)
     implementation(libs.postgrest.kt)
+
+    // Coil image loading
+    implementation(libs.coil.compose)
+
+    // Splash API
+    implementation(libs.androidx.core.splashscreen)
+
+    // constraint layout
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.1.0")
 }

@@ -5,6 +5,7 @@ import com.example.foodrecipe.data.data_source.api.dto.category.CategoryDto
 import com.example.foodrecipe.data.data_source.api.dto.filtered_meals.FilteredMealDto
 import com.example.foodrecipe.data.data_source.api.dto.meal.MealDto
 import com.example.foodrecipe.data.data_source.api.dto.meal_category.MealCategoryDto
+import com.example.foodrecipe.domain.model.Meal
 
 interface RecipesRepository {
 
@@ -22,8 +23,9 @@ interface RecipesRepository {
 
     suspend fun listAllAreas(): List<AreaDto>
 
-
     suspend fun filterByArea(area: String): List<FilteredMealDto>
 
     suspend fun filterByCategory(category: String): List<FilteredMealDto>
+
+    suspend fun addMeal(meal: Meal)
 }

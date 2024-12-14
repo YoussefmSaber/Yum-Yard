@@ -1,10 +1,15 @@
 package com.example.foodrecipe.domain.repository
 
+import com.example.foodrecipe.domain.model.LoginData
+import com.example.foodrecipe.domain.model.SignupData
+
 interface AuthRepository {
 
-    suspend fun login(email: String, password: String)
+    suspend fun login(loginData: LoginData)
 
-    suspend fun signup(name: String, email: String, password: String)
+    suspend fun signup(signupData: SignupData)
 
-    suspend fun passwordReset(userId: String, newPassword: String)
+    suspend fun passwordReset(userEmail: String, newPassword: String)
+
+    suspend fun logout()
 }

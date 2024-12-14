@@ -3,6 +3,9 @@ package com.example.foodrecipe.di
 import com.example.foodrecipe.BuildConfig
 import com.example.foodrecipe.data.repository.RecipesRepositoryImpl
 import com.example.foodrecipe.domain.repository.RecipesRepository
+import com.example.foodrecipe.domain.usecase.auth.LoginUseCase
+import com.example.foodrecipe.domain.usecase.auth.LogoutUseCase
+import com.example.foodrecipe.domain.usecase.auth.SignupUseCase
 import com.example.foodrecipe.domain.usecase.recipe.filter.FilterByAreaUseCase
 import com.example.foodrecipe.domain.usecase.recipe.filter.FilterByCategoryUseCase
 import com.example.foodrecipe.domain.usecase.recipe.general.GetAllCategorizeUseCase
@@ -51,4 +54,9 @@ val appModule = module {
     // Use cases for listing categories, areas, and ingredients
     single { ListAllCategoriesUseCase(get()) }
     single { ListAllAreasUseCase(get()) }
+
+    // Use cases for authentication
+    single { LoginUseCase(get()) }
+    single { SignupUseCase(get()) }
+    single { LogoutUseCase(get()) }
 }

@@ -6,6 +6,7 @@ import com.example.foodrecipe.data.data_source.api.dto.category.CategoryDto
 import com.example.foodrecipe.data.data_source.api.dto.filtered_meals.FilteredMealDto
 import com.example.foodrecipe.data.data_source.api.dto.meal.MealDto
 import com.example.foodrecipe.data.data_source.api.dto.meal_category.MealCategoryDto
+import com.example.foodrecipe.domain.model.Meal
 import com.example.foodrecipe.domain.repository.RecipesRepository
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.from
@@ -77,5 +78,9 @@ class RecipesRepositoryImpl(
                 eq("strCategory", category)
             }
         }.decodeList<FilteredMealDto>()
+    }
+
+    override suspend fun addMeal(meal: Meal) {
+        client.from(TablesName.RECIPES).insert(meal)
     }
 }

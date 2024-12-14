@@ -2,8 +2,8 @@ package com.example.foodrecipe.common.assets
 
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.foodrecipe.common.assets.icons.`Arrow-down-outline`
+import com.example.foodrecipe.common.assets.icons.`Arrow-left-outline`
 import com.example.foodrecipe.common.assets.icons.`Arrow-right-fill`
-import com.example.foodrecipe.common.assets.icons.`Arrow-right-outline`
 import com.example.foodrecipe.common.assets.icons.`Arrow-square-down-fill`
 import com.example.foodrecipe.common.assets.icons.`Arrow-square-up-fill`
 import com.example.foodrecipe.common.assets.icons.`Arrow-up-outline`
@@ -50,7 +50,7 @@ val Iconly.AllIcons: ____KtList<ImageVector>
     if (__AllIcons != null) {
       return __AllIcons!!
     }
-    __AllIcons = listOf(`Arrow-down-outline`, `Arrow-right-fill`, `Arrow-right-outline`,
+    __AllIcons = listOf(`Arrow-down-outline`, `Arrow-right-fill`, `Arrow-left-outline`,
         `Arrow-square-down-fill`, `Arrow-square-up-fill`, `Arrow-up-outline`, `Bookmark-fill`,
         `Bookmark-outline`, `Document-favorite-fill`, `Document-favorite-outline`,
         `Document-text-fill`, `Document-text-outline`, Facebook, `Filter-fill`, `Filter-outline`,

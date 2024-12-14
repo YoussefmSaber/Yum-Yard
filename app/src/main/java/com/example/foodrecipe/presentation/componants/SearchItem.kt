@@ -25,6 +25,7 @@ import com.example.foodrecipe.common.fadingEdge
 import com.example.foodrecipe.domain.model.Meal
 import com.example.foodrecipe.ui.theme.Black
 import com.example.foodrecipe.ui.theme.Gray3
+import com.example.foodrecipe.ui.theme.Primary60
 import com.example.foodrecipe.ui.theme.White
 
 @OptIn(ExperimentalGlideComposeApi::class)
@@ -34,8 +35,9 @@ fun SearchItem(meal: Meal) {
         shape = RoundedCornerShape(10.dp),
         modifier = Modifier
             .size(180.dp)
+            .padding(0.dp)
     ) {
-        Box() {
+        Box {
             GlideImage(
                 model = meal.mealThumb,
                 contentDescription = "Recipe Image",
@@ -45,22 +47,22 @@ fun SearchItem(meal: Meal) {
                     Brush.verticalGradient(
                         colors = listOf(Color.Transparent, Color.Black),
                         startY = 0F, // Start at the top
-                        endY = Float.POSITIVE_INFINITY // End at the bottom
+                        endY = Float.POSITIVE_INFINITY   // End at the bottom
                     )
                 )
             )
             ConstraintLayout(
                 modifier = Modifier
                     .size(180.dp)
-                    .padding(16.dp)
+                    .padding(8.dp)
             ) {
                 val (rate, title) = createRefs()
                 RateCard(modifier = Modifier
                     .constrainAs(rate) {
                         top.linkTo(parent.top)
                         end.linkTo(parent.end)
-                    }
-                    .padding(horizontal = 8.dp))
+                    })
+
                 Column(modifier = Modifier.constrainAs(title) {
                     start.linkTo(parent.start)
                     bottom.linkTo(parent.bottom)

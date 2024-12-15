@@ -1,4 +1,4 @@
-package com.example.foodrecipe.presentation.componants
+package com.example.foodrecipe.presentation.search.componants
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

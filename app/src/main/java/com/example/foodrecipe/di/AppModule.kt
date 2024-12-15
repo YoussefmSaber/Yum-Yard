@@ -15,9 +15,11 @@ import com.example.foodrecipe.domain.usecase.recipe.listing.ListAllAreasUseCase
 import com.example.foodrecipe.domain.usecase.recipe.listing.ListAllCategoriesUseCase
 import com.example.foodrecipe.domain.usecase.recipe.using_value.GetMealByIdUseCase
 import com.example.foodrecipe.domain.usecase.recipe.using_value.GetMealByNameUseCase
+import com.example.foodrecipe.presentation.search.view_model.SearchViewModel
 import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 // Koin module for dependency injection
@@ -59,4 +61,6 @@ val appModule = module {
     single { LoginUseCase(get()) }
     single { SignupUseCase(get()) }
     single { LogoutUseCase(get()) }
+
+    viewModel { SearchViewModel(get()) }
 }

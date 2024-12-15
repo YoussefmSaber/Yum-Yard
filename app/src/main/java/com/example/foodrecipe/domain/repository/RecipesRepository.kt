@@ -13,7 +13,7 @@ interface RecipesRepository {
 
     suspend fun getMealById(id: String): MealDto
 
-    suspend fun getMealByName(name: String): MealDto
+    suspend fun getMealByName(name: String): List<MealDto>
 
     suspend fun getRandomMeal(): List<MealDto>
 

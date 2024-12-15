@@ -29,12 +29,12 @@ class RecipesRepositoryImpl(
         }.decodeSingle<MealDto>()
     }
 
-    override suspend fun getMealByName(name: String): MealDto {
+    override suspend fun getMealByName(name: String): List<MealDto> {
         return client.from(TablesName.RECIPES).select() {
             filter {
-                eq("strMeal", name)
+                ilike("strMeal", "%$name%")
             }
-        }.decodeSingle<MealDto>()
+        }.decodeList<MealDto>()
     }
 
     override suspend fun getRandomMeal(): List<MealDto> {
@@ -73,7 +73,7 @@ class RecipesRepositoryImpl(
     }
 
     override suspend fun filterByCategory(category: String): List<FilteredMealDto> {
-        return client.from(TablesName.AREA).select() {
+        return client.from(TablesName.CATEGORY).select() {
             filter {
                 eq("strCategory", category)
             }

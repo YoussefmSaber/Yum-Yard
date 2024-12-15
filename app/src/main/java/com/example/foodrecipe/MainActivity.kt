@@ -15,36 +15,28 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.foodrecipe.domain.model.Meal
 import com.example.foodrecipe.domain.usecase.recipe.general.GetMealsUseCase
 import com.example.foodrecipe.domain.usecase.recipe.general.GetRandomMealsUseCase
-import com.example.foodrecipe.presentation.screens.SearchScreen
+import com.example.foodrecipe.presentation.search.screens.SearchScreen
 import com.example.foodrecipe.ui.theme.FoodRecipeTheme
 import com.example.foodrecipe.ui.theme.White
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
 
-    private val getRandomMealsUseCase: GetMealsUseCase by inject()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         installSplashScreen()
         setContent {
-            val meal = produceState<List<Meal>>(
-                initialValue = emptyList(),
-                producer = {
-                    getRandomMealsUseCase.invoke(params = Unit)
-                        .collect() {
-                            value = it.data ?: emptyList()
-                        }
-                }
-            )
+
             FoodRecipeTheme(
                 darkTheme = false,
             ) {
-                Scaffold(modifier = Modifier.fillMaxSize().background(White)) { innerPadding ->
+                Scaffold(modifier = Modifier
+                    .fillMaxSize()
+                    .background(White)) { innerPadding ->
                     Surface(modifier = Modifier.padding(innerPadding))
                     {
-                        SearchScreen(meal.value)
+                        SearchScreen()
                     }
                 }
             }

@@ -1,4 +1,4 @@
-package com.example.foodrecipe.presentation.screens
+package com.example.foodrecipe.presentation.search.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,23 +19,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.domain.model.Meal
-import com.example.foodrecipe.presentation.componants.SearchBar
-import com.example.foodrecipe.presentation.componants.SearchItem
-import com.example.foodrecipe.presentation.componants.SearchResultsHeader
-import com.example.foodrecipe.presentation.componants.TopBar
+import com.example.foodrecipe.presentation.search.componants.SearchBar
+import com.example.foodrecipe.presentation.search.componants.SearchItem
+import com.example.foodrecipe.presentation.search.componants.SearchResultsHeader
+import com.example.foodrecipe.presentation.search.componants.TopBar
+import com.example.foodrecipe.presentation.search.view_model.SearchViewModel
 import com.example.foodrecipe.ui.theme.White
+import org.koin.androidx.compose.koinViewModel
 
 @Preview
 @Composable
-fun SearchScreen(meals: List<Meal> = emptyList()) {
-    var searchQuery by remember { mutableStateOf("") }
-
-    // Compute filtered items dynamically based on search query
-    val filteredItems by remember(searchQuery) {
-        derivedStateOf {
-            meals.filter { it.mealName.contains(searchQuery, ignoreCase = true) }
-        }
-    }
+fun SearchScreen(viewModel: SearchViewModel = koinViewModel()) {
+    val searchQuery by viewModel.searchQuery.collectAsState()
+    val searchedRecipes by viewModel.searchedRecipes.collectAsState()
 
     Scaffold(
         modifier = Modifier
@@ -53,11 +50,11 @@ fun SearchScreen(meals: List<Meal> = emptyList()) {
         ) {
             SearchBar(
                 searchQuery = searchQuery,
-                onQueryChanged = { searchQuery = it }
+                onQueryChanged = { viewModel.updateSearchQuery(it) }
             )
 
             SearchResultsHeader(
-                resultsCount = meals.size
+                resultsCount = searchedRecipes.size
             )
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
@@ -66,8 +63,8 @@ fun SearchScreen(meals: List<Meal> = emptyList()) {
                 modifier = Modifier
                     .background(White)
             ) {
-                items(filteredItems.ifEmpty { meals }) {
-                    SearchItem(meal = it)
+                items(searchedRecipes) {
+                    SearchItem(it)
                 }
             }
         }

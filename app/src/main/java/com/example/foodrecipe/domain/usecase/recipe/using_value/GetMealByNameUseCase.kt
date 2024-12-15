@@ -7,9 +7,9 @@ import com.example.foodrecipe.domain.usecase.recipe.BaseUseCase
 
 class GetMealByNameUseCase(
     private val repository: RecipesRepository
-) : BaseUseCase<String, Meal>() {
-    override suspend fun execute(params: String): Meal {
+) : BaseUseCase<String, List<Meal>>() {
+    override suspend fun execute(params: String): List<Meal> {
 
-        return repository.getMealByName(params).toMeal()
+        return repository.getMealByName(params).map { it.toMeal() }
     }
 }

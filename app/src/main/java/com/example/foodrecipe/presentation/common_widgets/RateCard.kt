@@ -1,4 +1,4 @@
-package com.example.foodrecipe.presentation.search.componants
+package com.example.foodrecipe.presentation.common_widgets
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

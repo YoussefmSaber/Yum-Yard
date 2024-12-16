@@ -48,7 +48,7 @@ fun RateCard(modifier: Modifier) {
                 modifier = Modifier.size(12.dp)
             )
             Box(Modifier.width(4.dp))
-            Text("4.0", fontSize = 8.sp)
+            Text("4.0", fontSize = 8.sp,)
         }
     }
 }

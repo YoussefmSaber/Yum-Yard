@@ -7,7 +7,6 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -20,12 +19,11 @@ import com.example.foodrecipe.ui.theme.White
 
 class MainActivity : ComponentActivity() {
 
-    val isDarkMode = true
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge(
-            SystemBarStyle.light(Color.TRANSPARENT, Color.BLACK)
+            SystemBarStyle.light(Color.WHITE, Color.BLACK)
         )
         installSplashScreen()
         setContent() {
@@ -38,7 +36,8 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .background(White)
                 ) { innerPadding ->
-                    Surface(modifier = Modifier.padding(innerPadding))
+                    Surface(modifier = Modifier.padding(innerPadding),
+                        color = White)
                     {
                         DetailsScreen()
                     }

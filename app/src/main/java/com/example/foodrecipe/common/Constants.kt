@@ -7,3 +7,6 @@ object TablesName {
     const val RECIPES = "Recipes"
     const val `USER-PROFILE` = "UserProfile"
 }
+
+fun String.ingredientImage(): String =
+    "https://www.themealdb.com/images/ingredients/$this-Small.png"

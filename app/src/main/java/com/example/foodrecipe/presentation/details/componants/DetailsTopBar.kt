@@ -16,7 +16,6 @@ import com.example.foodrecipe.presentation.common_widgets.Share
 @Preview
 @Composable
 fun DetailsTopBar() {
-
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween

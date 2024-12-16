@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.foodrecipe.domain.model.Meal
 import com.example.foodrecipe.presentation.common_widgets.RecipeImage
 import com.example.foodrecipe.presentation.details.componants.ChefDetails
 import com.example.foodrecipe.presentation.details.componants.CustomTabs
@@ -30,12 +31,60 @@ fun DetailsScreen() {
     val pagerState = rememberPagerState(pageCount = { 3 })
     val coroutineScope = rememberCoroutineScope() // Coroutine scope for suspending operations
 
-    Column(Modifier.padding(16.dp)) {
+    val recipe = Meal(
+        mealId = "asdasdasda",
+        mealName = "Grilled Mac and Cheese Sandwich",
+        "asdasd",
+        "asdasd",
+        "asdasd",
+        "asdasd",
+        "asdasd",
+        "asdasd",
+        listOf(
+            "Onions",
+            "Red Pepper",
+            "Coriander",
+            "Red Chilli",
+            "Garlic",
+            "Dry White Wine",
+            "Saffron",
+            "Bay Leaf",
+            "Potatoes",
+            "Plum Tomatoes",
+            "Cod",
+            "Squid",
+            "Tiger Prawns",
+            "Clams",
+            "Mussels",
+            "Baguette"
+        ),
+        listOf(
+            "2 finely chopped",
+            "1 Diced",
+            "Small bunch",
+            "1 small",
+            "3 cloves",
+            "400ml",
+            "Pinch",
+            "1",
+            "300g",
+            "400g",
+            "600g",
+            "300g",
+            "8",
+            "500g",
+            "500g",
+            "1 sliced"
+        ),
+        "asdasd"
+    )
+
+    Column(Modifier.padding(16.dp), horizontalAlignment = Alignment.End) {
         DetailsTopBar()
         Spacer(Modifier.height(16.dp))
         RecipeImage()
         Spacer(Modifier.height(16.dp))
-        Text("Grilled Mac and Cheese Sandwich")
+        Text(recipe.mealName)
         Spacer(Modifier.height(16.dp))
         ChefDetails()
         Spacer(Modifier.height(16.dp))
@@ -45,6 +94,12 @@ fun DetailsScreen() {
             }
         })
         Spacer(Modifier.height(16.dp))
+        Text(
+            "${recipe.mealIngredients.size} items",
+            fontSize = 12.sp,
+            color = Gray3
+        )
+        Spacer(Modifier.height(16.dp))
         HorizontalPager(
             pagerState,
             verticalAlignment = Alignment.Top,
@@ -53,12 +108,12 @@ fun DetailsScreen() {
         ) { page ->
             when (page) {
                 0 -> LazyColumn(horizontalAlignment = Alignment.End) {
-                    item {
-                        Text("10 items", fontSize = 12.sp, color = Gray3)
-                        Spacer(Modifier.height(16.dp))
-                    }
-                    items(10) {
-                        IngredientCard("Tomato", "1kg")
+
+                    items(recipe.mealIngredients.size) {
+                        IngredientCard(
+                            name = recipe.mealIngredients[it],
+                            quantity = recipe.mealMeasures[it]
+                        )
                         Spacer(Modifier.height(16.dp))
                     }
                 }

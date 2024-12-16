@@ -14,8 +14,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.foodrecipe.common.ingredientImage
@@ -66,10 +67,10 @@ fun IngredientCard(
                     )
                 }
                 Spacer(Modifier.width(8.dp))
-                Text(name)
+                Text(name, fontSize = 16.sp)
             }
 
-            Text(quantity, color = Gray2)
+            Text(quantity, color = Gray2, fontWeight = FontWeight.Normal, fontSize = 14.sp)
         }
     }
 }

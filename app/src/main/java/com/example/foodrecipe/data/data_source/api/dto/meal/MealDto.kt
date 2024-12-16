@@ -34,16 +34,40 @@ data class MealDto(
 
 fun MealDto.toMeal(): Meal {
     return Meal(
-        mealId = recipe_id,
-        mealName = strMeal,
-        mealCategory = strCategory,
-        mealArea = strArea,
-        mealInstructions = strInstructions,
-        mealThumb = strMealThumb,
-        mealTags = strTags,
-        mealYoutubeVideo = strYoutube,
-        mealIngredients = ingredients.split(", "),
-        mealMeasures = measures.split(", "),
+        recipeId = recipe_id,
+        recipeName = strMeal,
+        recipeCategory = strCategory,
+        recipeArea = strArea,
+        recipeInstructions = mapInstructionsToMap(strInstructions),
+        recipeThumb = strMealThumb,
+        recipeTags = strTags,
+        recipeYoutubeVideo = strYoutube,
+        recipeIngredients = ingredients.split(", "),
+        recipeMeasures = measures.split(", "),
         userId = user_id
     )
+}
+
+// Function to map instructions to a Map<String, String>
+fun mapInstructionsToMap(instructions: String): Map<String, String> {
+    val instructionMap = mutableMapOf<String, String>()
+
+    // Split the instructions based on "Step X:" pattern
+    val steps = instructions.split(Regex("(?=Step \\d+:)"))
+
+    for (step in steps) {
+        val trimmedStep = step.trim()
+
+        // Skip empty or invalid steps
+        if (trimmedStep.isNotEmpty()) {
+            // Extract the step number (e.g., "Step 1") and the instruction content
+            val stepNumber = trimmedStep.substringBefore(":").trim()
+            val stepContent = trimmedStep.substringAfter(":").trim()
+
+            // Add the step and content to the map
+            instructionMap[stepNumber] = stepContent
+        }
+    }
+
+    return instructionMap
 }

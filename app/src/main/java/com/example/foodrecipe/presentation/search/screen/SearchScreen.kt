@@ -68,7 +68,7 @@ fun SearchScreen(viewModel: SearchViewModel = koinViewModel()) {
                 modifier = Modifier
                     .background(White)
             ) {
-                items(searchedRecipes, key = { it.mealId }) { recipe ->
+                items(searchedRecipes, key = { it.recipeId }) { recipe ->
                     val enterTransition =
                         remember { MutableTransitionState(false).apply { targetState = true } }
 

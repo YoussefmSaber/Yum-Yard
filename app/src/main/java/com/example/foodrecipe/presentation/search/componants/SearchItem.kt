@@ -35,7 +35,7 @@ fun SearchItem(meal: Meal) {
     ) {
         Box {
             GlideImage(
-                model = meal.mealThumb,
+                model = meal.recipeThumb,
                 contentDescription = "Recipe Image",
                 contentScale = ContentScale.Crop,
                 // To add the fade in effect
@@ -64,7 +64,7 @@ fun SearchItem(meal: Meal) {
                     bottom.linkTo(parent.bottom)
                 }) {
                     Text(
-                        meal.mealName,
+                        meal.recipeName,
                         color = White,
                         fontSize = 12.sp,
                         overflow = TextOverflow.Clip,

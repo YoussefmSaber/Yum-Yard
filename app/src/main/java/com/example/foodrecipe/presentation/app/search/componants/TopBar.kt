@@ -1,4 +1,4 @@
-package com.example.foodrecipe.presentation.search.componants
+package com.example.foodrecipe.presentation.app.search.componants
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -7,7 +7,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.foodrecipe.presentation.common_widgets.BackArrow
@@ -26,7 +25,7 @@ fun TopBar(backClicked: () -> Unit) {
             .constrainAs(backArrow) {
                 top.linkTo(parent.top)
                 bottom.linkTo(parent.bottom)
-                start.linkTo(parent.start, margin = 16.dp)
+                start.linkTo(parent.start)
             }
             .clickable(onClick = backClicked))
 

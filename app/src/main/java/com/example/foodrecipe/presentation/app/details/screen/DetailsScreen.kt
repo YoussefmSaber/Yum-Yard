@@ -1,4 +1,4 @@
-package com.example.foodrecipe.presentation.details.screen
+package com.example.foodrecipe.presentation.app.details.screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -18,14 +18,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
+import com.example.foodrecipe.presentation.app.details.componants.ChefDetails
+import com.example.foodrecipe.presentation.app.details.componants.CustomTabs
+import com.example.foodrecipe.presentation.app.details.componants.DetailsTopBar
+import com.example.foodrecipe.presentation.app.details.componants.IngredientCard
+import com.example.foodrecipe.presentation.app.details.componants.InstructionCard
+import com.example.foodrecipe.presentation.app.details.view_model.DetailsViewModel
 import com.example.foodrecipe.presentation.common_widgets.RecipeImage
-import com.example.foodrecipe.presentation.details.componants.ChefDetails
-import com.example.foodrecipe.presentation.details.componants.CustomTabs
-import com.example.foodrecipe.presentation.details.componants.DetailsTopBar
-import com.example.foodrecipe.presentation.details.componants.IngredientCard
-import com.example.foodrecipe.presentation.details.componants.InstructionCard
-import com.example.foodrecipe.presentation.details.view_model.DetailsViewModel
 import com.example.foodrecipe.ui.theme.Gray3
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -34,7 +33,7 @@ import org.koin.androidx.compose.koinViewModel
 fun DetailsScreen(
     viewModel: DetailsViewModel = koinViewModel(),
     recipeId: String,
-    navController: NavController,
+    onClickCallback: () -> Unit,
 ) {
     val pagerState = rememberPagerState(pageCount = { 3 })
     val coroutineScope = rememberCoroutineScope() // Coroutine scope for suspending operations
@@ -44,7 +43,7 @@ fun DetailsScreen(
     val recipe by viewModel.recipe.collectAsState()
 
     Column(Modifier.padding(16.dp)) {
-        DetailsTopBar(navController)
+        DetailsTopBar(onClickCallback)
         Spacer(Modifier.height(16.dp))
         RecipeImage(recipe.recipeThumb)
         Spacer(Modifier.height(16.dp))

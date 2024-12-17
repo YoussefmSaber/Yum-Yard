@@ -13,14 +13,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.foodrecipe.presentation.details.screen.DetailsScreen
-import com.example.foodrecipe.presentation.search.screen.SearchScreen
+import com.example.foodrecipe.presentation.navigation.ApplicationNavigation
 import com.example.foodrecipe.ui.theme.FoodRecipeTheme
 import com.example.foodrecipe.ui.theme.White
-import kotlinx.serialization.Serializable
 
 class MainActivity : ComponentActivity() {
 
@@ -49,29 +45,10 @@ class MainActivity : ComponentActivity() {
                         color = White
                     )
                     {
-                        NavHost(navController = navController, startDestination = Search) {
-                            composable<Search> {
-                                SearchScreen(navController = navController)
-                            }
-                            composable<Details> {
-                                val recipeId = it.arguments?.getString("recipeId")
-                                if (recipeId != null) {
-                                    DetailsScreen(
-                                        recipeId = recipeId,
-                                        navController = navController
-                                    )
-                                }
-                            }
-                        }
+                        ApplicationNavigation(navController)
                     }
                 }
             }
         }
     }
 }
-
-@Serializable
-object Search
-
-@Serializable
-data class Details(val recipeId: String)

@@ -1,4 +1,4 @@
-package com.example.foodrecipe.presentation.search.view_model
+package com.example.foodrecipe.presentation.app.search.view_model
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

@@ -1,4 +1,4 @@
-package com.example.foodrecipe.presentation.search.screen
+package com.example.foodrecipe.presentation.app.search.screen
 
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
@@ -25,19 +25,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.example.foodrecipe.Details
-import com.example.foodrecipe.presentation.search.componants.SearchBar
-import com.example.foodrecipe.presentation.search.componants.SearchItem
-import com.example.foodrecipe.presentation.search.componants.SearchResultsHeader
-import com.example.foodrecipe.presentation.search.componants.TopBar
-import com.example.foodrecipe.presentation.search.view_model.SearchViewModel
+import com.example.foodrecipe.presentation.app.search.componants.SearchBar
+import com.example.foodrecipe.presentation.app.search.componants.SearchItem
+import com.example.foodrecipe.presentation.app.search.componants.SearchResultsHeader
+import com.example.foodrecipe.presentation.app.search.componants.TopBar
+import com.example.foodrecipe.presentation.app.search.view_model.SearchViewModel
 import com.example.foodrecipe.ui.theme.White
 import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun SearchScreen(viewModel: SearchViewModel = koinViewModel(), navController: NavController) {
+fun SearchScreen(
+    viewModel: SearchViewModel = koinViewModel(),
+    navigateToDetails: (String) -> Unit,
+) {
     val searchQuery by viewModel.searchQuery.collectAsState()
     val searchedRecipes by viewModel.searchedRecipes.collectAsState()
 
@@ -91,9 +92,12 @@ fun SearchScreen(viewModel: SearchViewModel = koinViewModel(), navController: Na
                                 .animateItem() // Smoothly repositions item when list changes
                                 .fillMaxWidth()
                         ) {
-                            SearchItem(recipe, modifier = Modifier.clickable {
-                                navController.navigate(Details(recipe.recipeId))
-                            })
+                            SearchItem(
+                                recipe,
+                                modifier = Modifier.clickable{
+                                    navigateToDetails(recipe.recipeId)
+                                }
+                            )
                         }
                     }
                 }

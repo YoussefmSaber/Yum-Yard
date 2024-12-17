@@ -15,8 +15,8 @@ import com.example.foodrecipe.domain.usecase.recipe.listing.ListAllAreasUseCase
 import com.example.foodrecipe.domain.usecase.recipe.listing.ListAllCategoriesUseCase
 import com.example.foodrecipe.domain.usecase.recipe.using_value.GetMealByIdUseCase
 import com.example.foodrecipe.domain.usecase.recipe.using_value.GetMealByNameUseCase
-import com.example.foodrecipe.presentation.details.view_model.DetailsViewModel
-import com.example.foodrecipe.presentation.search.view_model.SearchViewModel
+import com.example.foodrecipe.presentation.app.details.view_model.DetailsViewModel
+import com.example.foodrecipe.presentation.app.search.view_model.SearchViewModel
 import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest

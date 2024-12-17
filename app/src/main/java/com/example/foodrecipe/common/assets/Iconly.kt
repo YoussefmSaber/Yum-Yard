@@ -19,16 +19,19 @@ import com.example.foodrecipe.common.assets.icons.Facebook
 import com.example.foodrecipe.common.assets.icons.`Filter-fill`
 import com.example.foodrecipe.common.assets.icons.`Filter-outline`
 import com.example.foodrecipe.common.assets.icons.Google
+import com.example.foodrecipe.common.assets.icons.Hide
 import com.example.foodrecipe.common.assets.icons.`Home-fill`
 import com.example.foodrecipe.common.assets.icons.`Home-outline`
 import com.example.foodrecipe.common.assets.icons.`Location-fill`
 import com.example.foodrecipe.common.assets.icons.`Location-outline`
+import com.example.foodrecipe.common.assets.icons.Message
 import com.example.foodrecipe.common.assets.icons.`Message-fill`
 import com.example.foodrecipe.common.assets.icons.`Message-outline`
 import com.example.foodrecipe.common.assets.icons.`More-fill`
 import com.example.foodrecipe.common.assets.icons.`More-outline`
 import com.example.foodrecipe.common.assets.icons.`Notification-bing-fill`
 import com.example.foodrecipe.common.assets.icons.`Notification-bing-outline`
+import com.example.foodrecipe.common.assets.icons.Password
 import com.example.foodrecipe.common.assets.icons.`Profile-fill`
 import com.example.foodrecipe.common.assets.icons.`Profile-outline`
 import com.example.foodrecipe.common.assets.icons.`Search-normal-fill`
@@ -37,6 +40,7 @@ import com.example.foodrecipe.common.assets.icons.`Setting-fill`
 import com.example.foodrecipe.common.assets.icons.`Setting-outline`
 import com.example.foodrecipe.common.assets.icons.`Share-fill`
 import com.example.foodrecipe.common.assets.icons.`Share-outline`
+import com.example.foodrecipe.common.assets.icons.Show
 import com.example.foodrecipe.common.assets.icons.`Star-fill`
 import com.example.foodrecipe.common.assets.icons.`Star-outline`
 import com.example.foodrecipe.common.assets.icons.`Timer-fill`
@@ -60,6 +64,7 @@ val Iconly.AllIcons: ____KtList<ImageVector>
         `Message-outline`, `More-fill`, `More-outline`, `Notification-bing-fill`,
         `Notification-bing-outline`, `Profile-fill`, `Profile-outline`, `Search-normal-fill`,
         `Search-normal-outline`, `Setting-fill`, `Setting-outline`, `Share-fill`, `Share-outline`,
-        `Star-fill`, `Star-outline`, `Timer-fill`, `Timer-outline`, `Chef-Hat`)
+        `Star-fill`, `Star-outline`, `Timer-fill`, `Timer-outline`, `Chef-Hat`, Hide, Show,
+        Message, Password)
     return __AllIcons!!
   }

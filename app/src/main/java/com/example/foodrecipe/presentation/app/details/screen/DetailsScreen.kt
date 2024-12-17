@@ -24,7 +24,7 @@ import com.example.foodrecipe.presentation.app.details.componants.DetailsTopBar
 import com.example.foodrecipe.presentation.app.details.componants.IngredientCard
 import com.example.foodrecipe.presentation.app.details.componants.InstructionCard
 import com.example.foodrecipe.presentation.app.details.view_model.DetailsViewModel
-import com.example.foodrecipe.presentation.app.common_widgets.RecipeImage
+import com.example.foodrecipe.presentation.app.common_componants.RecipeImage
 import com.example.foodrecipe.ui.theme.Gray3
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel

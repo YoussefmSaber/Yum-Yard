@@ -24,7 +24,6 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodrecipe.R
@@ -36,9 +35,8 @@ import com.example.foodrecipe.ui.theme.Black
 import com.example.foodrecipe.ui.theme.Primary100
 import com.example.foodrecipe.ui.theme.White
 
-@Preview
 @Composable
-fun SplashScreen() {
+fun SplashScreen(function: () -> Unit) {
     Surface {
         Box(
             Modifier
@@ -89,9 +87,7 @@ fun SplashScreen() {
                     )
                 }
                 Button(
-                    onClick = {
-
-                    }, shape = RoundedCornerShape(10.dp),
+                    onClick = function, shape = RoundedCornerShape(10.dp),
                     colors = ButtonColors(
                         containerColor = Primary100,
                         contentColor = Color.Unspecified,

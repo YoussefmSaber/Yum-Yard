@@ -4,7 +4,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun SendCodeScreen() {
+fun SendCodeScreen(function: () -> Unit) {
     Text("Send Code Screen")
 
 }

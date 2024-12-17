@@ -10,5 +10,4 @@ class LoginUseCase(val repository: AuthRepository) : BaseUseCase<LoginData, Unit
         val response = repository.login(params)
         Log.d("Login data", "login response is: $response")
     }
-
 }

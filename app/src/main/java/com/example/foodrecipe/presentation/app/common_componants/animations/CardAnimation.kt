@@ -1,4 +1,4 @@
-package com.example.foodrecipe.presentation.app.common_widgets.animations
+package com.example.foodrecipe.presentation.app.common_componants.animations
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Easing
@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import com.example.foodrecipe.ui.theme.Primary100
-import com.example.foodrecipe.ui.theme.Primary20
 import com.example.foodrecipe.ui.theme.Primary40
 import com.example.foodrecipe.ui.theme.White
 

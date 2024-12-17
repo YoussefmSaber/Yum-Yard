@@ -13,7 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.example.foodrecipe.presentation.app.common_widgets.animations.animations
+import com.example.foodrecipe.presentation.app.common_componants.animations.animations
 import com.example.foodrecipe.ui.theme.White
 
 @Composable

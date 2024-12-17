@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.sp
 import coil3.annotation.ExperimentalCoilApi
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.example.foodrecipe.presentation.app.common_widgets.animations.animations
+import com.example.foodrecipe.presentation.app.common_componants.animations.animations
 import com.example.foodrecipe.ui.theme.Gray1
 import com.example.foodrecipe.ui.theme.Gray2
 import com.example.foodrecipe.ui.theme.Gray3

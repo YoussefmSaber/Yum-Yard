@@ -23,8 +23,14 @@ object Profile  // Route for the profile screen
 @Serializable
 object Auth // Route for the authentication screens
 @Serializable
+object Splash  // Route for the splash screen
+@Serializable
 object Login  // Route for the login screen
 @Serializable
 object Signup // Route for the signup screen
 @Serializable
 object ForgetPassword  // Route for the forget password screen
+@Serializable
+object VerifyCode  // Route for the verify code screen
+@Serializable
+object ResetPassword  // Route for the reset password

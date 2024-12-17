@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.example.foodrecipe.presentation.app.common_widgets.BackArrow
+import com.example.foodrecipe.presentation.app.common_componants.BackArrow
 import com.example.foodrecipe.ui.theme.White
 
 

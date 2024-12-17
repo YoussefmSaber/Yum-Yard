@@ -1,4 +1,4 @@
-package com.example.foodrecipe.presentation.app.common_widgets
+package com.example.foodrecipe.presentation.app.common_componants
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

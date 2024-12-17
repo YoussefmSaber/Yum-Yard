@@ -1,4 +1,4 @@
-package com.example.foodrecipe.presentation.common_widgets.animations
+package com.example.foodrecipe.presentation.app.common_widgets.animations
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Easing

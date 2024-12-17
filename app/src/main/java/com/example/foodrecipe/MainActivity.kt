@@ -6,7 +6,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -14,38 +13,38 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
-import com.example.foodrecipe.presentation.navigation.ApplicationNavigation
+import com.example.foodrecipe.presentation.auth.SplashScreen
 import com.example.foodrecipe.ui.theme.FoodRecipeTheme
-import com.example.foodrecipe.ui.theme.White
+import com.example.foodrecipe.ui.theme.Transparent
 
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-
         super.onCreate(savedInstanceState)
         enableEdgeToEdge(
-            SystemBarStyle.light(Color.WHITE, Color.BLACK)
+            SystemBarStyle.light(Color.TRANSPARENT, Color.BLACK)
         )
         installSplashScreen()
         setContent() {
 
             FoodRecipeTheme(
                 darkTheme = false,
+                dynamicColor = false
             ) {
                 val navController = rememberNavController()
-
                 Scaffold(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(White)
                 ) { innerPadding ->
+                    innerPadding
                     Surface(
-                        modifier = Modifier.padding(innerPadding),
-                        color = White
+                        modifier = Modifier.padding(),
+                        color = Transparent
                     )
                     {
-                        ApplicationNavigation(navController)
+//                        ApplicationNavigation(navController)
+                        SplashScreen()
                     }
                 }
             }

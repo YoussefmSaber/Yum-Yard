@@ -10,8 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.example.foodrecipe.presentation.common_widgets.BackArrow
-import com.example.foodrecipe.presentation.common_widgets.Share
+import com.example.foodrecipe.presentation.app.common_widgets.BackArrow
+import com.example.foodrecipe.presentation.app.common_widgets.Share
 
 @Composable
 fun DetailsTopBar(onCLickCallBack: () -> Unit) {

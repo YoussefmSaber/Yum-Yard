@@ -1,8 +1,5 @@
 package com.example.foodrecipe.ui.theme
 
-import androidx.compose.foundation.text.selection.TextSelectionColors
-import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.ui.graphics.Color
 
 val Purple80 = Color(0xFFD0BCFF)
@@ -20,6 +17,8 @@ val Gray2 = Color(0xFF797979)
 val Gray3 = Color(0xFFA9A9A9)
 val Gray4 = Color(0xFFD9D9D9)
 val White = Color(0xFFFFFFFF)
+
+val Transparent = Color(0x00000000)
 
 // Primary Colors
 val Primary100 = Color(0xFF129575)

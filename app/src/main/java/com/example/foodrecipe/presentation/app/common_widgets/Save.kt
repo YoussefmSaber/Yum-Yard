@@ -1,4 +1,4 @@
-package com.example.foodrecipe.presentation.common_widgets
+package com.example.foodrecipe.presentation.app.common_widgets
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.common.assets.Iconly
 import com.example.foodrecipe.common.assets.icons.`Bookmark-outline`
-import com.example.foodrecipe.presentation.common_widgets.animations.animations
+import com.example.foodrecipe.presentation.app.common_widgets.animations.animations
 import com.example.foodrecipe.ui.theme.Gray1
 import com.example.foodrecipe.ui.theme.Gray4
 

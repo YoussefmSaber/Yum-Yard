@@ -20,7 +20,7 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.foodrecipe.common.fadingEdge
 import com.example.foodrecipe.domain.model.Meal
-import com.example.foodrecipe.presentation.common_widgets.RateCard
+import com.example.foodrecipe.presentation.app.common_widgets.RateCard
 import com.example.foodrecipe.ui.theme.Gray3
 import com.example.foodrecipe.ui.theme.White
 

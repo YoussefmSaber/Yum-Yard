@@ -4,11 +4,13 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.foodrecipe.common.assets.icons.`Arrow-down-outline`
 import com.example.foodrecipe.common.assets.icons.`Arrow-left-outline`
 import com.example.foodrecipe.common.assets.icons.`Arrow-right-fill`
+import com.example.foodrecipe.common.assets.icons.`Arrow-right-outline`
 import com.example.foodrecipe.common.assets.icons.`Arrow-square-down-fill`
 import com.example.foodrecipe.common.assets.icons.`Arrow-square-up-fill`
 import com.example.foodrecipe.common.assets.icons.`Arrow-up-outline`
 import com.example.foodrecipe.common.assets.icons.`Bookmark-fill`
 import com.example.foodrecipe.common.assets.icons.`Bookmark-outline`
+import com.example.foodrecipe.common.assets.icons.`Chef-Hat`
 import com.example.foodrecipe.common.assets.icons.`Document-favorite-fill`
 import com.example.foodrecipe.common.assets.icons.`Document-favorite-outline`
 import com.example.foodrecipe.common.assets.icons.`Document-text-fill`
@@ -50,7 +52,7 @@ val Iconly.AllIcons: ____KtList<ImageVector>
     if (__AllIcons != null) {
       return __AllIcons!!
     }
-    __AllIcons = listOf(`Arrow-down-outline`, `Arrow-right-fill`, `Arrow-left-outline`,
+    __AllIcons = listOf(`Arrow-down-outline`, `Arrow-right-outline`,`Arrow-right-fill`, `Arrow-left-outline`,
         `Arrow-square-down-fill`, `Arrow-square-up-fill`, `Arrow-up-outline`, `Bookmark-fill`,
         `Bookmark-outline`, `Document-favorite-fill`, `Document-favorite-outline`,
         `Document-text-fill`, `Document-text-outline`, Facebook, `Filter-fill`, `Filter-outline`,
@@ -58,6 +60,6 @@ val Iconly.AllIcons: ____KtList<ImageVector>
         `Message-outline`, `More-fill`, `More-outline`, `Notification-bing-fill`,
         `Notification-bing-outline`, `Profile-fill`, `Profile-outline`, `Search-normal-fill`,
         `Search-normal-outline`, `Setting-fill`, `Setting-outline`, `Share-fill`, `Share-outline`,
-        `Star-fill`, `Star-outline`, `Timer-fill`, `Timer-outline`)
+        `Star-fill`, `Star-outline`, `Timer-fill`, `Timer-outline`, `Chef-Hat`)
     return __AllIcons!!
   }

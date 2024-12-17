@@ -13,13 +13,19 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.foodrecipe.presentation.details.screen.DetailsScreen
+import com.example.foodrecipe.presentation.search.screen.SearchScreen
 import com.example.foodrecipe.ui.theme.FoodRecipeTheme
 import com.example.foodrecipe.ui.theme.White
+import kotlinx.serialization.Serializable
 
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge(
@@ -31,18 +37,41 @@ class MainActivity : ComponentActivity() {
             FoodRecipeTheme(
                 darkTheme = false,
             ) {
+                val navController = rememberNavController()
+
                 Scaffold(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(White)
                 ) { innerPadding ->
-                    Surface(modifier = Modifier.padding(innerPadding),
-                        color = White)
+                    Surface(
+                        modifier = Modifier.padding(innerPadding),
+                        color = White
+                    )
                     {
-                        DetailsScreen()
+                        NavHost(navController = navController, startDestination = Search) {
+                            composable<Search> {
+                                SearchScreen(navController = navController)
+                            }
+                            composable<Details> {
+                                val recipeId = it.arguments?.getString("recipeId")
+                                if (recipeId != null) {
+                                    DetailsScreen(
+                                        recipeId = recipeId,
+                                        navController = navController
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
     }
 }
+
+@Serializable
+object Search
+
+@Serializable
+data class Details(val recipeId: String)

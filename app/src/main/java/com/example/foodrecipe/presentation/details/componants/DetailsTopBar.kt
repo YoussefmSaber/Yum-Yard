@@ -10,17 +10,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.foodrecipe.presentation.common_widgets.BackArrow
 import com.example.foodrecipe.presentation.common_widgets.Share
 
 @Preview
 @Composable
-fun DetailsTopBar() {
+fun DetailsTopBar(navController: NavController) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        BackArrow(modifier = Modifier.clickable(onClick = { Unit }))
+        BackArrow(modifier = Modifier.clickable(onClick = { navController.popBackStack() }))
         Text(
             "Recipe Details",
             fontSize = 20.sp,

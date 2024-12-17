@@ -26,12 +26,10 @@ import com.example.foodrecipe.ui.theme.White
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun SearchItem(meal: Meal) {
+fun SearchItem(meal: Meal, modifier: Modifier) {
     Card(
         shape = RoundedCornerShape(10.dp),
-        modifier = Modifier
-            .size(180.dp)
-            .padding(0.dp)
+        modifier = modifier.size(180.dp).padding(0.dp)
     ) {
         Box {
             GlideImage(

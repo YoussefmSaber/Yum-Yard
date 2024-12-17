@@ -19,6 +19,7 @@ ksp = "2.0.20-1.0.25"
 koin-annotations = "2.0.0-Beta2"
 koin = "4.0.0"
 roomRuntime = "2.6.1"
+composeNavigation = "2.8.5"
 uiTextGoogleFonts = "1.7.6"
 
 
@@ -65,6 +66,9 @@ ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "k
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorVersion" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktorVersion" }
 ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktorVersion" }
+
+# Navigation
+navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

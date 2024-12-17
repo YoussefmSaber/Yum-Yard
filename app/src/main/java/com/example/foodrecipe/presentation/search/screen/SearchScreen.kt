@@ -1,5 +1,6 @@
 package com.example.foodrecipe.presentation.search.screen
 
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.animation.fadeIn
@@ -7,6 +8,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,8 +24,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.foodrecipe.Details
 import com.example.foodrecipe.presentation.search.componants.SearchBar
 import com.example.foodrecipe.presentation.search.componants.SearchItem
 import com.example.foodrecipe.presentation.search.componants.SearchResultsHeader
@@ -32,30 +35,32 @@ import com.example.foodrecipe.presentation.search.view_model.SearchViewModel
 import com.example.foodrecipe.ui.theme.White
 import org.koin.androidx.compose.koinViewModel
 
-@Preview
+
 @Composable
-fun SearchScreen(viewModel: SearchViewModel = koinViewModel()) {
+fun SearchScreen(viewModel: SearchViewModel = koinViewModel(), navController: NavController) {
     val searchQuery by viewModel.searchQuery.collectAsState()
     val searchedRecipes by viewModel.searchedRecipes.collectAsState()
 
     Scaffold(
+        containerColor = White,
         modifier = Modifier
             .background(White)
             .padding(16.dp),
         topBar = {
             TopBar {
-                // TODO: Implement back button functionality
             }
         }
     ) { innerPadding ->
         Column(
             Modifier
                 .padding(innerPadding)
-                .background(White)
         ) {
             SearchBar(
                 searchQuery = searchQuery,
-                onQueryChanged = { viewModel.updateSearchQuery(it) }
+                onQueryChanged = {
+                    viewModel.updateSearchQuery(it)
+                    Log.d("TAG", "SearchScreen: $it")
+                }
             )
 
             SearchResultsHeader(
@@ -86,7 +91,9 @@ fun SearchScreen(viewModel: SearchViewModel = koinViewModel()) {
                                 .animateItem() // Smoothly repositions item when list changes
                                 .fillMaxWidth()
                         ) {
-                            SearchItem(recipe)
+                            SearchItem(recipe, modifier = Modifier.clickable {
+                                navController.navigate(Details(recipe.recipeId))
+                            })
                         }
                     }
                 }

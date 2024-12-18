@@ -1,4 +1,4 @@
-package com.example.foodrecipe.presentation.app.search.componants
+package com.example.foodrecipe.presentation.componants.cards
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,13 +20,14 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.foodrecipe.common.fadingEdge
 import com.example.foodrecipe.domain.model.Meal
-import com.example.foodrecipe.presentation.app.common_componants.RateCard
+import com.example.foodrecipe.presentation.componants.buttons.RateButton
 import com.example.foodrecipe.ui.theme.Gray3
 import com.example.foodrecipe.ui.theme.White
 
+
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun SearchItem(meal: Meal, modifier: Modifier) {
+fun SearchedRecipeCard(meal: Meal, modifier: Modifier) {
     Card(
         shape = RoundedCornerShape(10.dp),
         modifier = modifier.size(180.dp).padding(0.dp)
@@ -51,7 +52,7 @@ fun SearchItem(meal: Meal, modifier: Modifier) {
                     .padding(8.dp)
             ) {
                 val (rate, title) = createRefs()
-                RateCard(modifier = Modifier
+                RateButton(modifier = Modifier
                     .constrainAs(rate) {
                         top.linkTo(parent.top)
                         end.linkTo(parent.end)
@@ -79,17 +80,3 @@ fun SearchItem(meal: Meal, modifier: Modifier) {
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

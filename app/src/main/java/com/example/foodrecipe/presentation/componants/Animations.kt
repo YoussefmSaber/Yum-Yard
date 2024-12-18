@@ -1,4 +1,4 @@
-package com.example.foodrecipe.presentation.app.common_componants.animations
+package com.example.foodrecipe.presentation.componants
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Easing
@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import com.example.foodrecipe.ui.theme.Primary100
 import com.example.foodrecipe.ui.theme.Primary40
 import com.example.foodrecipe.ui.theme.White
+
 
 @Composable
 fun animations(isSaved: Boolean): SaveAnimations {

@@ -24,12 +24,12 @@ import com.example.foodrecipe.presentation.componants.buttons.BackArrowButton
 import com.example.foodrecipe.presentation.componants.buttons.auth.EmailAuthButton
 
 @Composable
-fun SendCodeScreen(returnToLogin: () -> Unit, resetPassword: () -> Unit) {
+fun SendCodeScreen(returnToLogin: () -> Unit, onCLick: () -> Unit) {
     val emailState = remember { mutableStateOf("") }
     Scaffold { innerPadding ->
         Box {
             BackgroundImage()
-            SendCodeContent(innerPadding, emailState, returnToLogin, resetPassword)
+            SendCodeContent(innerPadding, emailState, returnToLogin, onCLick)
         }
     }
 }

@@ -45,19 +45,21 @@ fun ApplicationNavigation(navController: NavHostController) {
             composable<ForgetPassword> {
                 SendCodeScreen(
                     returnToLogin = { navController.popBackStack() },
-                    resetPassword = {
+                    onCLick = {
                         navController.navigate(VerifyCode)
                     })
             }
             composable<VerifyCode> {
-                VerifyCodeScreen {
-                    navController.navigate(ResetPassword)
-                }
+                VerifyCodeScreen(
+                    returnToEmail = { navController.popBackStack() },
+                    onCLick = { navController.navigate(ResetPassword) }
+                )
             }
             composable<ResetPassword> {
-                ResetPasswordScreen {
-                    navController.navigate(Login)
-                }
+                ResetPasswordScreen(
+                    returnToLogin = { navController.popBackStack() },
+                    resetPassword = { navController.navigate(Login) }
+                )
             }
         }
         navigation<App>(startDestination = Search) {

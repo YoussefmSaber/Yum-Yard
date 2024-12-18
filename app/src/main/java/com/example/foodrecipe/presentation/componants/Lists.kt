@@ -28,6 +28,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodrecipe.domain.model.Meal
+import com.example.foodrecipe.presentation.componants.cards.IngredientCard
+import com.example.foodrecipe.presentation.componants.cards.InstructionCard
+import com.example.foodrecipe.presentation.componants.cards.SearchedRecipeCard
 import com.example.foodrecipe.ui.theme.Gray2
 import com.example.foodrecipe.ui.theme.Gray3
 import com.example.foodrecipe.ui.theme.White
@@ -104,7 +107,7 @@ fun SearchGridList(
                         .animateItem() // Smoothly repositions item when list changes
                         .fillMaxWidth()
                 ) {
-                    SearchCard(
+                    SearchedRecipeCard(
                         recipe,
                         modifier = Modifier.clickable {
                             navigateToDetails(recipe.recipeId)

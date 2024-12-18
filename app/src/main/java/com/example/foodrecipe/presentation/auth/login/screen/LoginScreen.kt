@@ -60,7 +60,12 @@ fun LoginContent(
         horizontalAlignment = Alignment.Start
     ) {
         Spacer(Modifier.height(64.dp))
-        ScreenTitle(title = "Hello,", subtitle = "Welcome Back!")
+        ScreenTitle(
+            title = "Hello,",
+            titleFontSize = 35,
+            subtitle = "Welcome Back!",
+            subtitleFontSize = 18
+        )
         LoginInputFields(emailState = emailState, passwordState = passwordState)
         ForgetPasswordButton(onForgetClick = onForgetClick)
         EmailAuthButton(text = "Login", onClick = onLoginClick)

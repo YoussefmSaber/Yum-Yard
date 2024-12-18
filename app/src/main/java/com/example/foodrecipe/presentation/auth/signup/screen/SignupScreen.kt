@@ -67,7 +67,12 @@ fun SignupContent(
         horizontalAlignment = Alignment.Start
     ) {
         Spacer(Modifier.height(32.dp))
-        ScreenTitle(title = "Hello,", subtitle = "Welcome Back!")
+        ScreenTitle(
+            title = "Create an account,",
+            titleFontSize = 24,
+            subtitle = "Let’s help you set up your account, it won’t take long.",
+            subtitleFontSize = 16
+        )
 
         SignupInputFields(
             nameState = nameState,

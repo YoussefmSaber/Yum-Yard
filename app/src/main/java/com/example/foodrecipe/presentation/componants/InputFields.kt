@@ -8,11 +8,18 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -22,12 +29,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodrecipe.common.assets.Iconly
@@ -193,6 +203,51 @@ fun LoginInputFields(
         inputValue = passwordState.value,
         onValueChange = { passwordState.value = it },
         isPassword = true
+    )
+}
+
+@Composable
+fun OTPTextField(
+    otpValue: MutableState<String>,
+) {
+    BasicTextField(
+        value = otpValue.value,
+        onValueChange = {
+            if (it.length <= 6) {
+                otpValue.value = it
+            }
+        },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+        modifier = Modifier.fillMaxWidth(),
+        decorationBox = {
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                repeat(6) { index ->
+                    val char = when {
+                        index >= otpValue.value.length -> ""
+                        else -> otpValue.value[index].toString()
+                    }
+                    val isFocused = otpValue.value.length == index
+                    Text(
+                        text = char,
+                        modifier = Modifier
+                            .border(
+                                if (isFocused) 2.dp
+                                else 1.dp,
+                                if (isFocused) Primary100 else Gray3,
+                                RoundedCornerShape(25)
+                            )
+                            .width(50.dp)
+                            .height(55.dp)
+                            .padding(16.dp),
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(Modifier.width(8.dp))
+                }
+            }
+        }
     )
 }
 

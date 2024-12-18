@@ -52,14 +52,22 @@ fun OrWith(text: String = "Or with") {
 @Composable
 fun ScreenTitle(
     title: String,
+    titleFontSize: Int,
     subtitle: String,
+    subtitleFontSize: Int,
 ) {
-    Column(horizontalAlignment = Alignment.Start) {
-        Text(title, fontWeight = FontWeight.Bold, fontSize = 35.sp, textAlign = TextAlign.Start)
+    Column(horizontalAlignment = Alignment.Start,
+        modifier = Modifier.fillMaxWidth(0.70F)) {
+        Text(
+            title,
+            fontWeight = FontWeight.Bold,
+            fontSize = titleFontSize.sp,
+            textAlign = TextAlign.Start
+        )
         Text(
             subtitle,
             fontWeight = FontWeight.Normal,
-            fontSize = 20.sp,
+            fontSize = subtitleFontSize.sp,
             textAlign = TextAlign.Start
         )
     }

@@ -73,5 +73,3 @@ If you’re adding new components:
 This project is licensed under [MIT License](https://opensource.org/licenses/MIT).
 
 ---
-
-Let me know if you'd like this customized further or expanded with more instructions! 😊

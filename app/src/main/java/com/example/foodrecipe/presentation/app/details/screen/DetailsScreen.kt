@@ -1,13 +1,12 @@
 package com.example.foodrecipe.presentation.app.details.screen
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -39,11 +38,10 @@ fun DetailsScreen(
     // Fetch recipe details
     viewModel.fetchRecipeDetails(recipeId)
     val recipe by viewModel.recipe.collectAsState()
-    Scaffold(
-        containerColor = Color.Transparent
-    ) { innerPadding ->
+    Surface(
+        color = Color.Transparent
+    ) {
         DetailsScreenContent(
-            innerPadding,
             pagerState,
             coroutineScope,
             onClickCallback,
@@ -54,14 +52,13 @@ fun DetailsScreen(
 
 @Composable
 private fun DetailsScreenContent(
-    innerPadding: PaddingValues,
     pagerState: PagerState,
     coroutineScope: CoroutineScope,
     onClickCallback: () -> Unit,
     recipe: Meal,
 ) {
     // Main Content Layout
-    Column(Modifier.padding(innerPadding)) {
+    Column(Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)) {
         DetailsTopBar(onClickCallback)
         Spacer(Modifier.height(16.dp))
 

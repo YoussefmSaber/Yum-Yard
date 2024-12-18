@@ -256,7 +256,9 @@ fun SearchInputField(searchQuery: String, onQueryChanged: (String) -> Unit) {
     OutlinedTextField(
         value = searchQuery,
         onValueChange = onQueryChanged,
-        modifier = Modifier.background(White, shape = RoundedCornerShape(25)),
+        modifier = Modifier
+            .background(White, shape = RoundedCornerShape(25))
+            .fillMaxWidth(0.8F),
         textStyle = TextStyle(fontWeight = FontWeight.Normal),
         shape = RoundedCornerShape(25),
         colors = OutlinedTextFieldDefaults.colors(

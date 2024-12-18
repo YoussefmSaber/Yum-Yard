@@ -19,7 +19,7 @@ import com.example.foodrecipe.ui.theme.White
 @Composable
 fun FilterButton() {
     Card(
-        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(25),
         colors = CardDefaults.cardColors(
             contentColor = White,
             containerColor = Primary100,
@@ -31,7 +31,7 @@ fun FilterButton() {
             imageVector = Iconly.`Filter-outline`,
             contentDescription = "Filter Icon",
             colorFilter = ColorFilter.tint(White),
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(14.dp)
         )
     }
 }

@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodrecipe.common.assets.Iconly
+import com.example.foodrecipe.common.assets.icons.`Bookmark-fill`
 import com.example.foodrecipe.common.assets.icons.`Bookmark-outline`
 import com.example.foodrecipe.common.assets.icons.`Star-fill`
 import com.example.foodrecipe.presentation.componants.animations
@@ -55,7 +56,7 @@ fun SaveButton() {
             }
     ) {
         Image(
-            imageVector = Iconly.`Bookmark-outline`,
+            imageVector = if (isSaved.value) Iconly.`Bookmark-fill` else Iconly.`Bookmark-outline`,
             contentDescription = "Save",
             modifier = Modifier.padding(4.dp),
             colorFilter = ColorFilter.tint(animation.iconColor)
@@ -84,10 +85,10 @@ fun RateButton(modifier: Modifier) {
                 imageVector = Iconly.`Star-fill`,
                 contentDescription = "Rate",
                 colorFilter = ColorFilter.tint(color = Rating),
-                modifier = Modifier.size(12.dp)
+                modifier = Modifier.size(14.dp)
             )
             Box(Modifier.width(4.dp))
-            Text("4.0", fontSize = 8.sp)
+            Text("4.0", fontSize = 12.sp)
         }
     }
 }

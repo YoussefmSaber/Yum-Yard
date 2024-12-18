@@ -46,7 +46,6 @@ fun animations(isSaved: Boolean): SaveAnimations {
         label = "Bounce Animation"
     )
 
-
     val rotation by animateFloatAsState(
         targetValue = if (isSaved) 360f else 0f,
         animationSpec = tween(easing = customEaseInOut),

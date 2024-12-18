@@ -32,11 +32,13 @@ import com.example.foodrecipe.common.assets.icons.`More-outline`
 import com.example.foodrecipe.common.assets.icons.`Notification-bing-fill`
 import com.example.foodrecipe.common.assets.icons.`Notification-bing-outline`
 import com.example.foodrecipe.common.assets.icons.Password
+import com.example.foodrecipe.common.assets.icons.`Plus-fill`
+import com.example.foodrecipe.common.assets.icons.`Plus-outline`
 import com.example.foodrecipe.common.assets.icons.Profile
 import com.example.foodrecipe.common.assets.icons.`Profile-fill`
 import com.example.foodrecipe.common.assets.icons.`Profile-outline`
-import com.example.foodrecipe.common.assets.icons.`Search-normal-fill`
-import com.example.foodrecipe.common.assets.icons.`Search-normal-outline`
+import com.example.foodrecipe.common.assets.icons.`Search-fill`
+import com.example.foodrecipe.common.assets.icons.`Search-outline`
 import com.example.foodrecipe.common.assets.icons.`Setting-fill`
 import com.example.foodrecipe.common.assets.icons.`Setting-outline`
 import com.example.foodrecipe.common.assets.icons.`Share-fill`
@@ -62,9 +64,9 @@ val Iconly.AllIcons: ____KtList<ImageVector>
         `Bookmark-outline`, `Document-favorite-fill`, `Document-favorite-outline`,
         `Document-text-fill`, `Document-text-outline`, Facebook, `Filter-fill`, `Filter-outline`,
         Google, `Home-fill`, `Home-outline`, `Location-fill`, `Location-outline`, `Message-fill`,
-        `Message-outline`, `More-fill`, `More-outline`, `Notification-bing-fill`,
-        `Notification-bing-outline`, `Profile-fill`, `Profile-outline`, `Search-normal-fill`,
-        `Search-normal-outline`, `Setting-fill`, `Setting-outline`, `Share-fill`, `Share-outline`,
+        `Message-outline`, `More-fill`, `More-outline`, `Notification-bing-fill`, `Plus-fill`,
+        `Notification-bing-outline`, `Profile-fill`, `Profile-outline`, `Setting-fill`, `Plus-outline`,
+        `Setting-outline`, `Share-fill`, `Share-outline`, `Search-fill`, `Search-outline`,
         `Star-fill`, `Star-outline`, `Timer-fill`, `Timer-outline`, `Chef-Hat`, Hide, Show,
         Message, Password, Profile)
     return __AllIcons!!

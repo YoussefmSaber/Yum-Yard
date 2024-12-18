@@ -6,7 +6,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -45,7 +44,7 @@ import com.example.foodrecipe.common.assets.icons.Hide
 import com.example.foodrecipe.common.assets.icons.Message
 import com.example.foodrecipe.common.assets.icons.Password
 import com.example.foodrecipe.common.assets.icons.Profile
-import com.example.foodrecipe.common.assets.icons.`Search-normal-outline`
+import com.example.foodrecipe.common.assets.icons.`Search-outline`
 import com.example.foodrecipe.common.assets.icons.Show
 import com.example.foodrecipe.ui.theme.Black
 import com.example.foodrecipe.ui.theme.Gray3
@@ -257,11 +256,14 @@ fun SearchInputField(searchQuery: String, onQueryChanged: (String) -> Unit) {
     OutlinedTextField(
         value = searchQuery,
         onValueChange = onQueryChanged,
+        modifier = Modifier.background(White, shape = RoundedCornerShape(25)),
         textStyle = TextStyle(fontWeight = FontWeight.Normal),
-        shape = RoundedCornerShape(10.dp),
+        shape = RoundedCornerShape(25),
         colors = OutlinedTextFieldDefaults.colors(
+            focusedLeadingIconColor = Primary100,
+            unfocusedLeadingIconColor = Gray3,
             focusedBorderColor = Primary100,
-            unfocusedBorderColor = Gray3
+            unfocusedBorderColor = Gray3,
         ),
         placeholder = {
             Text(
@@ -271,9 +273,9 @@ fun SearchInputField(searchQuery: String, onQueryChanged: (String) -> Unit) {
             )
         },
         leadingIcon = {
-            Image(
-                imageVector = Iconly.`Search-normal-outline`,
-                contentDescription = "Search icon"
+            Icon(
+                imageVector = Iconly.`Search-outline`,
+                contentDescription = "Search icon",
             )
         }
     )

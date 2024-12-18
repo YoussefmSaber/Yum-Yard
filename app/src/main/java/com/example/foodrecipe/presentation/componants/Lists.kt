@@ -6,7 +6,6 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,7 +32,6 @@ import com.example.foodrecipe.presentation.componants.cards.InstructionCard
 import com.example.foodrecipe.presentation.componants.cards.SearchedRecipeCard
 import com.example.foodrecipe.ui.theme.Gray2
 import com.example.foodrecipe.ui.theme.Gray3
-import com.example.foodrecipe.ui.theme.White
 
 @Composable
 fun IngredientsList(ingredients: List<String>, measures: List<String>) {
@@ -86,8 +84,6 @@ fun SearchGridList(
         columns = GridCells.Fixed(2),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = Modifier
-            .background(White)
     ) {
         items(searchedRecipes, key = { it.recipeId }) { recipe ->
             val enterTransition =

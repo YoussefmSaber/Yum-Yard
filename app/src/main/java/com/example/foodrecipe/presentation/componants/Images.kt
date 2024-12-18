@@ -30,6 +30,24 @@ import com.example.foodrecipe.ui.theme.Black
 
 
 @Composable
+fun SplashImage() {
+    Image(
+        painter = painterResource(R.drawable.splash_screen),
+        contentDescription = "Background",
+        modifier = Modifier.fillMaxWidth().fadingEdge(
+            brush = Brush.verticalGradient(
+                colors = listOf(Color.Transparent, Black),
+                startY = 0f,
+                endY = Float.POSITIVE_INFINITY
+            )
+        ),
+        alignment = Alignment.TopCenter,
+        contentScale = ContentScale.Crop,
+    )
+}
+
+
+@Composable
 fun BackgroundImage() {
     Image(
         painter = painterResource(R.drawable.soft_background),

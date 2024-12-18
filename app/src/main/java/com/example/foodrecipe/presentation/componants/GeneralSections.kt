@@ -106,6 +106,7 @@ fun CustomTabs(selectedTap: (Int) -> Unit) {
 @Composable
 fun SearchBar(searchQuery: String, onQueryChanged: (String) -> Unit) {
     Row(
+        verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
             .padding(vertical = 16.dp)

@@ -1,6 +1,5 @@
 package com.example.foodrecipe.presentation.componants
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -14,7 +13,6 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.foodrecipe.presentation.componants.buttons.BackArrowButton
 import com.example.foodrecipe.presentation.componants.buttons.ShareButton
-import com.example.foodrecipe.ui.theme.White
 
 @Composable
 fun DetailsTopBar(onCLickCallBack: () -> Unit) {
@@ -38,7 +36,6 @@ fun SearchTopBar(backClicked: () -> Unit) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
-            .background(White)
     ) {
         val (backArrow, title) = createRefs()
         BackArrowButton(

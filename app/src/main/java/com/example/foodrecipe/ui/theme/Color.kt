@@ -1,5 +1,6 @@
 package com.example.foodrecipe.ui.theme
 
+import androidx.compose.material3.NavigationBarItemColors
 import androidx.compose.ui.graphics.Color
 
 val Purple80 = Color(0xFFD0BCFF)
@@ -43,3 +44,13 @@ val Warning2 = Color(0xFFFFE1E7)
 
 // Success
 val Success = Color(0xFF31B057)
+
+val navigationBarItemColors = NavigationBarItemColors(
+    selectedIconColor = Primary80,
+    selectedTextColor = Primary80,
+    unselectedIconColor = Gray3,
+    unselectedTextColor = Gray3,
+    selectedIndicatorColor = Color.Transparent,
+    disabledIconColor = Gray2,
+    disabledTextColor = Gray2
+)

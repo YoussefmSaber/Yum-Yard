@@ -6,13 +6,18 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
+import com.example.foodrecipe.presentation.componants.BackgroundImage
 import com.example.foodrecipe.presentation.navigation.ApplicationNavigation
 import com.example.foodrecipe.ui.theme.FoodRecipeTheme
 import com.example.foodrecipe.ui.theme.Transparent
@@ -27,23 +32,18 @@ class MainActivity : ComponentActivity() {
         )
         installSplashScreen()
         setContent() {
-
             FoodRecipeTheme(
-                darkTheme = false,
-                dynamicColor = false
+                darkTheme = false, dynamicColor = false
             ) {
                 val navController = rememberNavController()
-                Scaffold(
-                    modifier = Modifier
-                        .fillMaxSize()
-                ) { innerPadding ->
-                    innerPadding
-                    Surface(
-                        modifier = Modifier.padding(),
-                        color = Transparent
-                    )
-                    {
-                        ApplicationNavigation(navController)
+                val isSplashScreen = remember { mutableStateOf(true) }
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Box {
+                        BackgroundImage()
+                        Surface(modifier = Modifier.padding(top = if (!isSplashScreen.value)
+                            innerPadding.calculateTopPadding() else 0.dp),
+                            color = Transparent,
+                            content = { ApplicationNavigation(navController, isSplashScreen) })
                     }
                 }
             }

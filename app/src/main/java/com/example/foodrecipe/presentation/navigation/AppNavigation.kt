@@ -1,6 +1,7 @@
 package com.example.foodrecipe.presentation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -17,15 +18,18 @@ import com.example.foodrecipe.presentation.auth.signup.screen.SignupScreen
 
 
 @Composable
-fun ApplicationNavigation(navController: NavHostController) {
+fun ApplicationNavigation(navController: NavHostController, isSplashScreen: MutableState<Boolean>) {
     NavHost(navController = navController, startDestination = Auth) {
         navigation<Auth>(startDestination = Splash) {
             composable<Splash> {
                 SplashScreen {
+                    isSplashScreen.value = true
                     navController.navigate(Login)
                 }
             }
             composable<Login> {
+
+                isSplashScreen.value = true
                 LoginScreen { destination: String ->
                     when (destination) {
                         "ForgetPassword" -> navController.navigate(ForgetPassword)
@@ -62,12 +66,13 @@ fun ApplicationNavigation(navController: NavHostController) {
                 )
             }
         }
-        navigation<App>(startDestination = Search) {
+        navigation<App>(startDestination = Home) {
             composable<Search> {
-                SearchScreen {
-                    navController.navigate(Details(it))
-                }
+                SearchScreen(
+                    navigateToDetails = { navController.navigate(Details(it)) },
+                    backToHome = {})
             }
+
             composable<Details> {
                 val recipeId = it.arguments?.getString("recipeId")
                 if (recipeId != null) {
@@ -79,7 +84,9 @@ fun ApplicationNavigation(navController: NavHostController) {
                 }
             }
             composable<Home> {
-                HomeScreen()
+                HomeScreen {
+                    navController.navigate(Details(it))
+                }
             }
             composable<Profile> {
 //                ProfileScreen()

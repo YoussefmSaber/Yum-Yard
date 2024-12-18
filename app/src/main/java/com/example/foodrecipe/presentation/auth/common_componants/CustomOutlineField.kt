@@ -20,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -88,7 +87,7 @@ fun CustomOutlinedTextField(
                     }
                 }
             },
-            shape = RoundedCornerShape(10.dp),
+            shape = RoundedCornerShape(25),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = Primary100,
                 unfocusedBorderColor = Gray3,
@@ -113,8 +112,7 @@ fun CustomOutlinedTextField(
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .background(White)
-                .clip(RoundedCornerShape(10.dp)),
+                .background(White, shape = RoundedCornerShape(25)),
             singleLine = true,
             visualTransformation =
             if (isPasswordVisible.value) PasswordVisualTransformation() else VisualTransformation.None

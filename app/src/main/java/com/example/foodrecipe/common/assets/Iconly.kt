@@ -32,6 +32,7 @@ import com.example.foodrecipe.common.assets.icons.`More-outline`
 import com.example.foodrecipe.common.assets.icons.`Notification-bing-fill`
 import com.example.foodrecipe.common.assets.icons.`Notification-bing-outline`
 import com.example.foodrecipe.common.assets.icons.Password
+import com.example.foodrecipe.common.assets.icons.Profile
 import com.example.foodrecipe.common.assets.icons.`Profile-fill`
 import com.example.foodrecipe.common.assets.icons.`Profile-outline`
 import com.example.foodrecipe.common.assets.icons.`Search-normal-fill`
@@ -65,6 +66,6 @@ val Iconly.AllIcons: ____KtList<ImageVector>
         `Notification-bing-outline`, `Profile-fill`, `Profile-outline`, `Search-normal-fill`,
         `Search-normal-outline`, `Setting-fill`, `Setting-outline`, `Share-fill`, `Share-outline`,
         `Star-fill`, `Star-outline`, `Timer-fill`, `Timer-outline`, `Chef-Hat`, Hide, Show,
-        Message, Password)
+        Message, Password, Profile)
     return __AllIcons!!
   }

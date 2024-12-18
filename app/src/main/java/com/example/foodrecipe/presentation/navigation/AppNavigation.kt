@@ -36,8 +36,11 @@ fun ApplicationNavigation(navController: NavHostController) {
                 }
             }
             composable<Signup> {
-                SignupScreen {
-                    navController.navigate(Login)
+                SignupScreen { destination ->
+                    when (destination) {
+                        "Login" -> navController.navigate(Login)
+                        "Signup" -> navController.navigate(VerifyCode)
+                    }
                 }
             }
             composable<ForgetPassword> {

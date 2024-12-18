@@ -18,14 +18,13 @@ import com.example.foodrecipe.presentation.auth.signup.screen.SignupScreen
 
 @Composable
 fun ApplicationNavigation(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = App) {
+    NavHost(navController = navController, startDestination = Auth) {
         navigation<Auth>(startDestination = Splash) {
             composable<Splash> {
                 SplashScreen {
                     navController.navigate(Login)
                 }
             }
-
             composable<Login> {
                 LoginScreen { destination: String ->
                     when (destination) {
@@ -44,9 +43,11 @@ fun ApplicationNavigation(navController: NavHostController) {
                 }
             }
             composable<ForgetPassword> {
-                SendCodeScreen() {
-                    navController.navigate(VerifyCode)
-                }
+                SendCodeScreen(
+                    returnToLogin = { navController.popBackStack() },
+                    resetPassword = {
+                        navController.navigate(VerifyCode)
+                    })
             }
             composable<VerifyCode> {
                 VerifyCodeScreen {

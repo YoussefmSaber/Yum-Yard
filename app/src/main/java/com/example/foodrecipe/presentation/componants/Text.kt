@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.HorizontalDivider
@@ -13,6 +14,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -55,15 +57,22 @@ fun ScreenTitle(
     titleFontSize: Int,
     subtitle: String,
     subtitleFontSize: Int,
+    width: Float = 0.70F,
 ) {
-    Column(horizontalAlignment = Alignment.Start,
-        modifier = Modifier.fillMaxWidth(0.70F)) {
+    Column(
+        horizontalAlignment = Alignment.Start,
+        modifier = Modifier.fillMaxWidth(width)
+    ) {
         Text(
             title,
-            fontWeight = FontWeight.Bold,
-            fontSize = titleFontSize.sp,
-            textAlign = TextAlign.Start
+            style = TextStyle(
+                fontWeight = FontWeight.Bold,
+                fontSize = titleFontSize.sp,
+                textAlign = TextAlign.Start,
+                lineHeight = titleFontSize.sp
+            ),
         )
+        Spacer(Modifier.height(8.dp))
         Text(
             subtitle,
             fontWeight = FontWeight.Normal,

@@ -69,7 +69,8 @@ fun CustomOutlinedTextField(
             text = label,
             fontSize = 14.sp,
             color = Black,
-            fontWeight = FontWeight.Normal
+            fontWeight = FontWeight.Normal,
+            modifier = Modifier.padding(start = 8.dp)
         )
         Spacer(Modifier.height(8.dp))
         OutlinedTextField(

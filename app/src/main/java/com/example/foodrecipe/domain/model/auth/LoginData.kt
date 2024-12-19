@@ -1,4 +1,4 @@
-package com.example.foodrecipe.domain.model
+package com.example.foodrecipe.domain.model.auth
 
 data class LoginData(
     val email: String,

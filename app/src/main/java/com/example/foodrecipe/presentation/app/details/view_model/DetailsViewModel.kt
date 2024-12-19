@@ -3,7 +3,7 @@ package com.example.foodrecipe.presentation.app.details.view_model
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.foodrecipe.domain.model.Meal
+import com.example.foodrecipe.domain.model.recipe.Meal
 import com.example.foodrecipe.domain.usecase.recipe.using_value.GetMealByIdUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

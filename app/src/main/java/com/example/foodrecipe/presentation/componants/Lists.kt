@@ -26,7 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.foodrecipe.domain.model.Meal
+import com.example.foodrecipe.domain.model.recipe.Meal
 import com.example.foodrecipe.presentation.componants.cards.IngredientCard
 import com.example.foodrecipe.presentation.componants.cards.InstructionCard
 import com.example.foodrecipe.presentation.componants.cards.SearchedRecipeCard

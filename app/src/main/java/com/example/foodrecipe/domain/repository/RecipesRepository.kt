@@ -5,7 +5,7 @@ import com.example.foodrecipe.data.data_source.api.dto.category.CategoryDto
 import com.example.foodrecipe.data.data_source.api.dto.filtered_meals.FilteredMealDto
 import com.example.foodrecipe.data.data_source.api.dto.meal.MealDto
 import com.example.foodrecipe.data.data_source.api.dto.meal_category.MealCategoryDto
-import com.example.foodrecipe.domain.model.Meal
+import com.example.foodrecipe.domain.model.recipe.Meal
 
 interface RecipesRepository {
 

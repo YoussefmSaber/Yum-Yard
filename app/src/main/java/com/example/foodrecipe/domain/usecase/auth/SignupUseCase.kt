@@ -1,7 +1,7 @@
 package com.example.foodrecipe.domain.usecase.auth
 
 import android.util.Log
-import com.example.foodrecipe.domain.model.SignupData
+import com.example.foodrecipe.domain.model.auth.SignupData
 import com.example.foodrecipe.domain.repository.AuthRepository
 import com.example.foodrecipe.domain.usecase.recipe.BaseUseCase
 

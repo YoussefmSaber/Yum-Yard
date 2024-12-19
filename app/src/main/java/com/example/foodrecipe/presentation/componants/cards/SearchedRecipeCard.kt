@@ -19,7 +19,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.foodrecipe.common.fadingEdge
-import com.example.foodrecipe.domain.model.Meal
+import com.example.foodrecipe.domain.model.recipe.Meal
 import com.example.foodrecipe.presentation.componants.buttons.RateButton
 import com.example.foodrecipe.ui.theme.Gray3
 import com.example.foodrecipe.ui.theme.White

@@ -1,4 +1,4 @@
-package com.example.foodrecipe.domain.model
+package com.example.foodrecipe.domain.model.recipe
 
 data class FilteredMeal(
     val id: String,

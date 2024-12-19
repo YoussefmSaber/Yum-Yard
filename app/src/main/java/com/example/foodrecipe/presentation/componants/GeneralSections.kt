@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
@@ -22,10 +25,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.example.foodrecipe.domain.model.Meal
+import com.example.foodrecipe.common.BottomNavigationItems
+import com.example.foodrecipe.domain.model.recipe.Meal
 import com.example.foodrecipe.presentation.componants.buttons.FilterButton
 import com.example.foodrecipe.presentation.componants.buttons.FollowButton
 import com.example.foodrecipe.ui.theme.White
+import com.example.foodrecipe.ui.theme.navigationBarItemColors
 
 @Composable
 fun ChefDetails() {
@@ -115,5 +120,29 @@ fun SearchBar(searchQuery: String, onQueryChanged: (String) -> Unit) {
         SearchInputField(searchQuery, onQueryChanged)
 
         FilterButton()
+    }
+}
+
+@Composable
+fun NavBar(selectedItem: Int, changeScreen: (Int) -> Unit) {
+    NavigationBar(containerColor = White, tonalElevation = 5.dp) {
+        BottomNavigationItems.forEachIndexed { index, item ->
+            NavigationBarItem(
+                selected = selectedItem == index,
+                icon = {
+                    Icon(
+                        imageVector = if (selectedItem == index) item.selectedIcon
+                        else item.unselectedIcon,
+                        contentDescription = item.label,
+                    )
+                },
+                onClick = { changeScreen(index) },
+                label = {
+                    Text(item.label)
+                },
+                alwaysShowLabel = false,
+                colors = navigationBarItemColors
+            )
+        }
     }
 }

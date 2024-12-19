@@ -1,6 +1,6 @@
 package com.example.foodrecipe.domain.usecase.recipe.recipe_edit
 
-import com.example.foodrecipe.domain.model.Meal
+import com.example.foodrecipe.domain.model.recipe.Meal
 import com.example.foodrecipe.domain.repository.RecipesRepository
 import com.example.foodrecipe.domain.usecase.recipe.BaseUseCase
 

@@ -1,7 +1,7 @@
 package com.example.foodrecipe.domain.repository
 
-import com.example.foodrecipe.domain.model.LoginData
-import com.example.foodrecipe.domain.model.SignupData
+import com.example.foodrecipe.domain.model.auth.LoginData
+import com.example.foodrecipe.domain.model.auth.SignupData
 
 interface AuthRepository {
 

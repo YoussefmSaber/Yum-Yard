@@ -1,6 +1,6 @@
 package com.example.foodrecipe.data.data_source.api.dto.filtered_meals
 
-import com.example.foodrecipe.domain.model.FilteredMeal
+import com.example.foodrecipe.domain.model.recipe.FilteredMeal
 import kotlinx.serialization.Serializable
 
 @Serializable

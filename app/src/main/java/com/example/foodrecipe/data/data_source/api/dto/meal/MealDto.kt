@@ -1,6 +1,6 @@
 package com.example.foodrecipe.data.data_source.api.dto.meal
 
-import com.example.foodrecipe.domain.model.Meal
+import com.example.foodrecipe.domain.model.recipe.Meal
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

@@ -1,7 +1,7 @@
 package com.example.foodrecipe.domain.usecase.recipe.filter
 
 import com.example.foodrecipe.data.data_source.api.dto.filtered_meals.toFilteredMeal
-import com.example.foodrecipe.domain.model.FilteredMeal
+import com.example.foodrecipe.domain.model.recipe.FilteredMeal
 import com.example.foodrecipe.domain.repository.RecipesRepository
 import com.example.foodrecipe.domain.usecase.recipe.BaseUseCase
 

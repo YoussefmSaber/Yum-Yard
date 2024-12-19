@@ -1,7 +1,7 @@
 package com.example.foodrecipe.domain.usecase.recipe.general
 
 import com.example.foodrecipe.data.data_source.api.dto.category.toCategory
-import com.example.foodrecipe.domain.model.Category
+import com.example.foodrecipe.domain.model.recipe.Category
 import com.example.foodrecipe.domain.repository.RecipesRepository
 import com.example.foodrecipe.domain.usecase.recipe.BaseUseCase
 

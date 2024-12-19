@@ -11,7 +11,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.foodrecipe.domain.model.Meal
+import com.example.foodrecipe.domain.model.recipe.Meal
 import com.example.foodrecipe.presentation.app.search.view_model.SearchViewModel
 import com.example.foodrecipe.presentation.componants.SearchBar
 import com.example.foodrecipe.presentation.componants.SearchGridList

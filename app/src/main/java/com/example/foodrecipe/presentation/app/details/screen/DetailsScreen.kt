@@ -14,7 +14,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.foodrecipe.domain.model.Meal
+import com.example.foodrecipe.domain.model.recipe.Meal
 import com.example.foodrecipe.presentation.app.details.view_model.DetailsViewModel
 import com.example.foodrecipe.presentation.componants.ChefDetails
 import com.example.foodrecipe.presentation.componants.CustomTabs

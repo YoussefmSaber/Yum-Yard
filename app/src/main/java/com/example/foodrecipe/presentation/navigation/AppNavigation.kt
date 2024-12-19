@@ -6,8 +6,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import com.example.foodrecipe.presentation.app.AppScreen
 import com.example.foodrecipe.presentation.app.details.screen.DetailsScreen
-import com.example.foodrecipe.presentation.app.home.screen.HomeScreen
 import com.example.foodrecipe.presentation.app.search.screen.SearchScreen
 import com.example.foodrecipe.presentation.auth.SplashScreen
 import com.example.foodrecipe.presentation.auth.forget_password.screens.ResetPasswordScreen
@@ -19,7 +19,7 @@ import com.example.foodrecipe.presentation.auth.signup.screen.SignupScreen
 
 @Composable
 fun ApplicationNavigation(navController: NavHostController, isSplashScreen: MutableState<Boolean>) {
-    NavHost(navController = navController, startDestination = Auth) {
+    NavHost(navController = navController, startDestination = Application) {
         navigation<Auth>(startDestination = Splash) {
             composable<Splash> {
                 SplashScreen {
@@ -33,7 +33,7 @@ fun ApplicationNavigation(navController: NavHostController, isSplashScreen: Muta
                 LoginScreen { destination: String ->
                     when (destination) {
                         "ForgetPassword" -> navController.navigate(ForgetPassword)
-                        "Login" -> navController.navigate(Home)
+                        "Login" -> navController.navigate(Home())
                         "Signup" -> navController.navigate(Signup)
                     }
                 }
@@ -66,30 +66,45 @@ fun ApplicationNavigation(navController: NavHostController, isSplashScreen: Muta
                 )
             }
         }
-        navigation<App>(startDestination = Home) {
+        navigation<Application>(startDestination = Home()) {
             composable<Search> {
                 SearchScreen(
                     navigateToDetails = { navController.navigate(Details(it)) },
                     backToHome = {})
             }
-
             composable<Details> {
                 val recipeId = it.arguments?.getString("recipeId")
                 if (recipeId != null) {
                     DetailsScreen(
                         recipeId = recipeId,
                     ) {
-                        navController.popBackStack()
+                        navController.navigate(Home(2)) {
+                            popUpTo(Home(2)) {
+                                inclusive = true
+                            }
+                        }
                     }
                 }
             }
             composable<Home> {
-                HomeScreen {
-                    navController.navigate(Details(it))
-                }
+                val currentBackStackEntry = navController.currentBackStackEntry
+                val initialSelectedItem =
+                    currentBackStackEntry?.arguments?.getInt("selectedItem") ?: 0
+                AppScreen(
+                    initialSelectedItem = initialSelectedItem,
+                    onClickCallback = {
+                        navController.navigate(Details(it))
+                    }
+                )
             }
             composable<Profile> {
 //                ProfileScreen()
+            }
+            composable<Save> {
+//                SavedRecipesScreen()
+            }
+            composable<Add> {
+//                AddRecipeScreen()
             }
         }
     }

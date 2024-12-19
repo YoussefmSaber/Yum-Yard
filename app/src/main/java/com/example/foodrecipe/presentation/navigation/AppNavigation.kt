@@ -19,7 +19,7 @@ import com.example.foodrecipe.presentation.auth.signup.screen.SignupScreen
 
 @Composable
 fun ApplicationNavigation(navController: NavHostController, isSplashScreen: MutableState<Boolean>) {
-    NavHost(navController = navController, startDestination = Application) {
+    NavHost(navController = navController, startDestination = Auth) {
         navigation<Auth>(startDestination = Splash) {
             composable<Splash> {
                 SplashScreen {

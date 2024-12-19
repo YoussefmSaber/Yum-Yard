@@ -16,6 +16,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.foodrecipe.presentation.app.home.screen.HomeScreen
 import com.example.foodrecipe.presentation.app.search.screen.SearchScreen
 import com.example.foodrecipe.presentation.componants.NavBar
 import kotlinx.coroutines.CoroutineScope
@@ -57,7 +58,7 @@ private fun ScreenSwitcher(
         userScrollEnabled = false,
     ) { page ->
         when (page) {
-            0 -> Text(text = "Home")
+            0 -> HomeScreen()
             1 -> Text(text = "Saved")
             2 -> SearchScreen(navigateToDetails = onClickCallback, backToHome = {
                 scope.launch {

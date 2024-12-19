@@ -25,11 +25,14 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -253,12 +256,18 @@ fun OTPTextField(
 
 @Composable
 fun SearchInputField(searchQuery: String, onQueryChanged: (String) -> Unit) {
+    val focusRequester = remember { FocusRequester() }
+
+    LaunchedEffect(Unit) {
+        focusRequester.requestFocus()
+    }
     OutlinedTextField(
         value = searchQuery,
         onValueChange = onQueryChanged,
         modifier = Modifier
             .background(White, shape = RoundedCornerShape(25))
-            .fillMaxWidth(0.8F),
+            .fillMaxWidth(0.8F)
+            .focusRequester(focusRequester),
         textStyle = TextStyle(fontWeight = FontWeight.Normal),
         shape = RoundedCornerShape(25),
         colors = OutlinedTextFieldDefaults.colors(
@@ -267,6 +276,8 @@ fun SearchInputField(searchQuery: String, onQueryChanged: (String) -> Unit) {
             focusedBorderColor = Primary100,
             unfocusedBorderColor = Gray3,
         ),
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
         placeholder = {
             Text(
                 "Search recipe",

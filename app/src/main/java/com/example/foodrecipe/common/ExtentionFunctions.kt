@@ -18,25 +18,25 @@ import androidx.compose.ui.graphics.graphicsLayer
  * @return A modifier that applies the fading edge effect.
  */
 fun Modifier.fadingEdge(brush: Brush) = this
-/**
- *  Apply a graphics layer with offscreen compositing strategy.
- *
- * This ensures that the fading edge is drawn separately and doesn't affect the composable's content.
- */
+    /**
+     *  Apply a graphics layer with offscreen compositing strategy.
+     *
+     * This ensures that the fading edge is drawn separately and doesn't affect the composable's content.
+     */
     .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
-/**
- * Draw the composable's content and then draw a rectangle with the brush.
- */
+    /**
+     * Draw the composable's content and then draw a rectangle with the brush.
+     */
     .drawWithContent {
-/**
- * Draw the original content of the composable.
- */
+        /**
+         * Draw the original content of the composable.
+         */
         drawContent()
-/**
- * Draw a rectangle over the content using the provided brush and Darken blend mode.
- * This creates the fading edge effect.
- */
-        drawRect(brush = brush, blendMode = BlendMode.Darken)
+        /**
+         * Draw a rectangle over the content using the provided brush and Darken blend mode.
+         * This creates the fading edge effect.
+         */
+        drawRect(brush = brush, blendMode = BlendMode.Darken, alpha = 0.8F)
     }
 
 /**
@@ -50,13 +50,3 @@ fun Modifier.fadingEdge(brush: Brush) = this
  */
 fun String.ingredientImage(): String =
     "https://www.themealdb.com/images/ingredients/$this-Small.png"
-
-/**
- * Masks a password string with asterisks.
- *
- * This extension function takes a string representing a password and replaces
- * all its characters with asterisks (*) to hide the actual password value.
- *
- * @return A string of asterisks with the same length as the original password.
- */
-fun String.hidePassword() = "*".repeat(this.length)

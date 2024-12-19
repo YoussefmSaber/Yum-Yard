@@ -34,13 +34,15 @@ fun SplashImage() {
     Image(
         painter = painterResource(R.drawable.splash_screen),
         contentDescription = "Background",
-        modifier = Modifier.fillMaxWidth().fadingEdge(
-            brush = Brush.verticalGradient(
-                colors = listOf(Color.Transparent, Black),
-                startY = 0f,
-                endY = Float.POSITIVE_INFINITY
-            )
-        ),
+        modifier = Modifier
+            .fillMaxWidth()
+            .fadingEdge(
+                brush = Brush.verticalGradient(
+                    colors = listOf(Color.Transparent, Black),
+                    startY = 0f,
+                    endY = Float.POSITIVE_INFINITY
+                )
+            ),
         alignment = Alignment.TopCenter,
         contentScale = ContentScale.Crop,
     )
@@ -100,12 +102,12 @@ fun RecipeImageSection(imageUrl: String) {
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun ChefImage() {
+fun ChefImage(shape: RoundedCornerShape = CircleShape) {
     GlideImage(
         model = "https://i.pinimg.com/736x/b0/40/e7/b040e76ad3b62145df9c938f4c96e5b8.jpg",
         contentDescription = "Chefs profile picture",
         modifier = Modifier
             .size(50.dp)
-            .clip(CircleShape),
+            .clip(shape),
     )
 }

@@ -8,6 +8,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -255,7 +256,12 @@ fun OTPTextField(
 }
 
 @Composable
-fun SearchInputField(searchQuery: String, onQueryChanged: (String) -> Unit) {
+fun SearchInputField(
+    searchQuery: String = "",
+    onQueryChanged: (String) -> Unit = {},
+    navigateToSearch: () -> Unit = {},
+    maxWidth: Float = 0.8F
+) {
     val focusRequester = remember { FocusRequester() }
 
     LaunchedEffect(Unit) {
@@ -264,10 +270,14 @@ fun SearchInputField(searchQuery: String, onQueryChanged: (String) -> Unit) {
     OutlinedTextField(
         value = searchQuery,
         onValueChange = onQueryChanged,
+        maxLines = 1,
         modifier = Modifier
             .background(White, shape = RoundedCornerShape(25))
-            .fillMaxWidth(0.8F)
-            .focusRequester(focusRequester),
+            .fillMaxWidth(maxWidth)
+            .focusRequester(focusRequester)
+            .clickable {
+                navigateToSearch()
+            },
         textStyle = TextStyle(fontWeight = FontWeight.Normal),
         shape = RoundedCornerShape(25),
         colors = OutlinedTextFieldDefaults.colors(
@@ -290,6 +300,7 @@ fun SearchInputField(searchQuery: String, onQueryChanged: (String) -> Unit) {
                 imageVector = Iconly.`Search-outline`,
                 contentDescription = "Search icon",
             )
-        }
-    )
+        },
+
+        )
 }

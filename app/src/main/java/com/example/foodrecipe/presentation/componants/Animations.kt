@@ -38,7 +38,7 @@ fun animations(isSaved: Boolean): SaveAnimations {
     )
 
     val bounce by animateFloatAsState(
-        targetValue = if (isSaved) 1.1f else 1f,
+        targetValue = if (isSaved) 1.02f else 0.9f,
         animationSpec = spring(
             dampingRatio = Spring.DampingRatioMediumBouncy,
             stiffness = Spring.StiffnessVeryLow

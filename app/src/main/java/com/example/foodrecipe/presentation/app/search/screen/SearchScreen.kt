@@ -10,6 +10,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.domain.model.recipe.Meal
 import com.example.foodrecipe.presentation.app.search.view_model.SearchViewModel
@@ -28,12 +29,16 @@ fun SearchScreen(
 ) {
     val searchQuery by viewModel.searchQuery.collectAsState()
     val searchedRecipes by viewModel.searchedRecipes.collectAsState()
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     Scaffold(
         containerColor = Color.Transparent,
         modifier = Modifier.padding(horizontal = 16.dp),
         topBar = {
-            SearchTopBar (backClicked = backToHome)
+            SearchTopBar(backClicked = {
+                keyboardController?.hide()
+                backToHome()
+            })
         }
     ) { innerPadding ->
         SearchScreenContent(

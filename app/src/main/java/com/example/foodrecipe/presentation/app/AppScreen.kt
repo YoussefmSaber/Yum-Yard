@@ -28,6 +28,14 @@ fun AppScreen(onClickCallback: (String) -> Unit, initialSelectedItem: Int = 0) {
     val pagerState = rememberPagerState(pageCount = { 5 }, initialPage = selectedItem)
     val scope = rememberCoroutineScope()
 
+    val updatedOnClickCallback: (String) -> Unit = {
+        onClickCallback(it)
+        selectedItem = 0
+        scope.launch {
+            pagerState.animateScrollToPage(0)
+        }
+    }
+
     Scaffold(
         containerColor = Color.Transparent,
         bottomBar = {
@@ -39,7 +47,7 @@ fun AppScreen(onClickCallback: (String) -> Unit, initialSelectedItem: Int = 0) {
             }
         }
     ) { innerPadding ->
-        ScreenSwitcher(pagerState, innerPadding, onClickCallback, scope)
+        ScreenSwitcher(pagerState, innerPadding, updatedOnClickCallback, scope)
     }
 }
 

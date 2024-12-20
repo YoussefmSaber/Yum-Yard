@@ -32,7 +32,7 @@ import com.example.foodrecipe.ui.theme.Rating
 import com.example.foodrecipe.ui.theme.Secondary20
 
 @Composable
-fun SaveButton() {
+fun SaveButton(modifier: Modifier = Modifier) {
     val isSaved = remember { mutableStateOf(false) }
 
     val animation = animations(isSaved.value)
@@ -58,8 +58,10 @@ fun SaveButton() {
         Image(
             imageVector = if (isSaved.value) Iconly.`Bookmark-fill` else Iconly.`Bookmark-outline`,
             contentDescription = "Save",
-            modifier = Modifier.padding(4.dp),
-            colorFilter = ColorFilter.tint(animation.iconColor)
+            modifier = Modifier
+                .padding(4.dp)
+                .size(24.dp),
+            colorFilter = ColorFilter.tint(animation.iconColor),
         )
     }
 }

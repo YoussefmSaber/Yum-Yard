@@ -53,7 +53,6 @@ private fun ScreenSwitcher(
         state = pagerState,
         verticalAlignment = Alignment.Top,
         modifier = Modifier.fillMaxSize(),
-        contentPadding = innerPadding,
         userScrollEnabled = false,
     ) { page ->
         when (page) {

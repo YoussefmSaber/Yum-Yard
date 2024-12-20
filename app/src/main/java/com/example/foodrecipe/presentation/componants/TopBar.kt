@@ -1,53 +1,68 @@
 package com.example.foodrecipe.presentation.componants
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.foodrecipe.presentation.componants.buttons.BackArrowButton
 import com.example.foodrecipe.presentation.componants.buttons.ShareButton
+import com.example.foodrecipe.presentation.componants.buttons.auth.LogoutButton
+import com.example.foodrecipe.ui.theme.Black
+import com.example.foodrecipe.ui.theme.Primary100
+import com.example.foodrecipe.ui.theme.Transparent
 
-@Composable
-fun DetailsTopBar(onCLickCallBack: () -> Unit) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        BackArrowButton(onClick = onCLickCallBack, modifier = Modifier)
-        Text(
-            "Recipe Details",
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold,
-        )
-        ShareButton(modifier = Modifier.clickable(onClick = { Unit }))
-    }
-}
 
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScreenTopBar(screenName: String) {
-    ConstraintLayout(
-        modifier = Modifier
-            .fillMaxWidth()
-    ) {
-        val (title) = createRefs()
-        Text(
-            screenName,
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.constrainAs(title) {
-                start.linkTo(parent.start)
-                end.linkTo(parent.end)
-                top.linkTo(parent.top)
-                bottom.linkTo(parent.bottom)
+fun GeneralTopBar(
+    title: String,
+    isNavigationIcon: Boolean = false,
+    isShareIcon: Boolean = false,
+    isLogoutIcon: Boolean = false,
+    onCLickCallBack: () -> Unit = {},
+) {
+    CenterAlignedTopAppBar(
+        colors = TopAppBarColors(
+            scrolledContainerColor = Transparent,
+            titleContentColor = Black,
+            actionIconContentColor = Primary100,
+            containerColor = Transparent,
+            navigationIconContentColor = Black
+        ),
+        title = {
+            Text(
+                title,
+                maxLines = 1,
+                fontSize = 25.sp,
+                overflow = TextOverflow.Ellipsis
+            )
+        },
+        navigationIcon = {
+            if (isNavigationIcon) BackArrowButton(
+                onClick = onCLickCallBack,
+                modifier = Modifier
+            )
+        },
+        actions = {
+            if (isShareIcon) {
+                ShareButton(onShareClick = {
+
+                })
             }
-        )
-    }
+            if (isLogoutIcon) {
+                LogoutButton(onLogoutClickable = {
+
+                })
+            }
+        }
+    )
 }
+

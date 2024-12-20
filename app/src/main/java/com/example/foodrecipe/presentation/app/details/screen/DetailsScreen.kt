@@ -1,12 +1,13 @@
 package com.example.foodrecipe.presentation.app.details.screen
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material3.Surface
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -18,7 +19,7 @@ import com.example.foodrecipe.domain.model.recipe.Meal
 import com.example.foodrecipe.presentation.app.details.view_model.DetailsViewModel
 import com.example.foodrecipe.presentation.componants.ChefDetails
 import com.example.foodrecipe.presentation.componants.CustomTabs
-import com.example.foodrecipe.presentation.componants.DetailsTopBar
+import com.example.foodrecipe.presentation.componants.GeneralTopBar
 import com.example.foodrecipe.presentation.componants.RecipeImageSection
 import com.example.foodrecipe.presentation.componants.RecipePager
 import com.example.foodrecipe.presentation.componants.RecipeTitle
@@ -38,13 +39,23 @@ fun DetailsScreen(
     // Fetch recipe details
     viewModel.fetchRecipeDetails(recipeId)
     val recipe by viewModel.recipe.collectAsState()
-    Surface(
-        color = Color.Transparent
-    ) {
+    Scaffold(
+        containerColor = Color.Transparent,
+        topBar = {
+            GeneralTopBar(
+                title = "Recipe Details",
+                isNavigationIcon = true,
+                isShareIcon = true,
+                isLogoutIcon = false,
+                onClickCallback
+            )
+        }
+    )
+    { innerPadding ->
         DetailsScreenContent(
+            innerPadding,
             pagerState,
             coroutineScope,
-            onClickCallback,
             recipe
         )
     }
@@ -52,15 +63,20 @@ fun DetailsScreen(
 
 @Composable
 private fun DetailsScreenContent(
+    innerPadding: PaddingValues,
     pagerState: PagerState,
     coroutineScope: CoroutineScope,
-    onClickCallback: () -> Unit,
     recipe: Meal,
 ) {
     // Main Content Layout
-    Column(Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)) {
-        DetailsTopBar(onClickCallback)
-        Spacer(Modifier.height(16.dp))
+    Column(
+        Modifier.padding(
+            top = innerPadding.calculateTopPadding(),
+            bottom = innerPadding.calculateBottomPadding(),
+            start = 16.dp,
+            end = 16.dp
+        )
+    ) {
 
         RecipeImageSection(recipe.recipeThumb)
         Spacer(Modifier.height(16.dp))
@@ -78,7 +94,6 @@ private fun DetailsScreenContent(
             }
         })
         Spacer(Modifier.height(8.dp))
-
         // Horizontal Pager
         RecipePager(pagerState, recipe)
         Spacer(Modifier.height(16.dp))

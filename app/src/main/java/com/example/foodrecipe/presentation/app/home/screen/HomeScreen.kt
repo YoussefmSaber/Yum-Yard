@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodrecipe.presentation.componants.ChefImage
+import com.example.foodrecipe.presentation.componants.GeneralTopBar
 import com.example.foodrecipe.presentation.componants.ScreenTitle
 import com.example.foodrecipe.presentation.componants.SearchInputField
 import com.example.foodrecipe.presentation.componants.cards.AreaRecipeCard
@@ -28,7 +29,15 @@ import com.example.foodrecipe.presentation.componants.cards.NewRecipeCard
 @Composable
 fun HomeScreen() {
     Scaffold(
-        containerColor = Color.Transparent
+        containerColor = Color.Transparent,
+        topBar = {
+            GeneralTopBar(
+                title = "",
+                isNavigationIcon = false,
+                isShareIcon = false,
+                isLogoutIcon = false,
+            )
+        }
     ) { innerPadding ->
         HomeScreenContent(innerPadding, {
 
@@ -68,11 +77,13 @@ private fun HomeScreenContent(innerPadding: PaddingValues, navigateToSearch: () 
                 AreaRecipeCard()
             }
         }
-        Text(
-            "New Recipes",
-            fontSize = 16.sp,
-            color = Color.Black,
-        )
+        Box(modifier = Modifier.padding(horizontal = 16.dp)) {
+            Text(
+                "New Recipes",
+                fontSize = 16.sp,
+                color = Color.Black,
+            )
+        }
 
         LazyRow(contentPadding = PaddingValues(start = 8.dp)) {
             items(10) {

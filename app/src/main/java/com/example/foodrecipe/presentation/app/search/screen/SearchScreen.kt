@@ -4,26 +4,29 @@ import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.domain.model.recipe.Meal
 import com.example.foodrecipe.presentation.app.search.view_model.SearchViewModel
-import com.example.foodrecipe.presentation.componants.ScreenTopBar
+import com.example.foodrecipe.presentation.componants.GeneralTopBar
 import com.example.foodrecipe.presentation.componants.SearchBar
 import com.example.foodrecipe.presentation.componants.SearchGridList
 import com.example.foodrecipe.presentation.componants.SearchResultsHeader
 import org.koin.androidx.compose.koinViewModel
 
-
+@Preview
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(
     viewModel: SearchViewModel = koinViewModel(),
-    navigateToDetails: (String) -> Unit,
+    navigateToDetails: (String) -> Unit = {},
 ) {
     val searchQuery by viewModel.searchQuery.collectAsState()
     val searchedRecipes by viewModel.searchedRecipes.collectAsState()
@@ -32,7 +35,13 @@ fun SearchScreen(
         containerColor = Color.Transparent,
         modifier = Modifier.padding(horizontal = 16.dp),
         topBar = {
-            ScreenTopBar("Search recipes")
+            GeneralTopBar(
+                title = "Search",
+                isNavigationIcon = false,
+                isShareIcon = false,
+                isLogoutIcon = false,
+                onCLickCallBack = {}
+            )
         }
     ) { innerPadding ->
         SearchScreenContent(

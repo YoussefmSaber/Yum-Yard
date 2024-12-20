@@ -10,31 +10,23 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.foodrecipe.presentation.app.home.screen.HomeScreen
+import com.example.foodrecipe.presentation.app.saved.screen.SavedRecipesScreen
 import com.example.foodrecipe.presentation.app.search.screen.SearchScreen
 import com.example.foodrecipe.presentation.componants.NavBar
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
-fun AppScreen(onClickCallback: (String) -> Unit, initialSelectedItem: Int = 0) {
-    var selectedItem by remember { mutableIntStateOf(initialSelectedItem) }
+fun AppScreen(onClickCallback: (String) -> Unit) {
+    var selectedItem by rememberSaveable { mutableIntStateOf(0) }
     val pagerState = rememberPagerState(pageCount = { 5 }, initialPage = selectedItem)
     val scope = rememberCoroutineScope()
-
-    val updatedOnClickCallback: (String) -> Unit = {
-        onClickCallback(it)
-        selectedItem = 0
-        scope.launch {
-            pagerState.animateScrollToPage(0)
-        }
-    }
 
     Scaffold(
         containerColor = Color.Transparent,
@@ -47,7 +39,7 @@ fun AppScreen(onClickCallback: (String) -> Unit, initialSelectedItem: Int = 0) {
             }
         }
     ) { innerPadding ->
-        ScreenSwitcher(pagerState, innerPadding, updatedOnClickCallback, scope)
+        ScreenSwitcher(pagerState, innerPadding, onClickCallback)
     }
 }
 
@@ -56,7 +48,6 @@ private fun ScreenSwitcher(
     pagerState: PagerState,
     innerPadding: PaddingValues,
     onClickCallback: (String) -> Unit,
-    scope: CoroutineScope,
 ) {
     HorizontalPager(
         state = pagerState,
@@ -67,12 +58,9 @@ private fun ScreenSwitcher(
     ) { page ->
         when (page) {
             0 -> HomeScreen()
-            1 -> Text(text = "Saved")
-            2 -> SearchScreen(navigateToDetails = onClickCallback, backToHome = {
-                scope.launch {
-                    pagerState.animateScrollToPage(0)
-                }
-            })
+            1 -> SavedRecipesScreen()
+            2 -> SearchScreen(navigateToDetails = onClickCallback)
+
             3 -> Text(text = "Add")
             4 -> Text(text = "Profile")
         }

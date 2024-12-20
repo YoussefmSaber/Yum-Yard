@@ -31,6 +31,7 @@ import com.example.foodrecipe.presentation.componants.buttons.SaveButton
 import com.example.foodrecipe.ui.theme.Gray1
 import com.example.foodrecipe.ui.theme.Gray2
 import com.example.foodrecipe.ui.theme.Gray4
+import com.example.foodrecipe.ui.theme.White
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Preview
@@ -40,7 +41,7 @@ fun AreaRecipeCard() {
         val (card, image) = createRefs()
         Card(
             colors = CardColors(
-                containerColor = Gray4,
+                containerColor = White,
                 contentColor = Color.Unspecified,
                 disabledContentColor = Color.Unspecified,
                 disabledContainerColor = Color.Unspecified

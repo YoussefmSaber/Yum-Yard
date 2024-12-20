@@ -32,24 +32,14 @@ fun DetailsTopBar(onCLickCallBack: () -> Unit) {
 }
 
 @Composable
-fun SearchTopBar(backClicked: () -> Unit) {
+fun ScreenTopBar(screenName: String) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
     ) {
-        val (backArrow, title) = createRefs()
-        BackArrowButton(
-            modifier = Modifier
-                .constrainAs(backArrow) {
-                    top.linkTo(parent.top)
-                    bottom.linkTo(parent.bottom)
-                    start.linkTo(parent.start)
-                },
-            onClick = backClicked
-        )
-
+        val (title) = createRefs()
         Text(
-            "Search recipes",
+            screenName,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.constrainAs(title) {

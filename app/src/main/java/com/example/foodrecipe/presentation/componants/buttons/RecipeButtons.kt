@@ -48,7 +48,7 @@ fun SaveButton(modifier: Modifier = Modifier) {
         onClick = {
             isSaved.value = !isSaved.value
         },
-        modifier = Modifier
+        modifier = modifier
             .graphicsLayer {
                 scaleX = animation.bounce
                 scaleY = animation.bounce
@@ -79,7 +79,7 @@ fun RateButton(modifier: Modifier) {
         modifier = modifier,
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 8.dp),
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {

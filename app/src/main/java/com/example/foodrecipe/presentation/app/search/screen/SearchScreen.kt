@@ -10,35 +10,29 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.domain.model.recipe.Meal
 import com.example.foodrecipe.presentation.app.search.view_model.SearchViewModel
+import com.example.foodrecipe.presentation.componants.ScreenTopBar
 import com.example.foodrecipe.presentation.componants.SearchBar
 import com.example.foodrecipe.presentation.componants.SearchGridList
 import com.example.foodrecipe.presentation.componants.SearchResultsHeader
-import com.example.foodrecipe.presentation.componants.SearchTopBar
 import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
 fun SearchScreen(
     viewModel: SearchViewModel = koinViewModel(),
-    backToHome: () -> Unit,
     navigateToDetails: (String) -> Unit,
 ) {
     val searchQuery by viewModel.searchQuery.collectAsState()
     val searchedRecipes by viewModel.searchedRecipes.collectAsState()
-    val keyboardController = LocalSoftwareKeyboardController.current
 
     Scaffold(
         containerColor = Color.Transparent,
         modifier = Modifier.padding(horizontal = 16.dp),
         topBar = {
-            SearchTopBar(backClicked = {
-                keyboardController?.hide()
-                backToHome()
-            })
+            ScreenTopBar("Search recipes")
         }
     ) { innerPadding ->
         SearchScreenContent(

@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.example.foodrecipe.presentation.app.AppScreen
 import com.example.foodrecipe.presentation.app.details.screen.DetailsScreen
+import com.example.foodrecipe.presentation.app.saved.screen.SavedRecipesScreen
 import com.example.foodrecipe.presentation.app.search.screen.SearchScreen
 import com.example.foodrecipe.presentation.auth.SplashScreen
 import com.example.foodrecipe.presentation.auth.forget_password.screens.ResetPasswordScreen
@@ -70,7 +71,7 @@ fun ApplicationNavigation(navController: NavHostController, isSplashScreen: Muta
             composable<Search> {
                 SearchScreen(
                     navigateToDetails = { navController.navigate(Details(it)) },
-                    backToHome = {})
+                )
             }
             composable<Details> {
                 val recipeId = it.arguments?.getString("recipeId")
@@ -78,20 +79,12 @@ fun ApplicationNavigation(navController: NavHostController, isSplashScreen: Muta
                     DetailsScreen(
                         recipeId = recipeId,
                     ) {
-                        navController.navigate(Home(2)) {
-                            popUpTo(Home(2)) {
-                                inclusive = true
-                            }
-                        }
+                        navController.popBackStack()
                     }
                 }
             }
             composable<Home> {
-                val currentBackStackEntry = navController.currentBackStackEntry
-                val initialSelectedItem =
-                    currentBackStackEntry?.arguments?.getInt("selectedItem") ?: 0
                 AppScreen(
-                    initialSelectedItem = initialSelectedItem,
                     onClickCallback = {
                         navController.navigate(Details(it))
                     }
@@ -101,7 +94,7 @@ fun ApplicationNavigation(navController: NavHostController, isSplashScreen: Muta
 //                ProfileScreen()
             }
             composable<Save> {
-//                SavedRecipesScreen()
+                SavedRecipesScreen()
             }
             composable<Add> {
 //                AddRecipeScreen()

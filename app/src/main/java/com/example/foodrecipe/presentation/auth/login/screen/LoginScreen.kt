@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -27,14 +26,11 @@ import com.example.foodrecipe.presentation.componants.buttons.auth.SocialAuthBut
 
 @Composable
 fun LoginScreen(param: (String) -> Unit) {
-
     val emailState = remember { mutableStateOf("") }
     val passwordState = remember { mutableStateOf("") }
-    Scaffold { innerPadding ->
         Box {
             BackgroundImage()
             LoginContent(
-                innerPadding = innerPadding,
                 emailState = emailState,
                 passwordState = passwordState,
                 onSignupClick = { param("Signup") },
@@ -42,18 +38,18 @@ fun LoginScreen(param: (String) -> Unit) {
                 onForgetClick = { param("ForgetPassword") }
             )
         }
-    }
+
 }
 
 @Composable
 fun LoginContent(
-    innerPadding: PaddingValues,
     emailState: MutableState<String>,
     passwordState: MutableState<String>,
     onSignupClick: () -> Unit,
     onLoginClick: () -> Unit,
     onForgetClick: () -> Unit,
 ) {
+    val innerPadding = PaddingValues()
     Column(
         Modifier.padding(vertical = innerPadding.calculateTopPadding(), horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(24.dp, alignment = Alignment.CenterVertically),

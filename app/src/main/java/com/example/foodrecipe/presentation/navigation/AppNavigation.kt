@@ -17,7 +17,6 @@ import com.example.foodrecipe.presentation.auth.forget_password.screens.VerifyCo
 import com.example.foodrecipe.presentation.auth.login.screen.LoginScreen
 import com.example.foodrecipe.presentation.auth.signup.screen.SignupScreen
 
-
 @Composable
 fun ApplicationNavigation(navController: NavHostController, isSplashScreen: MutableState<Boolean>) {
     NavHost(navController = navController, startDestination = Auth) {

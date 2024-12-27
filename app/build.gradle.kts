@@ -114,7 +114,7 @@ dependencies {
     implementation(libs.coil.compose)
 
     // Splash API
-    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.core.splashscreen)
 
     // constraint layout
     implementation("androidx.constraintlayout:constraintlayout-compose:1.1.0")

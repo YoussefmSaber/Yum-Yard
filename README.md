@@ -34,6 +34,7 @@ Yum Yard is an Android application built with **Jetpack Compose**. The app allow
   - **Supabase Authentication** for handling user authentication.
   - **Supabase Database** for storing and retrieving recipes, user reviews, and other data.
 - **Coil**: Library for efficient image loading.
+- **Room Database**: for storing the favorite recipes on the device memory.
 
 ## Architecture
 

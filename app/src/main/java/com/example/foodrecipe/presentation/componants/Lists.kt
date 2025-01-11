@@ -23,14 +23,15 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeComment
 import com.example.foodrecipe.domain.model.recipe.Meal
+import com.example.foodrecipe.presentation.componants.cards.CommentCard
 import com.example.foodrecipe.presentation.componants.cards.IngredientCard
 import com.example.foodrecipe.presentation.componants.cards.InstructionCard
 import com.example.foodrecipe.presentation.componants.cards.SearchedRecipeCard
-import com.example.foodrecipe.ui.theme.Gray2
 import com.example.foodrecipe.ui.theme.Gray3
 
 @Composable
@@ -65,14 +66,26 @@ fun InstructionsList(instructions: Map<String, String>) {
     }
 }
 
+
 @Composable
-fun CommentsSection() {
-    Text(
-        text = "Comments",
-        fontSize = 16.sp,
-        fontWeight = FontWeight.Medium,
-        color = Gray2
-    )
+fun CommentsSection(recipeComments: List<RecipeComment>, onSendComment: (String) -> Unit) {
+
+// TODO: ADD THE ADDING COMMENT TO THE RECIPE COMMENTS
+
+    LazyColumn(horizontalAlignment = Alignment.End) {
+        item {
+            Text(
+                "${recipeComments.size} ${if (recipeComments.size == 1) "comment" else "comments"}",
+                fontSize = 12.sp, color = Gray3,
+                textAlign = TextAlign.End,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+        items(recipeComments) { comment ->
+            CommentCard(comment)
+            Spacer(Modifier.height(16.dp))
+        }
+    }
 }
 
 @Composable

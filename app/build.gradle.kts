@@ -83,8 +83,8 @@ dependencies {
     ksp(libs.koin.ksp)
 
     // Glide
-    implementation("com.github.bumptech.glide:glide:4.16.0") // Replace with the latest version
-    implementation("com.github.bumptech.glide:compose:1.0.0-alpha.1") // Replace with the latest version
+    implementation(libs.glide) // Replace with the latest version
+    implementation(libs.compose) // Replace with the latest version
     ksp(libs.ksp)
 
     // Room
@@ -117,7 +117,7 @@ dependencies {
     implementation(libs.core.splashscreen)
 
     // constraint layout
-    implementation("androidx.constraintlayout:constraintlayout-compose:1.1.0")
+    implementation(libs.androidx.constraintlayout.compose)
 
     // Navigation
     implementation(libs.navigation.compose)

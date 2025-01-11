@@ -87,7 +87,7 @@ fun SavedRecipeCard(imageUrl: String = "https://www.themealdb.com/images/media/m
             SaveButton(modifier = Modifier.constrainAs(saveButton) {
                 bottom.linkTo(parent.bottom, margin = 16.dp)
                 end.linkTo(parent.end, margin = 16.dp)
-            })
+            }, saved = true, onSaved = {})
         }
     }
 }

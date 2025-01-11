@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.foodrecipe.presentation.componants.ChefImage
 import com.example.foodrecipe.presentation.componants.GeneralTopBar
 import com.example.foodrecipe.presentation.componants.ScreenTitle
 import com.example.foodrecipe.presentation.componants.SearchInputField
@@ -66,7 +64,7 @@ private fun HomeScreenContent(innerPadding: PaddingValues, navigateToSearch: () 
                 subtitle = "What are you cooking today?",
                 subtitleFontSize = 14
             )
-            ChefImage(RoundedCornerShape(25))
+//            ChefImage(RoundedCornerShape(25))
         }
         Box(modifier = Modifier.padding(horizontal = 16.dp)) {
             SearchInputField(navigateToSearch = navigateToSearch, maxWidth = 1F)

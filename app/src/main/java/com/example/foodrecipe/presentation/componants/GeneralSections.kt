@@ -26,15 +26,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.common.BottomNavigationItems
-import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeResponseItem
 import com.example.foodrecipe.data.data_source.api.dto.meal.mapInstructionsToMap
+import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeResponseItem
+import com.example.foodrecipe.data.data_source.api.dto.recipe.UserProfile
 import com.example.foodrecipe.presentation.componants.buttons.FilterButton
 import com.example.foodrecipe.presentation.componants.buttons.FollowButton
 import com.example.foodrecipe.ui.theme.White
 import com.example.foodrecipe.ui.theme.navigationBarItemColors
 
 @Composable
-fun ChefDetails() {
+fun ChefDetails(userProfile: UserProfile) {
     val isFollowed = remember { mutableStateOf(false) }
     val animations = animations(isFollowed.value)
 
@@ -44,16 +45,20 @@ fun ChefDetails() {
         modifier = Modifier.fillMaxWidth()
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            ChefImage()
+            ChefImage(userProfile.image)
             Box(Modifier.width(8.dp))
-            ChefNameAndFollowers("Chef Ma7ros", 1000)
+            ChefNameAndFollowers(userProfile.name, userProfile.followers)
         }
         FollowButton(animations, isFollowed)
     }
 }
 
 @Composable
-fun RecipePager(pagerState: PagerState, recipe: RecipeResponseItem?) {
+fun RecipePager(
+    pagerState: PagerState,
+    recipe: RecipeResponseItem?,
+    onSendComment: (String) -> Unit
+) {
     HorizontalPager(
         state = pagerState,
         verticalAlignment = Alignment.Top,
@@ -65,9 +70,8 @@ fun RecipePager(pagerState: PagerState, recipe: RecipeResponseItem?) {
                 recipe?.ingredients?.split(", ") ?: emptyList(),
                 recipe?.measures?.split(", ") ?: emptyList()
             )
-
             1 -> InstructionsList(mapInstructionsToMap(recipe?.strInstructions ?: ""))
-            2 -> CommentsSection()
+            2 -> CommentsSection(recipe?.recipeComments ?: emptyList(), onSendComment)
         }
     }
 }
@@ -77,7 +81,6 @@ fun CustomTabs(selectedTap: (Int) -> Unit) {
     val selectedIndex = remember { mutableIntStateOf(0) }
 
     val list = listOf("Ingredient", "Procedure", "Comments")
-
 
     TabRow(
         selectedTabIndex = selectedIndex.intValue,

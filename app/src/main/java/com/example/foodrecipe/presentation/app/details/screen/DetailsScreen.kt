@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeResponseItem
+import com.example.foodrecipe.data.data_source.api.dto.recipe.UserProfile
 import com.example.foodrecipe.presentation.app.details.view_model.DetailsViewModel
 import com.example.foodrecipe.presentation.componants.ChefDetails
 import com.example.foodrecipe.presentation.componants.CustomTabs
@@ -67,6 +68,9 @@ private fun DetailsScreenContent(
     pagerState: PagerState,
     coroutineScope: CoroutineScope,
     recipe: RecipeResponseItem?,
+    onFollowClick: () -> Unit = {},
+    onSaveClick: (Boolean) -> Unit = {},
+    onSendComment: (String) -> Unit = {},
 ) {
     // Main Content Layout
     Column(
@@ -78,13 +82,17 @@ private fun DetailsScreenContent(
         )
     ) {
 
-        RecipeImageSection(recipe?.strMealThumb ?: "")
+        RecipeImageSection(
+            recipe?.strMealThumb ?: "",
+            recipe?.saved ?: false,
+            onSaveClick
+        )
         Spacer(Modifier.height(16.dp))
 
         RecipeTitle(recipe?.strMeal ?: "")
         Spacer(Modifier.height(16.dp))
 
-        ChefDetails()
+        ChefDetails(recipe?.userProfile ?: UserProfile(0, "", "", ""))
         Spacer(Modifier.height(16.dp))
 
         // Custom Tabs
@@ -95,7 +103,7 @@ private fun DetailsScreenContent(
         })
         Spacer(Modifier.height(8.dp))
         // Horizontal Pager
-        RecipePager(pagerState, recipe)
+        RecipePager(pagerState, recipe, onSendComment)
         Spacer(Modifier.height(16.dp))
     }
 }

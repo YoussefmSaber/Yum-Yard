@@ -36,17 +36,23 @@ class RecipesRepositoryImpl(
             measures,
             saved,
             RecipeComments(
-            id,
-            comment,
-            rate,
-            created_at,
+                id,
+                comment,
+                rate,
+                created_at,
+                UserProfile(
+                    user_id,
+                    name,
+                    followers,
+                    image
+                )
+            ),
             UserProfile(
-            user_id,
-            name,
-            followers,
-            image
-            )
-            )
+                user_id,
+                name,
+                followers,
+                image
+                )
             """.trimIndent()
         )
 

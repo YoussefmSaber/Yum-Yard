@@ -4,7 +4,7 @@ import com.bumptech.glide.load.HttpException
 import com.example.foodrecipe.common.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.io.IOException
+import okio.IOException
 
 abstract class BaseUseCase<in P, out R> {
 

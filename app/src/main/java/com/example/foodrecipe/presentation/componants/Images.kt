@@ -63,7 +63,7 @@ fun BackgroundImage() {
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun RecipeImageSection(imageUrl: String) {
+fun RecipeImageSection(imageUrl: String, saved: Boolean, onSaved: (Boolean) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -95,7 +95,7 @@ fun RecipeImageSection(imageUrl: String) {
                     .fillMaxWidth()
             ) {
                 RateButton(modifier = Modifier)
-                SaveButton()
+                SaveButton(saved, onSaved = onSaved)
             }
         }
     }
@@ -103,9 +103,9 @@ fun RecipeImageSection(imageUrl: String) {
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun ChefImage(shape: RoundedCornerShape = CircleShape) {
+fun ChefImage(imageUrl: String, shape: RoundedCornerShape = CircleShape) {
     GlideImage(
-        model = "https://i.pinimg.com/736x/b0/40/e7/b040e76ad3b62145df9c938f4c96e5b8.jpg",
+        model = imageUrl,
         contentDescription = "Chefs profile picture",
         modifier = Modifier
             .size(50.dp)

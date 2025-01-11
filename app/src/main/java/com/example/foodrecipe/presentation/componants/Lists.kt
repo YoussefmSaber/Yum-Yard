@@ -23,6 +23,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeComment
@@ -65,14 +66,19 @@ fun InstructionsList(instructions: Map<String, String>) {
     }
 }
 
+
 @Composable
-fun CommentsSection(recipeComments: List<RecipeComment>) {
+fun CommentsSection(recipeComments: List<RecipeComment>, onSendComment: (String) -> Unit) {
+
+// TODO: ADD THE ADDING COMMENT TO THE RECIPE COMMENTS
 
     LazyColumn(horizontalAlignment = Alignment.End) {
         item {
             Text(
                 "${recipeComments.size} ${if (recipeComments.size == 1) "comment" else "comments"}",
-                fontSize = 12.sp, color = Gray3
+                fontSize = 12.sp, color = Gray3,
+                textAlign = TextAlign.End,
+                modifier = Modifier.fillMaxWidth()
             )
         }
         items(recipeComments) { comment ->

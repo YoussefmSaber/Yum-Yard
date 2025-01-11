@@ -12,8 +12,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,10 +30,8 @@ import com.example.foodrecipe.ui.theme.Rating
 import com.example.foodrecipe.ui.theme.Secondary20
 
 @Composable
-fun SaveButton(modifier: Modifier = Modifier) {
-    val isSaved = remember { mutableStateOf(false) }
-
-    val animation = animations(isSaved.value)
+fun SaveButton(saved: Boolean, modifier: Modifier = Modifier, onSaved: (Boolean) -> Unit) {
+    val animation = animations(saved)
 
     Card(
         colors = CardColors(
@@ -46,7 +42,7 @@ fun SaveButton(modifier: Modifier = Modifier) {
         ),
         shape = RoundedCornerShape(50.dp),
         onClick = {
-            isSaved.value = !isSaved.value
+            onSaved(!saved)
         },
         modifier = modifier
             .graphicsLayer {
@@ -56,7 +52,7 @@ fun SaveButton(modifier: Modifier = Modifier) {
             }
     ) {
         Image(
-            imageVector = if (isSaved.value) Iconly.`Bookmark-fill` else Iconly.`Bookmark-outline`,
+            imageVector = if (saved) Iconly.`Bookmark-fill` else Iconly.`Bookmark-outline`,
             contentDescription = "Save",
             modifier = Modifier
                 .padding(4.dp)

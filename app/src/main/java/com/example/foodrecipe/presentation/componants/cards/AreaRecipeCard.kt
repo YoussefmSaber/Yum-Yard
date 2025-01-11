@@ -83,7 +83,10 @@ fun AreaRecipeCard() {
                         color = Gray2,
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    SaveButton()
+                    SaveButton(
+                        saved = true,
+                        onSaved = {}
+                    )
                 }
             }
         }

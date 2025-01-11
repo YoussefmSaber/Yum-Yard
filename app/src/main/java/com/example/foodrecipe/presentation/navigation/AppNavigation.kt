@@ -20,7 +20,7 @@ import com.example.foodrecipe.presentation.auth.signup.screen.SignupScreen
 
 @Composable
 fun ApplicationNavigation(navController: NavHostController, isSplashScreen: MutableState<Boolean>) {
-    NavHost(navController = navController, startDestination = Application) {
+    NavHost(navController = navController, startDestination = Auth) {
         navigation<Auth>(startDestination = Splash) {
             composable<Splash> {
                 SplashScreen {
@@ -67,7 +67,7 @@ fun ApplicationNavigation(navController: NavHostController, isSplashScreen: Muta
                 )
             }
         }
-        navigation<Application>(startDestination = Details("00ce2c0e-6936-4ae1-9420-eb4190ea1ab0")) {
+        navigation<Application>(startDestination = Home()) {
             composable<Search> {
                 SearchScreen(
                     navigateToDetails = { navController.navigate(Details(it)) },

@@ -7,6 +7,8 @@ import kotlinx.serialization.Serializable
 data class RecipeResponseItem(
     @SerialName("RecipeComments")
     val recipeComments: List<RecipeComment>,
+    @SerialName("UserProfile")
+    val userProfile: UserProfile,
     val ingredients: String,
     val measures: String,
     @SerialName("recipe_id")

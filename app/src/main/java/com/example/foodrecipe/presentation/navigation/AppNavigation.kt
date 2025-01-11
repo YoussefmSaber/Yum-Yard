@@ -1,5 +1,6 @@
 package com.example.foodrecipe.presentation.navigation
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.navigation.NavHostController
@@ -19,7 +20,7 @@ import com.example.foodrecipe.presentation.auth.signup.screen.SignupScreen
 
 @Composable
 fun ApplicationNavigation(navController: NavHostController, isSplashScreen: MutableState<Boolean>) {
-    NavHost(navController = navController, startDestination = Auth) {
+    NavHost(navController = navController, startDestination = Application) {
         navigation<Auth>(startDestination = Splash) {
             composable<Splash> {
                 SplashScreen {
@@ -66,7 +67,7 @@ fun ApplicationNavigation(navController: NavHostController, isSplashScreen: Muta
                 )
             }
         }
-        navigation<Application>(startDestination = Home()) {
+        navigation<Application>(startDestination = Details("00ce2c0e-6936-4ae1-9420-eb4190ea1ab0")) {
             composable<Search> {
                 SearchScreen(
                     navigateToDetails = { navController.navigate(Details(it)) },
@@ -74,6 +75,7 @@ fun ApplicationNavigation(navController: NavHostController, isSplashScreen: Muta
             }
             composable<Details> {
                 val recipeId = it.arguments?.getString("recipeId")
+                Log.d("NAVIGATION", "ApplicationNavigation: $recipeId")
                 if (recipeId != null) {
                     DetailsScreen(
                         recipeId = recipeId,

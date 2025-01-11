@@ -26,7 +26,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.common.BottomNavigationItems
-import com.example.foodrecipe.domain.model.recipe.Meal
+import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeResponseItem
+import com.example.foodrecipe.data.data_source.api.dto.meal.mapInstructionsToMap
 import com.example.foodrecipe.presentation.componants.buttons.FilterButton
 import com.example.foodrecipe.presentation.componants.buttons.FollowButton
 import com.example.foodrecipe.ui.theme.White
@@ -52,7 +53,7 @@ fun ChefDetails() {
 }
 
 @Composable
-fun RecipePager(pagerState: PagerState, recipe: Meal) {
+fun RecipePager(pagerState: PagerState, recipe: RecipeResponseItem?) {
     HorizontalPager(
         state = pagerState,
         verticalAlignment = Alignment.Top,
@@ -60,8 +61,12 @@ fun RecipePager(pagerState: PagerState, recipe: Meal) {
         userScrollEnabled = false
     ) { page ->
         when (page) {
-            0 -> IngredientsList(recipe.recipeIngredients, recipe.recipeMeasures)
-            1 -> InstructionsList(recipe.recipeInstructions)
+            0 -> IngredientsList(
+                recipe?.ingredients?.split(", ") ?: emptyList(),
+                recipe?.measures?.split(", ") ?: emptyList()
+            )
+
+            1 -> InstructionsList(mapInstructionsToMap(recipe?.strInstructions ?: ""))
             2 -> CommentsSection()
         }
     }

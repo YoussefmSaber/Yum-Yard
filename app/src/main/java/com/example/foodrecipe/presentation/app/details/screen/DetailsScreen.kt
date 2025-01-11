@@ -15,7 +15,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.foodrecipe.domain.model.recipe.Meal
+import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeResponseItem
 import com.example.foodrecipe.presentation.app.details.view_model.DetailsViewModel
 import com.example.foodrecipe.presentation.componants.ChefDetails
 import com.example.foodrecipe.presentation.componants.CustomTabs
@@ -66,7 +66,7 @@ private fun DetailsScreenContent(
     innerPadding: PaddingValues,
     pagerState: PagerState,
     coroutineScope: CoroutineScope,
-    recipe: Meal,
+    recipe: RecipeResponseItem?,
 ) {
     // Main Content Layout
     Column(
@@ -78,10 +78,10 @@ private fun DetailsScreenContent(
         )
     ) {
 
-        RecipeImageSection(recipe.recipeThumb)
+        RecipeImageSection(recipe?.strMealThumb ?: "")
         Spacer(Modifier.height(16.dp))
 
-        RecipeTitle(recipe.recipeName)
+        RecipeTitle(recipe?.strMeal ?: "")
         Spacer(Modifier.height(16.dp))
 
         ChefDetails()

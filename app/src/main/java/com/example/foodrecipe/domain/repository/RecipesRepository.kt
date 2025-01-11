@@ -1,5 +1,6 @@
 package com.example.foodrecipe.domain.repository
 
+import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeResponseItem
 import com.example.foodrecipe.data.data_source.api.dto.area.AreaDto
 import com.example.foodrecipe.data.data_source.api.dto.category.CategoryDto
 import com.example.foodrecipe.data.data_source.api.dto.filtered_meals.FilteredMealDto
@@ -11,7 +12,7 @@ interface RecipesRepository {
 
     suspend fun getMeals(): List<MealDto>
 
-    suspend fun getMealById(id: String): MealDto
+    suspend fun getMealById(id: String): RecipeResponseItem
 
     suspend fun getMealByName(name: String): List<MealDto>
 

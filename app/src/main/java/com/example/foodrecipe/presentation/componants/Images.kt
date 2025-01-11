@@ -72,7 +72,7 @@ fun RecipeImageSection(imageUrl: String) {
         Box {
             Log.d("IMAGE ", "RecipeImageSection: $imageUrl")
             GlideImage(
-                model =imageUrl,
+                model = imageUrl,
                 contentDescription = "Recipe Image",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

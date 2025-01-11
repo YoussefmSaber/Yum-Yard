@@ -26,8 +26,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.common.BottomNavigationItems
-import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeResponseItem
 import com.example.foodrecipe.data.data_source.api.dto.meal.mapInstructionsToMap
+import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeResponseItem
 import com.example.foodrecipe.presentation.componants.buttons.FilterButton
 import com.example.foodrecipe.presentation.componants.buttons.FollowButton
 import com.example.foodrecipe.ui.theme.White
@@ -65,9 +65,8 @@ fun RecipePager(pagerState: PagerState, recipe: RecipeResponseItem?) {
                 recipe?.ingredients?.split(", ") ?: emptyList(),
                 recipe?.measures?.split(", ") ?: emptyList()
             )
-
             1 -> InstructionsList(mapInstructionsToMap(recipe?.strInstructions ?: ""))
-            2 -> CommentsSection()
+            2 -> CommentsSection(recipe?.recipeComments ?: emptyList())
         }
     }
 }

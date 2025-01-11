@@ -2,12 +2,12 @@ package com.example.foodrecipe.data.repository
 
 import android.util.Log
 import com.example.foodrecipe.common.TablesName
-import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeResponseItem
 import com.example.foodrecipe.data.data_source.api.dto.area.AreaDto
 import com.example.foodrecipe.data.data_source.api.dto.category.CategoryDto
 import com.example.foodrecipe.data.data_source.api.dto.filtered_meals.FilteredMealDto
 import com.example.foodrecipe.data.data_source.api.dto.meal.MealDto
 import com.example.foodrecipe.data.data_source.api.dto.meal_category.MealCategoryDto
+import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeResponseItem
 import com.example.foodrecipe.domain.model.recipe.Meal
 import com.example.foodrecipe.domain.repository.RecipesRepository
 import io.github.jan.supabase.SupabaseClient
@@ -39,6 +39,7 @@ class RecipesRepositoryImpl(
             id,
             comment,
             rate,
+            created_at,
             UserProfile(
             user_id,
             name,

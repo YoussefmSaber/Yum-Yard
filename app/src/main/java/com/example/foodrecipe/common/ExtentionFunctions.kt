@@ -6,6 +6,8 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.graphicsLayer
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 
 
 /**
@@ -50,3 +52,17 @@ fun Modifier.fadingEdge(brush: Brush) = this
  */
 fun String.ingredientImage(): String =
     "https://www.themealdb.com/images/ingredients/$this-Small.png"
+
+fun String.transformDate(): String {
+    // Define the input format to include the timezone
+    val inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSXXX")
+
+    // Parse the input string to an OffsetDateTime object
+    val dateTime = OffsetDateTime.parse(this, inputFormatter)
+
+    // Define the output format
+    val outputFormatter = DateTimeFormatter.ofPattern("dd MMMM, yyyy - HH:mm")
+
+    // Format the date into the desired format
+    return dateTime.format(outputFormatter)
+}

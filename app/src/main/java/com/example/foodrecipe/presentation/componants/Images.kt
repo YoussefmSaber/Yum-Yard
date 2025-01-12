@@ -103,12 +103,12 @@ fun RecipeImageSection(imageUrl: String, saved: Boolean, onSaved: (Boolean) -> U
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun ChefImage(imageUrl: String, shape: RoundedCornerShape = CircleShape) {
+fun ChefImage(imageUrl: String, shape: RoundedCornerShape = CircleShape, size: Int = 50) {
     GlideImage(
         model = imageUrl,
         contentDescription = "Chefs profile picture",
         modifier = Modifier
-            .size(50.dp)
+            .size(size.dp)
             .clip(shape),
     )
 }

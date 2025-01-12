@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -122,7 +123,6 @@ fun SearchBar(searchQuery: String, onQueryChanged: (String) -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
-            .padding(vertical = 16.dp)
             .fillMaxWidth()
     ) {
         SearchInputField(searchQuery, onQueryChanged)
@@ -154,3 +154,25 @@ fun NavBar(selectedItem: Int, changeScreen: (Int) -> Unit) {
         }
     }
 }
+
+@Composable
+fun ProfileHeader() {
+    Row(
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
+        ChefImage("", size = 125)
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            ChefDetails("Recipe", "4")
+            Spacer(Modifier.width(16.dp))
+            ChefDetails("Followers", "2.5M")
+            Spacer(Modifier.width(16.dp))
+            ChefDetails("Following", "100")
+        }
+    }
+}
+

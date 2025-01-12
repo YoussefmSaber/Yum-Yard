@@ -49,14 +49,10 @@ fun GeneralTopBar(
         },
         actions = {
             if (isShareIcon) {
-                ShareButton(onShareClick = {
-
-                })
+                ShareButton(onShareClick = onCLickCallBack)
             }
             if (isLogoutIcon) {
-                LogoutButton(onLogoutClickable = {
-
-                })
+                LogoutButton(onLogoutClickable = onCLickCallBack)
             }
         }
     )

@@ -1,7 +1,9 @@
 package com.example.foodrecipe.di
 
 import com.example.foodrecipe.BuildConfig
+import com.example.foodrecipe.data.repository.AuthRepositoryImpl
 import com.example.foodrecipe.data.repository.RecipesRepositoryImpl
+import com.example.foodrecipe.domain.repository.AuthRepository
 import com.example.foodrecipe.domain.repository.RecipesRepository
 import com.example.foodrecipe.domain.usecase.auth.LoginUseCase
 import com.example.foodrecipe.domain.usecase.auth.LogoutUseCase
@@ -17,6 +19,7 @@ import com.example.foodrecipe.domain.usecase.recipe.using_value.GetMealByIdUseCa
 import com.example.foodrecipe.domain.usecase.recipe.using_value.GetMealByNameUseCase
 import com.example.foodrecipe.presentation.app.details.view_model.DetailsViewModel
 import com.example.foodrecipe.presentation.app.search.view_model.SearchViewModel
+import com.example.foodrecipe.presentation.auth.login.view_model.LoginViewModel
 import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
@@ -38,6 +41,7 @@ val appModule = module {
 
     // Provides a single instance of MealsRepository
     single<RecipesRepository> { RecipesRepositoryImpl(get()) }
+    single<AuthRepository> { AuthRepositoryImpl(get()) }
 
     // Provides use cases - Grouped by functionality for better organization
 
@@ -65,4 +69,5 @@ val appModule = module {
 
     viewModel { SearchViewModel(get()) }
     viewModel { DetailsViewModel(get()) }
+    viewModel { LoginViewModel(get()) }
 }

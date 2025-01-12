@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.foodrecipe.presentation.app.home.screen.HomeScreen
+import com.example.foodrecipe.presentation.app.profile.screen.ProfileScreen
 import com.example.foodrecipe.presentation.app.saved.screen.SavedRecipesScreen
 import com.example.foodrecipe.presentation.app.search.screen.SearchScreen
 import com.example.foodrecipe.presentation.componants.NavBar
@@ -59,9 +60,8 @@ private fun ScreenSwitcher(
             0 -> HomeScreen()
             1 -> SavedRecipesScreen()
             2 -> SearchScreen(navigateToDetails = onClickCallback)
-
             3 -> Text(text = "Add")
-            4 -> Text(text = "Profile")
+            4 -> ProfileScreen()
         }
     }
 }

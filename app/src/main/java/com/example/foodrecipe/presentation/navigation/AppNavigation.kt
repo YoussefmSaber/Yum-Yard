@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.example.foodrecipe.presentation.app.AppScreen
 import com.example.foodrecipe.presentation.app.details.screen.DetailsScreen
+import com.example.foodrecipe.presentation.app.profile.screen.ProfileScreen
 import com.example.foodrecipe.presentation.app.saved.screen.SavedRecipesScreen
 import com.example.foodrecipe.presentation.app.search.screen.SearchScreen
 import com.example.foodrecipe.presentation.auth.SplashScreen
@@ -92,7 +93,7 @@ fun ApplicationNavigation(navController: NavHostController, isSplashScreen: Muta
                 )
             }
             composable<Profile> {
-//                ProfileScreen()
+                ProfileScreen()
             }
             composable<Save> {
                 SavedRecipesScreen()

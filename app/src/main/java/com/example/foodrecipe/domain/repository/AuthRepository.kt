@@ -12,4 +12,10 @@ interface AuthRepository {
     suspend fun passwordReset(userEmail: String, newPassword: String)
 
     suspend fun logout()
+
+    fun saveAuthToken(token: String)
+
+    fun getAuthToken(): String?
+
+    fun clearAuthToken()
 }

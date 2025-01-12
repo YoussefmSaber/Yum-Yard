@@ -7,7 +7,7 @@ import com.example.foodrecipe.domain.usecase.recipe.BaseUseCase
 
 class LoginUseCase(val repository: AuthRepository) : BaseUseCase<LoginData, Unit>() {
     override suspend fun execute(params: LoginData) {
-        val response = repository.login(params)
-        Log.d("Login data", "login response is: $response")
+        Log.d("Use Case", "execute: Have Been called")
+        repository.login(params)
     }
 }

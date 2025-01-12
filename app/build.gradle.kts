@@ -119,6 +119,8 @@ dependencies {
     // constraint layout
     implementation(libs.androidx.constraintlayout.compose)
 
+    implementation (libs.androidx.security.crypto)
+
     // Navigation
     implementation(libs.navigation.compose)
 }

@@ -22,7 +22,3 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) : ViewModel() {
         }
     }
 }
-
-fun main() {
-    println("0".repeat(4))
-}

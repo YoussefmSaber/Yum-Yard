@@ -257,7 +257,7 @@ fun SearchInputField(
     searchQuery: String = "",
     onQueryChanged: (String) -> Unit = {},
     navigateToSearch: () -> Unit = {},
-    maxWidth: Float = 0.8F
+    maxWidth: Float = 0.8F,
 ) {
     OutlinedTextField(
         value = searchQuery,
@@ -292,6 +292,5 @@ fun SearchInputField(
                 contentDescription = "Search icon",
             )
         },
-
         )
 }

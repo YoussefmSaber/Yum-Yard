@@ -17,6 +17,7 @@ import com.example.foodrecipe.domain.usecase.recipe.listing.ListAllAreasUseCase
 import com.example.foodrecipe.domain.usecase.recipe.listing.ListAllCategoriesUseCase
 import com.example.foodrecipe.domain.usecase.recipe.using_value.GetMealByIdUseCase
 import com.example.foodrecipe.domain.usecase.recipe.using_value.GetMealByNameUseCase
+import com.example.foodrecipe.presentation.app.add.view_model.AddRecipeViewModel
 import com.example.foodrecipe.presentation.app.details.view_model.DetailsViewModel
 import com.example.foodrecipe.presentation.app.search.view_model.SearchViewModel
 import com.example.foodrecipe.presentation.auth.login.view_model.LoginViewModel
@@ -70,4 +71,5 @@ val appModule = module {
     viewModel { SearchViewModel(get()) }
     viewModel { DetailsViewModel(get()) }
     viewModel { LoginViewModel(get()) }
+    viewModel { AddRecipeViewModel() }
 }

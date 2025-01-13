@@ -1,12 +1,14 @@
 package com.example.foodrecipe.common.assets
 
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.example.foodrecipe.common.assets.icons.`Arrow-down`
 import com.example.foodrecipe.common.assets.icons.`Arrow-down-outline`
 import com.example.foodrecipe.common.assets.icons.`Arrow-left-outline`
 import com.example.foodrecipe.common.assets.icons.`Arrow-right-fill`
 import com.example.foodrecipe.common.assets.icons.`Arrow-right-outline`
 import com.example.foodrecipe.common.assets.icons.`Arrow-square-down-fill`
 import com.example.foodrecipe.common.assets.icons.`Arrow-square-up-fill`
+import com.example.foodrecipe.common.assets.icons.`Arrow-up`
 import com.example.foodrecipe.common.assets.icons.`Arrow-up-outline`
 import com.example.foodrecipe.common.assets.icons.`Bookmark-fill`
 import com.example.foodrecipe.common.assets.icons.`Bookmark-outline`
@@ -22,9 +24,11 @@ import com.example.foodrecipe.common.assets.icons.Google
 import com.example.foodrecipe.common.assets.icons.Hide
 import com.example.foodrecipe.common.assets.icons.`Home-fill`
 import com.example.foodrecipe.common.assets.icons.`Home-outline`
+import com.example.foodrecipe.common.assets.icons.`Ingredients-mix`
 import com.example.foodrecipe.common.assets.icons.`Location-fill`
 import com.example.foodrecipe.common.assets.icons.`Location-outline`
 import com.example.foodrecipe.common.assets.icons.Logout
+import com.example.foodrecipe.common.assets.icons.Measure
 import com.example.foodrecipe.common.assets.icons.Message
 import com.example.foodrecipe.common.assets.icons.`Message-fill`
 import com.example.foodrecipe.common.assets.icons.`Message-outline`
@@ -38,6 +42,7 @@ import com.example.foodrecipe.common.assets.icons.`Plus-outline`
 import com.example.foodrecipe.common.assets.icons.Profile
 import com.example.foodrecipe.common.assets.icons.`Profile-fill`
 import com.example.foodrecipe.common.assets.icons.`Profile-outline`
+import com.example.foodrecipe.common.assets.icons.Recipe
 import com.example.foodrecipe.common.assets.icons.`Search-fill`
 import com.example.foodrecipe.common.assets.icons.`Search-outline`
 import com.example.foodrecipe.common.assets.icons.`Setting-fill`
@@ -69,6 +74,6 @@ val Iconly.AllIcons: ____KtList<ImageVector>
         `Notification-bing-outline`, `Profile-fill`, `Profile-outline`, `Setting-fill`, `Plus-outline`,
         `Setting-outline`, `Share-fill`, `Share-outline`, `Search-fill`, `Search-outline`,
         `Star-fill`, `Star-outline`, `Timer-fill`, `Timer-outline`, `Chef-Hat`, Hide, Show,
-        Message, Password, Profile, Logout)
+        Message, Password, Profile, Logout, Recipe, `Arrow-up`, `Arrow-down`, Measure, `Ingredients-mix`)
     return __AllIcons!!
   }

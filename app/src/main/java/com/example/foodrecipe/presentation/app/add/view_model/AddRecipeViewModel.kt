@@ -25,6 +25,20 @@ class AddRecipeViewModel : ViewModel() {
         _recipeData.value = _recipeData.value.copy(ingredients = updatedIngredients)
     }
 
+    fun removeStep(index: Int) {
+        val updatedSteps = _recipeData.value.steps.toMutableList()
+        if(index in updatedSteps.indices) {
+            updatedSteps.removeAt(index)
+            _recipeData.value = _recipeData.value.copy(steps = updatedSteps)
+        }
+    }
+
+    fun addStep(step: String) {
+        val updatedSteps = _recipeData.value.steps.toMutableList()
+        updatedSteps.add(step)
+        _recipeData.value = _recipeData.value.copy(steps = updatedSteps)
+    }
+
     fun removeIngredient(index: Int) {
         val updatedIngredients = _recipeData.value.ingredients.toMutableList()
         if (index in updatedIngredients.indices) {

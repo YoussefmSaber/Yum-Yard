@@ -1,6 +1,7 @@
 package com.example.foodrecipe.common.assets
 
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.example.foodrecipe.common.assets.icons.`Add-step`
 import com.example.foodrecipe.common.assets.icons.`Arrow-down`
 import com.example.foodrecipe.common.assets.icons.`Arrow-down-outline`
 import com.example.foodrecipe.common.assets.icons.`Arrow-left-outline`
@@ -32,6 +33,7 @@ import com.example.foodrecipe.common.assets.icons.Measure
 import com.example.foodrecipe.common.assets.icons.Message
 import com.example.foodrecipe.common.assets.icons.`Message-fill`
 import com.example.foodrecipe.common.assets.icons.`Message-outline`
+import com.example.foodrecipe.common.assets.icons.Minus
 import com.example.foodrecipe.common.assets.icons.`More-fill`
 import com.example.foodrecipe.common.assets.icons.`More-outline`
 import com.example.foodrecipe.common.assets.icons.`Notification-bing-fill`
@@ -74,6 +76,7 @@ val Iconly.AllIcons: ____KtList<ImageVector>
         `Notification-bing-outline`, `Profile-fill`, `Profile-outline`, `Setting-fill`, `Plus-outline`,
         `Setting-outline`, `Share-fill`, `Share-outline`, `Search-fill`, `Search-outline`,
         `Star-fill`, `Star-outline`, `Timer-fill`, `Timer-outline`, `Chef-Hat`, Hide, Show,
-        Message, Password, Profile, Logout, Recipe, `Arrow-up`, `Arrow-down`, Measure, `Ingredients-mix`)
+        Message, Password, Profile, Logout, Recipe, `Arrow-up`, `Arrow-down`, Measure, `Ingredients-mix`,
+        `Add-step`, Minus)
     return __AllIcons!!
   }

@@ -15,11 +15,11 @@ import com.example.foodrecipe.common.assets.Iconly
 import com.example.foodrecipe.common.assets.icons.Recipe
 import com.example.foodrecipe.presentation.app.add.view_model.AddRecipeViewModel
 import com.example.foodrecipe.presentation.app.add.view_model.RecipeData
-import com.example.foodrecipe.presentation.componants.CustomOutlinedTextField
 import com.example.foodrecipe.presentation.componants.DropDownField
 import com.example.foodrecipe.presentation.componants.GeneralTopBar
 import com.example.foodrecipe.presentation.componants.buttons.AddImageButton
 import com.example.foodrecipe.presentation.componants.buttons.auth.EmailAuthButton
+import com.example.foodrecipe.presentation.componants.input.CustomOutlinedTextField
 import com.example.foodrecipe.ui.theme.Transparent
 import org.koin.androidx.compose.koinViewModel
 

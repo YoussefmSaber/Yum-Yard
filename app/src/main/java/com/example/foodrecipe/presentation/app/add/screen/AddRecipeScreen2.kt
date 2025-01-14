@@ -1,5 +1,11 @@
 package com.example.foodrecipe.presentation.app.add.screen
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -28,7 +34,7 @@ import com.example.foodrecipe.presentation.app.add.view_model.RecipeData
 import com.example.foodrecipe.presentation.componants.GeneralTopBar
 import com.example.foodrecipe.presentation.componants.IngredientInputRow
 import com.example.foodrecipe.presentation.componants.buttons.auth.EmailAuthButton
-import com.example.foodrecipe.presentation.componants.cards.AddIngredientCard
+import com.example.foodrecipe.presentation.componants.cards.RemoveIngredientCard
 import com.example.foodrecipe.ui.theme.Transparent
 import org.koin.androidx.compose.koinViewModel
 
@@ -40,7 +46,9 @@ fun AddRecipeScreen2() {
 
     Scaffold(
         containerColor = Transparent,
-        topBar = { GeneralTopBar(title = "Add Recipe") }
+        topBar = { GeneralTopBar(title = "Add Recipe",
+            isNavigationIcon = true,
+            onCLickCallBack = {}) }
     ) { innerPadding ->
         ScreenContent(
             innerPadding,
@@ -57,6 +65,7 @@ fun AddRecipeScreen2() {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun ScreenContent(
     innerPadding: PaddingValues,
@@ -88,12 +97,22 @@ private fun ScreenContent(
                 }
             ) {
                 LazyColumn {
-                    itemsIndexed(recipeState.ingredients) { index, (ingredient, measure) ->
-                        AddIngredientCard(
-                            ingredient = ingredient,
-                            measure = measure,
-                            onRemove = { onRemoveClick(index) }
-                        )
+                    itemsIndexed(
+                        recipeState.ingredients,
+                        key = { _, item -> item.hashCode() }) { index, (ingredient, measure) ->
+                        AnimatedVisibility(
+                            visible = true,
+                            enter = fadeIn() + expandVertically(),
+                            exit = fadeOut() + shrinkVertically(),
+                        ) {
+                            Box(modifier = Modifier.animateItem()) {
+                                RemoveIngredientCard(
+                                    ingredient = ingredient,
+                                    measure = measure,
+                                    onRemove = { onRemoveClick(index) }
+                                )
+                            }
+                        }
                         Spacer(Modifier.height(16.dp))
                     }
                 }

@@ -17,10 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.common.assets.Iconly
 import com.example.foodrecipe.common.assets.icons.Profile
-import com.example.foodrecipe.presentation.componants.CustomOutlinedTextField
 import com.example.foodrecipe.presentation.componants.ScreenTitle
 import com.example.foodrecipe.presentation.componants.buttons.BackArrowButton
 import com.example.foodrecipe.presentation.componants.buttons.auth.EmailAuthButton
+import com.example.foodrecipe.presentation.componants.input.CustomOutlinedTextField
 import com.example.foodrecipe.ui.theme.Transparent
 
 @Composable

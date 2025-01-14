@@ -22,12 +22,13 @@ import com.example.foodrecipe.presentation.componants.ScreenTitle
 import com.example.foodrecipe.presentation.componants.SearchInputField
 import com.example.foodrecipe.presentation.componants.cards.AreaRecipeCard
 import com.example.foodrecipe.presentation.componants.cards.NewRecipeCard
+import com.example.foodrecipe.ui.theme.Transparent
 
 @Preview
 @Composable
 fun HomeScreen() {
     Scaffold(
-        containerColor = Color.Transparent,
+        containerColor = Transparent,
         topBar = {
             GeneralTopBar(
                 title = "",

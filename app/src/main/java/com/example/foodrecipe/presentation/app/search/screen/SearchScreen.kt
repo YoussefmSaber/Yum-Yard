@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.domain.model.recipe.Meal
@@ -18,6 +17,7 @@ import com.example.foodrecipe.presentation.componants.GeneralTopBar
 import com.example.foodrecipe.presentation.componants.SearchBar
 import com.example.foodrecipe.presentation.componants.SearchGridList
 import com.example.foodrecipe.presentation.componants.SearchResultsHeader
+import com.example.foodrecipe.ui.theme.Transparent
 import org.koin.androidx.compose.koinViewModel
 
 @Preview
@@ -30,7 +30,7 @@ fun SearchScreen(
     val searchedRecipes by viewModel.searchedRecipes.collectAsState()
 
     Scaffold(
-        containerColor = Color.Transparent,
+        containerColor = Transparent,
         modifier = Modifier.padding(horizontal = 16.dp),
         topBar = {
             GeneralTopBar(

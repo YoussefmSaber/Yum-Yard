@@ -20,7 +20,7 @@ import com.example.foodrecipe.presentation.componants.DropDownField
 import com.example.foodrecipe.presentation.componants.GeneralTopBar
 import com.example.foodrecipe.presentation.componants.buttons.AddImageButton
 import com.example.foodrecipe.presentation.componants.buttons.auth.EmailAuthButton
-import com.example.foodrecipe.ui.theme.White
+import com.example.foodrecipe.ui.theme.Transparent
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -31,7 +31,7 @@ fun AddRecipeScreen1(
     val recipeState = rememberSaveable { mutableStateOf(RecipeData()) }
 
     Scaffold(
-        containerColor = White,
+        containerColor = Transparent,
         topBar = {
             GeneralTopBar(
                 title = "Add Recipe",

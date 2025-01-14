@@ -13,7 +13,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeResponseItem
 import com.example.foodrecipe.data.data_source.api.dto.recipe.UserProfile
@@ -24,6 +23,7 @@ import com.example.foodrecipe.presentation.componants.GeneralTopBar
 import com.example.foodrecipe.presentation.componants.RecipeImageSection
 import com.example.foodrecipe.presentation.componants.RecipePager
 import com.example.foodrecipe.presentation.componants.RecipeTitle
+import com.example.foodrecipe.ui.theme.Transparent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -41,7 +41,7 @@ fun DetailsScreen(
     viewModel.fetchRecipeDetails(recipeId)
     val recipe by viewModel.recipe.collectAsState()
     Scaffold(
-        containerColor = Color.Transparent,
+        containerColor = Transparent,
         topBar = {
             GeneralTopBar(
                 title = "Recipe Details",

@@ -21,12 +21,13 @@ import com.example.foodrecipe.presentation.componants.OTPTextField
 import com.example.foodrecipe.presentation.componants.ScreenTitle
 import com.example.foodrecipe.presentation.componants.buttons.BackArrowButton
 import com.example.foodrecipe.presentation.componants.buttons.auth.EmailAuthButton
+import com.example.foodrecipe.ui.theme.Transparent
 
 @Preview
 @Composable
 fun VerifyCodeScreen(returnToEmail: () -> Unit = {}, onCLick: () -> Unit = {}) {
     val otpState = remember { mutableStateOf("") }
-    Scaffold { innerPadding ->
+    Scaffold(containerColor = Transparent) { innerPadding ->
         Box {
             BackgroundImage()
             VerifyCodeContent(innerPadding, otpState, returnToEmail, onCLick)

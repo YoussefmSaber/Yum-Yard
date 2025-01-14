@@ -17,18 +17,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.common.assets.Iconly
 import com.example.foodrecipe.common.assets.icons.Profile
-import com.example.foodrecipe.presentation.componants.BackgroundImage
 import com.example.foodrecipe.presentation.componants.CustomOutlinedTextField
 import com.example.foodrecipe.presentation.componants.ScreenTitle
 import com.example.foodrecipe.presentation.componants.buttons.BackArrowButton
 import com.example.foodrecipe.presentation.componants.buttons.auth.EmailAuthButton
+import com.example.foodrecipe.ui.theme.Transparent
 
 @Composable
 fun SendCodeScreen(returnToLogin: () -> Unit, onCLick: () -> Unit) {
     val emailState = remember { mutableStateOf("") }
-    Scaffold { innerPadding ->
+    Scaffold(containerColor = Transparent) { innerPadding ->
         Box {
-            BackgroundImage()
+
             SendCodeContent(innerPadding, emailState, returnToLogin, onCLick)
         }
     }

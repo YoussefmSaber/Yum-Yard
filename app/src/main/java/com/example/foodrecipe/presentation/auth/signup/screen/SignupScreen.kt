@@ -1,7 +1,6 @@
 package com.example.foodrecipe.presentation.auth.signup.screen
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -15,13 +14,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.foodrecipe.presentation.componants.BackgroundImage
 import com.example.foodrecipe.presentation.componants.LoginRedirect
 import com.example.foodrecipe.presentation.componants.OrWith
 import com.example.foodrecipe.presentation.componants.ScreenTitle
 import com.example.foodrecipe.presentation.componants.SignupInputFields
 import com.example.foodrecipe.presentation.componants.buttons.auth.EmailAuthButton
 import com.example.foodrecipe.presentation.componants.buttons.auth.SocialAuthButtons
+import com.example.foodrecipe.ui.theme.Transparent
 
 @Composable
 fun SignupScreen(param: (String) -> Unit) {
@@ -30,19 +29,16 @@ fun SignupScreen(param: (String) -> Unit) {
     val passwordState = remember { mutableStateOf("") }
     val confPasswordState = remember { mutableStateOf("") }
 
-    Scaffold { innerPadding ->
-        Box {
-            BackgroundImage()
-            SignupContent(
-                innerPadding = innerPadding,
-                nameState = nameState,
-                emailState = emailState,
-                passwordState = passwordState,
-                confPasswordState = confPasswordState,
-                onSignupClick = { param("Signup") },
-                onLoginClick = { param("Login") }
-            )
-        }
+    Scaffold(containerColor = Transparent) { innerPadding ->
+        SignupContent(
+            innerPadding = innerPadding,
+            nameState = nameState,
+            emailState = emailState,
+            passwordState = passwordState,
+            confPasswordState = confPasswordState,
+            onSignupClick = { param("Signup") },
+            onLoginClick = { param("Login") }
+        )
     }
 }
 
@@ -60,8 +56,10 @@ fun SignupContent(
     Column(
         Modifier
             .padding(
-                vertical = innerPadding.calculateTopPadding(),
-                horizontal = 16.dp
+                top = innerPadding.calculateTopPadding(),
+                bottom = innerPadding.calculateBottomPadding(),
+                start = 16.dp,
+                end = 16.dp
             ),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.Start

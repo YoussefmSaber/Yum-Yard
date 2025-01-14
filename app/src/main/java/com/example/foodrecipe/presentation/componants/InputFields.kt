@@ -16,10 +16,15 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -42,13 +47,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodrecipe.common.assets.Iconly
 import com.example.foodrecipe.common.assets.icons.Hide
+import com.example.foodrecipe.common.assets.icons.`Ingredients-mix`
+import com.example.foodrecipe.common.assets.icons.Measure
 import com.example.foodrecipe.common.assets.icons.Message
 import com.example.foodrecipe.common.assets.icons.Password
 import com.example.foodrecipe.common.assets.icons.Profile
 import com.example.foodrecipe.common.assets.icons.`Search-outline`
 import com.example.foodrecipe.common.assets.icons.Show
 import com.example.foodrecipe.ui.theme.Black
+import com.example.foodrecipe.ui.theme.Gray1
 import com.example.foodrecipe.ui.theme.Gray3
+import com.example.foodrecipe.ui.theme.Gray4
 import com.example.foodrecipe.ui.theme.Primary100
 import com.example.foodrecipe.ui.theme.White
 
@@ -60,11 +69,12 @@ fun CustomOutlinedTextField(
     inputValue: String,
     onValueChange: (String) -> Unit,
     isPassword: Boolean = false,
+    modifier: Modifier = Modifier
 ) {
     // State to manage password visibility
     val isPasswordVisible = remember { mutableStateOf(isPassword) }
 
-    Column {
+    Column(modifier = modifier) {
         Text(
             text = label,
             fontSize = 14.sp,
@@ -78,7 +88,7 @@ fun CustomOutlinedTextField(
             onValueChange = {
                 onValueChange(it)
             },
-            leadingIcon = { Icon(imageVector = icon, contentDescription = "$label icon") },
+            leadingIcon = { Icon(imageVector = icon, contentDescription = "$label icon", modifier = modifier.size(24.dp)) },
             trailingIcon = {
                 if (isPassword) {
                     AnimatedContent(
@@ -116,14 +126,14 @@ fun CustomOutlinedTextField(
                 focusedTextColor = Black
             ),
             textStyle = TextStyle(
-                fontSize = 12.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.Normal,
                 color = Black
             ),
             placeholder = {
                 Text(
                     text = placeholder,
-                    fontSize = 12.sp,
+                    fontSize = 10.sp,
                     fontWeight = FontWeight.Normal,
                     color = Gray3
                 )
@@ -135,6 +145,53 @@ fun CustomOutlinedTextField(
             visualTransformation =
             if (isPasswordVisible.value) PasswordVisualTransformation() else VisualTransformation.None
         )
+    }
+}
+
+
+@Composable
+fun IngredientInputRow(
+    ingredient: String,
+    measure: String,
+    onIngredientChange: (String) -> Unit,
+    onMeasureChange: (String) -> Unit,
+    onAddClick: () -> Unit,
+) {
+    Row(verticalAlignment = Alignment.Bottom) {
+        CustomOutlinedTextField(
+            label = "Ingredient",
+            placeholder = "",
+            icon = Iconly.`Ingredients-mix`,
+            modifier = Modifier.weight(3f),
+            inputValue = ingredient,
+            onValueChange = onIngredientChange
+        )
+        Spacer(Modifier.width(16.dp))
+        CustomOutlinedTextField(
+            label = "Measure",
+            placeholder = "",
+            icon = Iconly.Measure,
+            modifier = Modifier.weight(2f),
+            inputValue = measure,
+            onValueChange = onMeasureChange
+        )
+        Spacer(Modifier.width(16.dp))
+        Card(
+            onClick = onAddClick,
+            shape = RoundedCornerShape(25),
+            colors = CardDefaults.cardColors(
+                contentColor = White,
+                containerColor = Primary100,
+                disabledContainerColor = Gray1,
+                disabledContentColor = Gray4
+            )
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.Add,
+                contentDescription = "Add Ingredient",
+                modifier = Modifier.padding(16.dp)
+            )
+        }
     }
 }
 
@@ -292,5 +349,5 @@ fun SearchInputField(
                 contentDescription = "Search icon",
             )
         },
-        )
+    )
 }

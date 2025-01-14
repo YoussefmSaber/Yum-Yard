@@ -2,14 +2,20 @@ package com.example.foodrecipe.presentation.componants
 
 import android.util.Log
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -32,10 +38,13 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -69,7 +78,7 @@ fun CustomOutlinedTextField(
     inputValue: String,
     onValueChange: (String) -> Unit,
     isPassword: Boolean = false,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     // State to manage password visibility
     val isPasswordVisible = remember { mutableStateOf(isPassword) }
@@ -88,7 +97,13 @@ fun CustomOutlinedTextField(
             onValueChange = {
                 onValueChange(it)
             },
-            leadingIcon = { Icon(imageVector = icon, contentDescription = "$label icon", modifier = modifier.size(24.dp)) },
+            leadingIcon = {
+                Icon(
+                    imageVector = icon,
+                    contentDescription = "$label icon",
+                    modifier = modifier.size(24.dp)
+                )
+            },
             trailingIcon = {
                 if (isPassword) {
                     AnimatedContent(
@@ -113,6 +128,8 @@ fun CustomOutlinedTextField(
                             )
                         }
                     }
+                } else {
+                    Box {}
                 }
             },
             shape = RoundedCornerShape(25),
@@ -141,13 +158,83 @@ fun CustomOutlinedTextField(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(White, shape = RoundedCornerShape(25)),
-            singleLine = true,
             visualTransformation =
             if (isPasswordVisible.value) PasswordVisualTransformation() else VisualTransformation.None
         )
     }
 }
 
+
+@Composable
+fun IngredientInput(
+    label: String,
+    value: String,
+    onValueChange: (String) -> Unit,
+    icon: ImageVector,
+    modifier: Modifier,
+) {
+    var isFocused by remember { mutableStateOf(false) }
+    val colorAnimate by animateColorAsState(targetValue = if (isFocused) Primary100 else Gray3)
+    val borderWidth by animateDpAsState(targetValue = if (isFocused) 2.dp else 1.dp)
+
+    Column(modifier = modifier) {
+        Text(
+            text = label,
+            fontSize = 14.sp,
+            color = colorAnimate,
+            fontWeight = FontWeight.Normal,
+            modifier = Modifier.padding(start = 8.dp)
+        )
+        Spacer(Modifier.height(8.dp))
+
+        Row(verticalAlignment = Alignment.Bottom) {
+            Card(
+                border = BorderStroke(
+                    borderWidth,
+                    colorAnimate
+                ),
+                shape = RoundedCornerShape(25),
+                colors = CardDefaults.cardColors(
+                    containerColor = White,
+                    disabledContainerColor = Gray1,
+                    disabledContentColor = Gray4
+                ),
+                modifier = Modifier.animateContentSize() // Smooth transition for border color change
+            ) {
+                Row(
+                    Modifier
+                        .padding(16.dp)
+                        .focusable() // Ensures focus interaction
+                        .onFocusChanged { focusState ->
+                            isFocused = focusState.isFocused
+                        },
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = "$icon Ingredient",
+                        modifier = Modifier.size(24.dp),
+                        tint = colorAnimate
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    BasicTextField(
+                        value = value,
+                        onValueChange = onValueChange,
+                        textStyle = TextStyle(
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Normal,
+                            color = Black
+                        ),
+                        modifier = Modifier
+                            .onFocusChanged { focusState ->
+                                isFocused = focusState.isFocused
+                            }
+                    )
+                }
+            }
+        }
+    }
+}
 
 @Composable
 fun IngredientInputRow(
@@ -158,25 +245,24 @@ fun IngredientInputRow(
     onAddClick: () -> Unit,
 ) {
     Row(verticalAlignment = Alignment.Bottom) {
-        CustomOutlinedTextField(
-            label = "Ingredient",
-            placeholder = "",
+        IngredientInput(
+            "Ingredient",
+            ingredient,
+            onIngredientChange,
             icon = Iconly.`Ingredients-mix`,
-            modifier = Modifier.weight(3f),
-            inputValue = ingredient,
-            onValueChange = onIngredientChange
+            modifier = Modifier.weight(3f)
         )
         Spacer(Modifier.width(16.dp))
-        CustomOutlinedTextField(
-            label = "Measure",
-            placeholder = "",
+        IngredientInput(
+            "Measure",
+            measure,
+            onMeasureChange,
             icon = Iconly.Measure,
-            modifier = Modifier.weight(2f),
-            inputValue = measure,
-            onValueChange = onMeasureChange
+            modifier = Modifier.weight(2f)
         )
         Spacer(Modifier.width(16.dp))
         Card(
+            modifier = Modifier.weight(1f),
             onClick = onAddClick,
             shape = RoundedCornerShape(25),
             colors = CardDefaults.cardColors(

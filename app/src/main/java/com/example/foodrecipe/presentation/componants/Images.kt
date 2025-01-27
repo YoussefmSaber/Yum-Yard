@@ -63,6 +63,27 @@ fun BackgroundImage() {
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
+fun RecipeReviewImage(imageUrl: String){
+    GlideImage(
+        model = imageUrl,
+        contentDescription = "Recipe Image",
+        contentScale = ContentScale.Crop,
+        modifier = Modifier
+            .fadingEdge(
+                brush = Brush.verticalGradient(
+                    colors = listOf(Color.Transparent, Black),
+                    startY = 0f,
+                    endY = Float.POSITIVE_INFINITY
+                )
+            )
+            .fillMaxWidth()
+            .height(200.dp)
+    )
+}
+
+
+@OptIn(ExperimentalGlideComposeApi::class)
+@Composable
 fun RecipeImageSection(imageUrl: String, saved: Boolean, onSaved: (Boolean) -> Unit) {
     Card(
         modifier = Modifier

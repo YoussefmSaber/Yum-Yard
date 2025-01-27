@@ -5,7 +5,6 @@ import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -25,12 +24,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.example.foodrecipe.domain.model.recipe.AddRecipe
 import com.example.foodrecipe.presentation.app.add.view_model.AddRecipeViewModel
-import com.example.foodrecipe.presentation.app.add.view_model.RecipeData
 import com.example.foodrecipe.presentation.componants.GeneralTopBar
 import com.example.foodrecipe.presentation.componants.IngredientInputRow
 import com.example.foodrecipe.presentation.componants.buttons.auth.EmailAuthButton
@@ -38,17 +36,23 @@ import com.example.foodrecipe.presentation.componants.cards.RemoveIngredientCard
 import com.example.foodrecipe.ui.theme.Transparent
 import org.koin.androidx.compose.koinViewModel
 
-@Preview
 @Composable
-fun AddRecipeScreen2() {
+fun AddRecipeScreen2(
+    onNextClick: () -> Unit,
+    onPreviousClick: () -> Unit,
+) {
     val viewModel: AddRecipeViewModel = koinViewModel()
     val recipeState by viewModel.recipeData.collectAsState()
 
     Scaffold(
         containerColor = Transparent,
-        topBar = { GeneralTopBar(title = "Add Recipe",
-            isNavigationIcon = true,
-            onCLickCallBack = {}) }
+        topBar = {
+            GeneralTopBar(
+                title = "Add Recipe",
+                isNavigationIcon = true,
+                onCLickCallBack = onPreviousClick
+            )
+        }
     ) { innerPadding ->
         ScreenContent(
             innerPadding,
@@ -59,17 +63,16 @@ fun AddRecipeScreen2() {
             onRemoveClick = { index ->
                 viewModel.removeIngredient(index)
             },
-            onNextClick = {}
+            onNextClick = onNextClick
         )
 
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun ScreenContent(
     innerPadding: PaddingValues,
-    recipeState: RecipeData,
+    recipeState: AddRecipe,
     onAddClick: (String, String) -> Unit,
     onRemoveClick: (Int) -> Unit,
     onNextClick: () -> Unit,
@@ -99,7 +102,7 @@ private fun ScreenContent(
                 LazyColumn {
                     itemsIndexed(
                         recipeState.ingredients,
-                        key = { _, item -> item.hashCode() }) { index, (ingredient, measure) ->
+                        key = { _, item -> item.hashCode() }) { index, ingredient ->
                         AnimatedVisibility(
                             visible = true,
                             enter = fadeIn() + expandVertically(),
@@ -108,7 +111,7 @@ private fun ScreenContent(
                             Box(modifier = Modifier.animateItem()) {
                                 RemoveIngredientCard(
                                     ingredient = ingredient,
-                                    measure = measure,
+                                    measure = recipeState.measure[index],
                                     onRemove = { onRemoveClick(index) }
                                 )
                             }

@@ -30,6 +30,7 @@ import com.example.foodrecipe.common.BottomNavigationItems
 import com.example.foodrecipe.data.data_source.api.dto.meal.mapInstructionsToMap
 import com.example.foodrecipe.data.data_source.api.dto.recipe.RecipeResponseItem
 import com.example.foodrecipe.data.data_source.api.dto.recipe.UserProfile
+import com.example.foodrecipe.domain.model.recipe.AddRecipe
 import com.example.foodrecipe.presentation.componants.buttons.FilterButton
 import com.example.foodrecipe.presentation.componants.buttons.FollowButton
 import com.example.foodrecipe.ui.theme.White
@@ -55,10 +56,28 @@ fun ChefDetails(userProfile: UserProfile) {
 }
 
 @Composable
-fun RecipePager(
+fun RecipeNewPager(
+    pagerState: PagerState,
+    recipe: AddRecipe,
+) {
+    HorizontalPager(
+        state = pagerState,
+        verticalAlignment = Alignment.Top,
+        modifier = Modifier.fillMaxSize(),
+        userScrollEnabled = false
+    ) { page ->
+        when (page) {
+            0 -> IngredientsList(recipe.ingredients, recipe.measure)
+            1 -> InstructionsList(mapInstructionsToMap(recipe.steps))
+        }
+    }
+}
+
+@Composable
+fun RecipeDetailsPager(
     pagerState: PagerState,
     recipe: RecipeResponseItem?,
-    onSendComment: (String) -> Unit
+    onSendComment: (String) -> Unit,
 ) {
     HorizontalPager(
         state = pagerState,
@@ -71,6 +90,7 @@ fun RecipePager(
                 recipe?.ingredients?.split(", ") ?: emptyList(),
                 recipe?.measures?.split(", ") ?: emptyList()
             )
+
             1 -> InstructionsList(mapInstructionsToMap(recipe?.strInstructions ?: ""))
             2 -> CommentsSection(recipe?.recipeComments ?: emptyList(), onSendComment)
         }

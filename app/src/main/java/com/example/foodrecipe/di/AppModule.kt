@@ -68,8 +68,9 @@ val appModule = module {
     single { SignupUseCase(get()) }
     single { LogoutUseCase(get()) }
 
+    // Use cases for the application
     viewModel { SearchViewModel(get()) }
     viewModel { DetailsViewModel(get()) }
     viewModel { LoginViewModel(get()) }
-    viewModel { AddRecipeViewModel() }
+    viewModel { AddRecipeViewModel(get()) }
 }

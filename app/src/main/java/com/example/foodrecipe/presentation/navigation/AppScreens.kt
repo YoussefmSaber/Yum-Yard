@@ -12,9 +12,6 @@ import kotlinx.serialization.Serializable
 object Application // Route for the application screens
 
 @Serializable
-object App  // Route for the authentication screens
-
-@Serializable
 object Search  // Route for the search screen
 
 @Serializable
@@ -27,10 +24,19 @@ data class Home(val selectedItem: Int = 0)  // Route for the home screen
 object Save  // Route for the save screen
 
 @Serializable
-object Add  // Route for the add screen
+object Profile  // Route for the profile screen
 
 @Serializable
-object Profile  // Route for the profile screen
+object AddScreen1  // Route for the add screen 1
+
+@Serializable
+object AddScreen2  // Route for the add screen 2
+
+@Serializable
+object AddScreen3  // Route for the add screen 3
+
+@Serializable
+object ReviewRecipe  // Route for review the recipe screen 1
 
 // Authentication Routes
 @Serializable

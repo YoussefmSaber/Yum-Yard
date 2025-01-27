@@ -24,14 +24,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.example.foodrecipe.common.assets.Iconly
 import com.example.foodrecipe.common.assets.icons.`Add-step`
+import com.example.foodrecipe.domain.model.recipe.AddRecipe
 import com.example.foodrecipe.presentation.app.add.view_model.AddRecipeViewModel
-import com.example.foodrecipe.presentation.app.add.view_model.RecipeData
 import com.example.foodrecipe.presentation.componants.GeneralTopBar
 import com.example.foodrecipe.presentation.componants.buttons.auth.EmailAuthButton
 import com.example.foodrecipe.presentation.componants.cards.RemoveStepCard
@@ -39,10 +38,8 @@ import com.example.foodrecipe.presentation.componants.input.StepsInput
 import com.example.foodrecipe.ui.theme.Transparent
 import org.koin.androidx.compose.koinViewModel
 
-@Preview
 @Composable
-fun AddRecipeScreen3() {
-
+fun AddRecipeScreen3(onNextClick: () -> Unit, onPreviousClick: () -> Unit) {
     val viewModel: AddRecipeViewModel = koinViewModel()
     val recipeState by viewModel.recipeData.collectAsState()
 
@@ -52,7 +49,7 @@ fun AddRecipeScreen3() {
             GeneralTopBar(
                 title = "Add Recipe",
                 isNavigationIcon = true,
-                onCLickCallBack = {}
+                onCLickCallBack = onPreviousClick
             )
         }
     ) { innerPadding ->
@@ -66,7 +63,7 @@ fun AddRecipeScreen3() {
                 onRemoveClick = { index ->
                     viewModel.removeStep(index)
                 },
-                onNextClick = {}
+                onNextClick = onNextClick
             )
         }
     }
@@ -75,7 +72,7 @@ fun AddRecipeScreen3() {
 @Composable
 private fun ScreenContent(
     innerPadding: PaddingValues,
-    recipeState: RecipeData,
+    recipeState: AddRecipe,
     onAddClick: (String) -> Unit,
     onRemoveClick: (Int) -> Unit,
     onNextClick: () -> Unit,
@@ -103,7 +100,7 @@ private fun ScreenContent(
             ) {
                 LazyColumn {
                     itemsIndexed(
-                        recipeState.steps,
+                        recipeState.steps.split(Regex("(?=Step \\d+:)")).filter { it.isNotBlank() },
                         key = { _, item -> item.hashCode() }) { index, step ->
                         AnimatedVisibility(
                             visible = true,
@@ -131,7 +128,7 @@ private fun ScreenContent(
                 }
             ) {
                 StepsInput(
-                    label = "Steps",
+                    label = "Step",
                     value = newStep,
                     onValueChange = { newStep = it },
                     icon = Iconly.`Add-step`,

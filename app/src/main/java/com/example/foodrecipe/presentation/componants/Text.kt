@@ -138,11 +138,12 @@ fun SignupRedirect(onSignupClick: () -> Unit) {
 }
 
 @Composable
-fun RecipeTitle(title: String) {
+fun RecipeTitle(title: String, modifier: Modifier = Modifier) {
     Text(
         text = title,
         fontSize = 20.sp,
-        fontWeight = FontWeight.Bold
+        fontWeight = FontWeight.Bold,
+        modifier = modifier
     )
 }
 

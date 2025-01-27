@@ -1,53 +1,75 @@
 package com.example.foodrecipe.presentation.app.add.view_model
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.foodrecipe.domain.model.recipe.AddRecipe
+import com.example.foodrecipe.domain.usecase.recipe.recipe_edit.AddMealUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-
-data class RecipeData(
-    var imageUri: String = "",
-    var name: String = "",
-    var area: String = "",
-    var category: String = "",
-    var ingredients: MutableList<Pair<String, String>> = mutableListOf(),
-    var steps: MutableList<String> = mutableListOf(),
-)
+import kotlinx.coroutines.launch
 
 
-class AddRecipeViewModel : ViewModel() {
 
-    private val _recipeData = MutableStateFlow(RecipeData())
-    val recipeData: StateFlow<RecipeData> = _recipeData
+class AddRecipeViewModel(private val addMealUseCase: AddMealUseCase) : ViewModel() {
+
+    private val _recipeData = MutableStateFlow(AddRecipe())
+    val recipeData: StateFlow<AddRecipe> = _recipeData
 
     fun addIngredient(ingredient: String, measure: String) {
-        val updatedIngredients = _recipeData.value.ingredients.toMutableList()
-        updatedIngredients.add(ingredient to measure)
-        _recipeData.value = _recipeData.value.copy(ingredients = updatedIngredients)
+        val updatedIngredient = _recipeData.value.ingredients.toMutableList()
+        val updatedMeasure = _recipeData.value.measure.toMutableList()
+        updatedIngredient.add(ingredient)
+        updatedMeasure.add(measure)
+        _recipeData.value =
+            _recipeData.value.copy(ingredients = updatedIngredient, measure = updatedMeasure)
     }
 
     fun removeStep(index: Int) {
-        val updatedSteps = _recipeData.value.steps.toMutableList()
-        if(index in updatedSteps.indices) {
-            updatedSteps.removeAt(index)
-            _recipeData.value = _recipeData.value.copy(steps = updatedSteps)
+        val currentSteps = _recipeData.value.steps
+
+        // Split the steps string into individual steps
+        val stepList = currentSteps.split(Regex("(?=Step \\d+:)")).filter { it.isNotBlank() }
+
+        if (index in stepList.indices) {
+            // Remove the step at the specified index
+            val updatedSteps = stepList.toMutableList().apply { removeAt(index) }
+
+            // Rebuild the steps string and renumber the steps
+            val newSteps = updatedSteps.mapIndexed { i, step ->
+                "Step ${i + 1}: ${step.substringAfter(":").trim()}"
+            }.joinToString("\n")
+
+            // Update the RecipeData
+            _recipeData.value = _recipeData.value.copy(steps = newSteps)
         }
     }
 
     fun addStep(step: String) {
-        val updatedSteps = _recipeData.value.steps.toMutableList()
-        updatedSteps.add(step)
-        _recipeData.value = _recipeData.value.copy(steps = updatedSteps)
+        val currentSteps = _recipeData.value.steps
+        val stepCount = currentSteps.split(Regex("(?=Step \\d+:)")).size // Count existing steps
+        val newStep = "Step ${stepCount + 1}: $step\n" // Format the new step
+        _recipeData.value = _recipeData.value.copy(steps = currentSteps + newStep)
     }
 
     fun removeIngredient(index: Int) {
         val updatedIngredients = _recipeData.value.ingredients.toMutableList()
+        val updatedMeasures = _recipeData.value.measure.toMutableList()
         if (index in updatedIngredients.indices) {
             updatedIngredients.removeAt(index)
-            _recipeData.value = _recipeData.value.copy(ingredients = updatedIngredients)
+            updatedMeasures.removeAt(index)
+            _recipeData.value =
+                _recipeData.value.copy(ingredients = updatedIngredients, measure = updatedMeasures)
         }
     }
 
-    fun updateRecipeData(updatedData: RecipeData) {
+    fun updateRecipeData(updatedData: AddRecipe) {
         _recipeData.value = updatedData
+    }
+
+    fun postRecipe() {
+        viewModelScope.launch(Dispatchers.IO) {
+            addMealUseCase.invoke(_recipeData.value)
+        }
     }
 }

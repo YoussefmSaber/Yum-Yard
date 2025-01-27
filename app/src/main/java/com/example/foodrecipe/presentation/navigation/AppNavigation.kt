@@ -8,6 +8,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.example.foodrecipe.presentation.app.AppScreen
+import com.example.foodrecipe.presentation.app.add.screen.AddRecipeScreen1
+import com.example.foodrecipe.presentation.app.add.screen.AddRecipeScreen2
+import com.example.foodrecipe.presentation.app.add.screen.AddRecipeScreen3
+import com.example.foodrecipe.presentation.app.add.screen.ReviewRecipeScreen
 import com.example.foodrecipe.presentation.app.details.screen.DetailsScreen
 import com.example.foodrecipe.presentation.app.profile.screen.ProfileScreen
 import com.example.foodrecipe.presentation.app.saved.screen.SavedRecipesScreen
@@ -98,8 +102,28 @@ fun ApplicationNavigation(navController: NavHostController, isSplashScreen: Muta
             composable<Save> {
                 SavedRecipesScreen()
             }
-            composable<Add> {
-//                AddRecipeScreen()
+            composable<AddScreen1> {
+                AddRecipeScreen1 {
+                    navController.navigate(AddScreen2)
+                }
+            }
+            composable<AddScreen2> {
+                AddRecipeScreen2(
+                    onNextClick = { navController.navigate(AddScreen3) },
+                    onPreviousClick = { navController.popBackStack() }
+                )
+            }
+            composable<AddScreen3> {
+                AddRecipeScreen3(
+                    onNextClick = { navController.navigate(ReviewRecipe) },
+                    onPreviousClick = { navController.popBackStack() }
+                )
+            }
+            composable<ReviewRecipe> {
+                ReviewRecipeScreen(
+                    onPostClick = { navController.navigate(Home()) },
+                    onPreviousClick = { navController.popBackStack() }
+                )
             }
         }
     }

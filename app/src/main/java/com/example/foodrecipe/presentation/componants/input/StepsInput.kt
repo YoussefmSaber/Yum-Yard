@@ -76,7 +76,7 @@ fun StepsInput(
             ),
             modifier = Modifier.animateContentSize() // Smooth transition for border color change
         ) {
-            Row {
+            Row(verticalAlignment = Alignment.Bottom, modifier = Modifier.padding(4.dp)) {
                 Row(
                     Modifier
                         .weight(6f)
@@ -86,11 +86,10 @@ fun StepsInput(
                             isFocused = focusState.isFocused
                         },
                     verticalAlignment = Alignment.Top,
-
                 ) {
                     Icon(
                         imageVector = icon,
-                        contentDescription = "$icon Ingredient",
+                        contentDescription = "$icon",
                         modifier = Modifier.size(24.dp),
                         tint = colorAnimate
                     )
@@ -111,7 +110,7 @@ fun StepsInput(
                 }
                 Spacer(Modifier.width(8.dp))
                 Card(
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier.weight(0.8f),
                     onClick = onAddClick,
                     shape = RoundedCornerShape(25),
                     colors = CardDefaults.cardColors(

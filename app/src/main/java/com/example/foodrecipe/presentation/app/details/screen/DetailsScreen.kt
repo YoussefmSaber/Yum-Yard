@@ -21,7 +21,7 @@ import com.example.foodrecipe.presentation.componants.ChefDetails
 import com.example.foodrecipe.presentation.componants.CustomTabs
 import com.example.foodrecipe.presentation.componants.GeneralTopBar
 import com.example.foodrecipe.presentation.componants.RecipeImageSection
-import com.example.foodrecipe.presentation.componants.RecipePager
+import com.example.foodrecipe.presentation.componants.RecipeDetailsPager
 import com.example.foodrecipe.presentation.componants.RecipeTitle
 import com.example.foodrecipe.ui.theme.Transparent
 import kotlinx.coroutines.CoroutineScope
@@ -103,7 +103,7 @@ private fun DetailsScreenContent(
         })
         Spacer(Modifier.height(8.dp))
         // Horizontal Pager
-        RecipePager(pagerState, recipe, onSendComment)
+        RecipeDetailsPager(pagerState, recipe, onSendComment)
         Spacer(Modifier.height(16.dp))
     }
 }

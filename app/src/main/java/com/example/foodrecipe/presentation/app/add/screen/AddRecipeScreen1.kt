@@ -13,8 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.foodrecipe.common.assets.Iconly
 import com.example.foodrecipe.common.assets.icons.Recipe
+import com.example.foodrecipe.domain.model.recipe.AddRecipe
 import com.example.foodrecipe.presentation.app.add.view_model.AddRecipeViewModel
-import com.example.foodrecipe.presentation.app.add.view_model.RecipeData
 import com.example.foodrecipe.presentation.componants.DropDownField
 import com.example.foodrecipe.presentation.componants.GeneralTopBar
 import com.example.foodrecipe.presentation.componants.buttons.AddImageButton
@@ -28,7 +28,7 @@ fun AddRecipeScreen1(
     onNextClick: () -> Unit,
 ) {
     val viewModel: AddRecipeViewModel = koinViewModel()
-    val recipeState = rememberSaveable { mutableStateOf(RecipeData()) }
+    val recipeState = rememberSaveable { mutableStateOf(AddRecipe()) }
 
     Scaffold(
         containerColor = Transparent,
@@ -55,8 +55,8 @@ fun AddRecipeScreen1(
 
 @Composable
 private fun ScreenContent(
-    recipeState: RecipeData,
-    onRecipeChange: (RecipeData) -> Unit,
+    recipeState: AddRecipe,
+    onRecipeChange: (AddRecipe) -> Unit,
     onNextClick: () -> Unit,
 ) {
     Column(Modifier.padding(horizontal = 16.dp, vertical = 32.dp)) {
